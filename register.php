@@ -49,7 +49,7 @@
                                             $crud=new crud();
                                             $_POST['password']=sha1($_POST['password']);
                                             $_POST['created_at']=date('Y-m-d H:i:s');
-                                            $rs=$crud->common_create('auth',$_POST);
+                                            $rs=$crud->common_create('signup',$_POST);
                                             if($rs['data']){
                                                 header('location:login.php');
                                             }else{
@@ -79,6 +79,7 @@
     <!-- Required vendors -->
     <script src="<?= $baseurl ?>assets/vendor/global/global.min.js"></script>
     <script src="<?= $baseurl ?>assets/js/quixnav-init.js"></script>
+   
     <!--endRemoveIf(production)-->
 </body>
 

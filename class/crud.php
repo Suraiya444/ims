@@ -3,7 +3,7 @@
         private $host='localhost';
         private $user='root';
         private $password='';
-        private $database='ims';
+        private $database='company';
         private $connection;
 
         public function __construct(){
@@ -13,7 +13,7 @@
         public function common_select($table,$fields='*',$condition=false,$sort_field=false,$sort='ASC'){
             $result=array();
             $error=false;
-            $sql="select $fields from $table where deleted_at is null ";
+            $sql="select $fields from $table where delete_at is null ";
             if(is_array($condition)){
                 $sql.=" and ";
                 foreach($condition as $k=>$v){
@@ -43,7 +43,7 @@
         public function common_select_single($table,$fields='*',$condition=false,$sort_field=false,$sort='ASC'){
             $result="";
             $error=false;
-            $sql="select $fields from $table where deleted_at is null ";
+            $sql="select $fields from $table where delete_at is null ";
             if(is_array($condition)){
                 $sql.=" and ";
                 foreach($condition as $k=>$v){

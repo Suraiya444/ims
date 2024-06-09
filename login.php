@@ -49,7 +49,7 @@
                                         if($_POST){
                                             $crud=new crud();
                                             $_POST['password']=sha1($_POST['password']);
-                                            $rs=$crud->common_select_single('auth','*',$_POST);
+                                            $rs=$crud->common_select_single('signup','*',$_POST);
                                             if($rs['data']){
                                                 $_SESSION['loggedin']="true";
                                                 $_SESSION['username']=$rs['data']->username;
