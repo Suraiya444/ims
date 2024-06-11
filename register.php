@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $baseurl="http://localhost/ims/";
+    $baseurl="http://localhost/companyims/";
     include_once('class/crud.php');
 ?>
 <!DOCTYPE html>
@@ -77,8 +77,9 @@
         Scripts
     ***********************************-->
     <!-- Required vendors -->
-    <script src="<?= $baseurl ?>assets/vendor/global/global.min.js"></script>
-    <script src="<?= $baseurl ?>assets/js/quixnav-init.js"></script>
+    <script src="<?= $baseurl ?>php-1/htdocs/ims/assets/vendor/global/global.min.js"></script>
+    <script src="<?= $baseurl ?>php-1/htdocs/ims/assets/js/quixnav-init.js"></script>
+     
    
     <!--endRemoveIf(production)-->
     
