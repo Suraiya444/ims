@@ -49,7 +49,7 @@
                                         if($_POST){
                                             $crud=new crud();
                                             $_POST['password']=sha1($_POST['password']);
-                                            $rs=$crud->common_select_single('signup','*',$_POST);
+                                            $rs=$crud->common_select_single('auth','*',$_POST);
                                             if($rs['data']){
                                                 $_SESSION['loggedin']="true";
                                                 $_SESSION['username']=$rs['data']->username;
@@ -77,10 +77,10 @@
         Scripts
     ***********************************-->
     <!-- Required vendors -->
-    <script src="<?= $baseurl ?>ims/assets/vendor/global/global.min.js"></script>
-    <script src="<?= $baseurl ?>ims/assets/js/quixnav-init.js"></script>
-    <script src="<?= $baseurl ?>ims/assets/js/custom.min.js"></script>
+    <script src="<?= $baseurl ?>assets/vendor/global/global.min.js"></script>
+    <script src="<?= $baseurl ?>assets/js/quixnav-init.js"></script>
+    <script src="<?= $baseurl ?>assets/js/custom.min.js"></script>
 
 </body>
 
-</html> 
+</html>

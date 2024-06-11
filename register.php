@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $baseurl="http://localhost/companyims/";
+    $baseurl="http://localhost/ims/";
     include_once('class/crud.php');
 ?>
 <!DOCTYPE html>
@@ -49,7 +49,7 @@
                                             $crud=new crud();
                                             $_POST['password']=sha1($_POST['password']);
                                             $_POST['created_at']=date('Y-m-d H:i:s');
-                                            $rs=$crud->common_create('signup',$_POST);
+                                            $rs=$crud->common_create('auth',$_POST);
                                             if($rs['data']){
                                                 header('location:login.php');
                                             }else{
@@ -77,9 +77,8 @@
         Scripts
     ***********************************-->
     <!-- Required vendors -->
-    <script src="<?= $baseurl ?>php-1/htdocs/ims/assets/vendor/global/global.min.js"></script>
-    <script src="<?= $baseurl ?>php-1/htdocs/ims/assets/js/quixnav-init.js"></script>
-     
+    <script src="<?= $baseurl ?>assets/vendor/global/global.min.js"></script>
+    <script src="<?= $baseurl ?>assets/js/quixnav-init.js"></script>
    
     <!--endRemoveIf(production)-->
     
