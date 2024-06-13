@@ -59,6 +59,7 @@ DROP TABLE IF EXISTS `class`;
 CREATE TABLE `class` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `class` varchar(255) DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -117,6 +118,7 @@ DROP TABLE IF EXISTS `department`;
 CREATE TABLE `department` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `department` varchar(255) DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -140,6 +142,7 @@ DROP TABLE IF EXISTS `designation`;
 CREATE TABLE `designation` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `designation` varchar(255) DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -163,6 +166,7 @@ DROP TABLE IF EXISTS `group`;
 CREATE TABLE `group` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `group` varchar(255) DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -186,6 +190,7 @@ DROP TABLE IF EXISTS `section`;
 CREATE TABLE `section` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `section` varchar(255) DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -209,6 +214,7 @@ DROP TABLE IF EXISTS `session`;
 CREATE TABLE `session` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `session` varchar(255) DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -332,6 +338,7 @@ CREATE TABLE `subject` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `subject_name` varchar(255) DEFAULT NULL,
   `subject_type` int(11) DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
