@@ -30,7 +30,7 @@
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                                 class="icon icon-chart-bar-33"></i><span class="nav-text">Charts</span></a>
                         <ul aria-expanded="false">
-                            <li><a href="<?= $baseurl ?>assets/chart-flot.html">Flot</a></li>
+                            <li><a href="<?= $baseurl ?>class.php">Class</a></li>
                             <li><a href="<?= $baseurl ?>assets/chart-morris.html">Morris</a></li>
                             <li><a href="<?= $baseurl ?>assets/chart-chartjs.html">Chartjs</a></li>
                             <li><a href="<?= $baseurl ?>assets/chart-chartist.html">Chartist</a></li>
@@ -83,15 +83,15 @@
                             <li><a href="<?= $baseurl ?>assets/form-element.html">Form Elements</a></li>
                             <li><a href="<?= $baseurl ?>assets/form-wizard.html">Wizard</a></li>
                             <li><a href="<?= $baseurl ?>assets/form-editor-summernote.html">Summernote</a></li>
-                            <li><a href="form-pickers.html">Pickers</a></li>
-                            <li><a href="form-validation-jquery.html">Jquery Validate</a></li>
+                            <li><a href="attendance.php">Attendance</a></li>
+                            <li><a href="student-form.php">Student</a></li>
                         </ul>
                     </li>
                     <li class="nav-label">Table</li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                                 class="icon icon-layout-25"></i><span class="nav-text">Table</span></a>
                         <ul aria-expanded="false">
-                            <li><a href="table-bootstrap-basic.html">Bootstrap</a></li>
+                            <li><a href="table-bootstrap-basic.php">Bootstrap</a></li>
                             <li><a href="table-datatable-basic.html">Datatable</a></li>
                         </ul>
                     </li>
