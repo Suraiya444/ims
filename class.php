@@ -1,9 +1,9 @@
 <?php include('include/header.php') ?>
 <?php include('include/sidebar.php') ?>
 <?php
-    session_start();
-    $baseurl="http://localhost/ims/";
-    include_once('class/crud.php');
+    // session_start();
+    // $baseurl="http://localhost/ims/";
+    // include_once('class/crud.php');
 ?>
 
 <body>
@@ -45,6 +45,24 @@
                         <button class="btn btn-primary" type="submit">Submit</button>
                     </div>
                 </form>
+
+
+                <?php 
+                 if($_POST){
+                    $_POST['created_at']=date('Y-m-d H:i:s');
+                    $_POST['created_by']=1;
+                    $rs=$mysqli->common_create('class',$_POST);
+                    if($rs){
+                        if($rs['data']){
+                            echo "<script>window.location='{$baseurl}htdocs/ims/table-bootstrap-basic.php'</script>";
+                        }else{
+                            echo $rs['error'];
+                        }
+                    }
+                }
+                
+                
+                ?>
                
                 <!-- <div class="row"> 
                     <div class="col-lg-12">

@@ -1,10 +1,7 @@
 <?php include('include/header.php') ?>
-<?php include('include/sidebar.php') ?>
-<?php
-    session_start();
-    $baseurl="http://localhost/ims/";
-    include_once('class/crud.php');
-?>
+<?php include('include/sidebar.php')?>
+<?php  ?>
+
 
 <body>
         <!--**********************************
