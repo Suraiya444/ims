@@ -15,8 +15,8 @@
                 </div>
                 <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="class_add.php">Class</a></li>
-                        <li class="breadcrumb-item active"><a href="class_list.php">Class Table</a></li>
+                        <li class="breadcrumb-item"><a href="subject_add.php">Subject</a></li>
+                        <li class="breadcrumb-item active"><a href="subject_list.php">Subject Table</a></li>
                     </ol>
                 </div>
             </div>
@@ -25,7 +25,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Class</h4>
+                            <h4 class="card-title">Subject</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -33,14 +33,15 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">ID</th>
-                                            <th scope="col">Class</th>
+                                            <th scope="col">Subject Name</th>
+                                            <th scope="col">Subject Type</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         
                                         <?php 
-                                            $result=$mysqli->common_select('class');
+                                            $result=$mysqli->common_select('subject');
                                             if($result){
                                                 if($result['data']){
                                                     $i=1;
@@ -48,13 +49,14 @@
                                         ?>
                                         <tr>
                                             <td><?= $i++ ?></td>
-                                            <td><?= $data-> class ?></td>
+                                            <td><?= $data-> subject_name ?></td>
+                                            <td><?= $data-> subject_type ?></td>
                                             <td>
                                                 <span>
-                                                    <a href="<?= $baseurl ?>class_edit.php?id=<?= $data ->id ?>" class="mr-4" data-toggle="tooltip"
+                                                    <a href="<?= $baseurl ?>subject_edit.php?id=<?= $data ->id ?>" class="mr-4" data-toggle="tooltip"
                                                         data-placement="top" title="Edit"><i
                                                             class="fa fa-pencil color-muted"></i> </a>
-                                                    <a href="<?= $baseurl ?>class_delete.php?id=<?= $data ->id ?>" data-toggle="tooltip"
+                                                    <a href="<?= $baseurl ?>subject_delete.php?id=<?= $data ->id ?>" data-toggle="tooltip"
                                                         data-placement="top" title="Close"><i
                                                             class="fa fa-close color-danger"></i></a>
                                                 </span>

@@ -1,4 +1,5 @@
 <?php
+    include_once('class/crud.php');
     session_start();
     if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']){
 

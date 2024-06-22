@@ -28,19 +28,44 @@
                         </ul>
                     </li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                                class="icon icon-chart-bar-33"></i><span class="nav-text">Charts</span></a>
+                                class="icon icon-chart-bar-33"></i><span class="nav-text">Management</span></a>
                         <ul aria-expanded="false">
-                            <li><a href="<?= $baseurl ?>class.php">Class</a></li>
-                            <li><a href="<?= $baseurl ?>assets/chart-morris.html">Morris</a></li>
-                            <li><a href="<?= $baseurl ?>assets/chart-chartjs.html">Chartjs</a></li>
-                            <li><a href="<?= $baseurl ?>assets/chart-chartist.html">Chartist</a></li>
-                            <li><a href="<?= $baseurl ?>assets/chart-sparkline.html">Sparkline</a></li>
+                            <li><a href="javascript:void()">Class</a>
+                                <ul aria-expanded="false">
+                                <li><a href="<?= $baseurl ?>class_add.php"> Add</a>
+                                <li><a href="<?= $baseurl ?>class_list.php"> List</a>
+                                </ul>
+                            </li>
+                            <li><a href="javascript:void()">Section</a>
+                                <ul aria-expanded="false">
+                                    <li><a href="<?= $baseurl ?>section_add.php"> Add</a>
+                                    <li><a href="<?= $baseurl ?>section_list.php"> List</a>
+                                </ul>
+                            </li>
+                            <li><a href="javascript:void()">Group</a>
+                                <ul aria-expanded="false">
+                                    <li><a href="<?= $baseurl ?>group_add.php"> Add</a>
+                                    <li><a href="<?= $baseurl ?>group_list.php"> List</a>
+                                </ul>
+                            </li>
+                            <li><a href="javascript:void()">Subject</a>
+                                <ul aria-expanded="false">
+                                    <li><a href="<?= $baseurl ?>subject_add.php"> Add</a>
+                                    <li><a href="<?= $baseurl ?>subject_list.php"> List</a>
+                                </ul>
+                            </li>
+                            <li><a href="javascript:void()">Session</a>
+                                <ul aria-expanded="false">
+                                    <li><a href="<?= $baseurl ?>session_add.php"> Add</a>
+                                    <li><a href="<?= $baseurl ?>session_list.php"> List</a>
+                                </ul>
+                            </li>
                             <li><a href="<?= $baseurl ?>assets/chart-peity.html">Peity</a></li>
                         </ul>
                     </li>
                     <li class="nav-label">Components</li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                                class="icon icon-world-2"></i><span class="nav-text">Bootstrap</span></a>
+                                class="icon icon-world-2"></i><span class="nav-text">Student</span></a>
                         <ul aria-expanded="false">
                             <li><a href="<?= $baseurl ?>assets/ui-accordion.html">Accordion</a></li>
                             <li><a href="<?= $baseurl ?>assets/ui-alert.html">Alert</a></li>
@@ -83,8 +108,8 @@
                             <li><a href="<?= $baseurl ?>assets/form-element.html">Form Elements</a></li>
                             <li><a href="<?= $baseurl ?>assets/form-wizard.html">Wizard</a></li>
                             <li><a href="<?= $baseurl ?>assets/form-editor-summernote.html">Summernote</a></li>
-                            <li><a href="attendance.php">Attendance</a></li>
-                            <li><a href="student-form.php">Student</a></li>
+                            <li><a href="form-pickers.html">Pickers</a></li>
+                            <li><a href="<?= $baseurl ?>student-form.php">Student</a></li>
                         </ul>
                     </li>
                     <li class="nav-label">Table</li>
