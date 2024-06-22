@@ -25,61 +25,7 @@
                 <!-- row -->
            
             <form method="post" action="">
-                <div class="row">
-                    <div class="col-md-6">
-                        <label class="form-label" for="student_id">Student ID</label>
-                        <input type="text" name="student_id" class="form-control" id="student_id" placeholder="Student id no." >
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label" for="class_id">class</label>
-                        <select class="form-control form-select" required name="class_id" id="class_id">
-                        <option value="">Select Class</option>
-                        <?php 
-                            $result=$mysqli->common_select('class');
-                            if($result){
-                                if($result['data']){
-                                    $i=1;
-                                    foreach($result['data'] as $d){
-                        ?>
-                            <option value="<?= $d->id ?>" > <?= $d->class ?></option>
-                        <?php } } } ?>
-                    </select>
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label" for="section_id">Section</label>
-                        <select class="form-control form-select" required name="section_id" id="section_id">
-                        <option value="">Select Section</option>
-                        <?php 
-                            $result=$mysqli->common_select('section');
-                            if($result){
-                                if($result['data']){
-                                    $i=1;
-                                    foreach($result['data'] as $d){
-                        ?>
-                            <option value="<?= $d->id ?>" > <?= $d->section ?></option>
-                        <?php } } } ?>
-                    </select>
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label" for="roll">Roll</label>
-                        <input type="text" name="roll" class="form-control" id="roll" placeholder="Roll no." >
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label" for="group_id">Group</label>
-                        <select class="form-control form-select" required name="group_id" id="group_id">
-                        <option value="">Select Group</option>
-                        <?php 
-                            $result=$mysqli->common_select('`group`');
-                            if($result){
-                                if($result['data']){
-                                    $i=1;
-                                    foreach($result['data'] as $d){
-                        ?>
-                            <option value="<?= $d->id ?>" > <?= $d->group ?></option>
-                        <?php } } } ?>
-                    </select>
-                    </div>
-                </div><br>
+                <br>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
             <?php 
@@ -87,14 +33,7 @@
                     $_POST['created_at']=date('Y-m-d H:i:s');
                     $_POST['created_by']=$_SESSION['id'];
                    
-                    $rs=$mysqli->common_create('student_details',$_POST);
-                    if($rs){
-                        if($rs['data']){
-                            echo "<script>window.location='{$baseurl}student_details_list.php'</script>";
-                        }else{
-                            echo $rs['error'];
-                        }
-                    }
+                   
                 }
             ?>
             </div>
