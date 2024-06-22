@@ -119,8 +119,8 @@
                                     <input type="date" class="form-control" id="val-phoneus" name="resign" placeholder="">
                                 </div>
                                 <div class="form-group">
-                                    <label for="val-digits">Designation ID <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="val-digits" name="designation_id" placeholder="Designation ID..">
+                                    <label for="val-digits">Designation  <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="val-digits" name="designation_id" placeholder="Designation ..">
                                 </div>
                                 <div class="form-group">
                                     <label for="val-currency">Photo <span class="text-danger">*</span></label>

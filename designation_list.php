@@ -48,7 +48,7 @@
                                         ?>
                                         <tr>
                                             <td><?= $i++ ?></td>
-                                            <td><?= $data-> designation ?></td>
+                                            <td><?= $data->designation ?></td>
                                             <td>
                                                 <span>
                                                     <a href="<?= $baseurl ?>designation_edit.php?id=<?= $data ->id ?>" class="mr-4" data-toggle="tooltip"
