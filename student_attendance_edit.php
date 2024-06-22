@@ -53,7 +53,7 @@
                     </div>
                     <div class="col-md-6">
                         <label class="form-label" for="note">Note</label>
-                        <textarea name="note" id="note" class="form-control"  value="<?= $olddata-> note ?>"></textarea>
+                        <textarea name="note" id="note" class="form-control"><?= $olddata-> note ?></textarea>
                     </div>
                 </div><br>
                 <button type="submit" class="btn btn-primary">Submit</button>
