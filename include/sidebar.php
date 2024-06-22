@@ -86,19 +86,23 @@
                         </ul>
                     </li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                                class="icon icon-single-04"></i><span class="nav-text">Bootstrap</span></a>
+                                class="icon icon-single-04"></i><span class="nav-text">Teacher</span></a>
                         <ul aria-expanded="false">
                            
-                            <li><a href="<?= $baseurl ?>assets/ui-alert.html">Alert</a></li>
-                            <li><a href="<?= $baseurl ?>assets/ui-badge.html">Badge</a></li>
+                            <li><a href="<?= $baseurl ?>Teacher form .php">Teacher Form</a></li>
+                            <li><a href="<?= $baseurl ?>teacher_list.php">Details</a></li>
                         </ul>
                     </li>
 
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                                class="icon icon-plug"></i><span class="nav-text">Plugins</span></a>
+                                class="icon icon-plug"></i><span class="nav-text">Information Add</span></a>
                         <ul aria-expanded="false">
-                            <li><a href="<?= $baseurl ?>assets/uc-select2.html">Select 2</a></li>
-                            <li><a href="<?= $baseurl ?>assets/uc-nestable.html">Nestedable</a></li>
+                            <li><a href="<?= $baseurl ?>department_add.php">Department</a></li>
+                            <li><a href="<?= $baseurl ?>department_list.php">Department List</a></li>
+                        </ul>
+                        <ul aria-expanded="false">
+                            <li><a href="<?= $baseurl ?>designation_add.php">Designation</a></li>
+                            <li><a href="<?= $baseurl ?>designation_list.php">Designation List</a></li>
                         </ul>
                     </li>
                     <li><a href="widget-basic.html" aria-expanded="false"><i class="icon icon-globe-2"></i><span
