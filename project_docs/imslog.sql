@@ -66,7 +66,7 @@ CREATE TABLE `class` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -75,7 +75,7 @@ CREATE TABLE `class` (
 
 LOCK TABLES `class` WRITE;
 /*!40000 ALTER TABLE `class` DISABLE KEYS */;
-INSERT INTO `class` VALUES (1,'Eight','2024-06-16 20:45:29',1,NULL,NULL,NULL),(2,'Seven','2024-06-18 07:54:54',1,NULL,NULL,NULL),(3,'Six','2024-06-18 07:55:02',1,NULL,NULL,NULL),(4,'ten','2024-06-19 08:56:47',1,NULL,NULL,NULL);
+INSERT INTO `class` VALUES (1,'Eight','2024-06-16 20:45:29',1,NULL,1,'2024-06-23 09:45:00'),(2,'Seven','2024-06-18 07:54:54',1,NULL,1,'2024-06-23 09:44:59'),(3,'Six','2024-06-18 07:55:02',1,NULL,1,'2024-06-23 09:44:58'),(4,'ten','2024-06-19 08:56:47',1,NULL,1,'2024-06-23 09:44:56'),(5,'six','2024-06-23 06:41:35',1,NULL,1,'2024-06-23 09:44:55');
 /*!40000 ALTER TABLE `class` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -314,7 +314,7 @@ CREATE TABLE `section` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -323,7 +323,7 @@ CREATE TABLE `section` (
 
 LOCK TABLES `section` WRITE;
 /*!40000 ALTER TABLE `section` DISABLE KEYS */;
-INSERT INTO `section` VALUES (1,'Green','2024-06-14 20:19:08',1,'2024-06-14 20:21:11',1,'2024-06-14 20:21:51'),(2,'Black','2024-06-15 07:44:47',1,'2024-06-15 07:45:02',1,NULL);
+INSERT INTO `section` VALUES (1,'Green','2024-06-14 20:19:08',1,'2024-06-14 20:21:11',1,'2024-06-14 20:21:51'),(2,'Black','2024-06-15 07:44:47',1,'2024-06-15 07:45:02',1,NULL),(3,'red','2024-06-23 06:40:26',1,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `section` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -379,7 +379,7 @@ CREATE TABLE `student` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3902 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3908 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -388,7 +388,7 @@ CREATE TABLE `student` (
 
 LOCK TABLES `student` WRITE;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
-INSERT INTO `student` VALUES (0,'','','','','','','','454613','2024-06-16 17:33:02',1,'2024-06-16 17:40:23',1,'2024-06-16 17:40:40'),(101,'Kamal','Jamal','Minu','kamal@gmail.com','1281542','World.jpg','kamal','1234','2024-06-16 16:20:32',1,NULL,1,'2024-06-16 17:25:05'),(451,'Priya','Jamal','Minu','rukiyapriya@gmail.com','1531554','image5.jpg','priya','48484','2024-06-16 17:41:30',1,NULL,1,'2024-06-20 10:17:33'),(454,'Umma Rukiya','Jamal','Minu','priyontika111@gmail.com','523563','carosel4.jpg','Rukiya','156565+','2024-06-16 17:36:39',1,NULL,1,'2024-06-17 18:49:13'),(3895,'','Pamal','','priyontika@gmail.com','','image4.jpg','','','2024-06-16 20:44:33',1,NULL,1,'2024-06-18 18:17:43'),(3896,'','','','','','','','','2024-06-17 18:32:19',1,'2024-06-17 18:35:20',1,'2024-06-17 18:49:10'),(3897,'Umma Rukiya','Pamal','Lilo','priyontika1@gmail.com','5698486155','','Rukiya','6578623123','2024-06-17 18:38:04',1,NULL,1,'2024-06-19 21:41:37'),(3898,'Computer','Jamal','','priyonti1@gmail.com','','','ka','','2024-06-17 18:49:03',1,NULL,1,'2024-06-17 18:49:07'),(3899,'Kamal','Pamal','Lilo','kamal@gmail.com','1281542','','kamal ','15464654','2024-06-20 10:42:49',1,NULL,1,'2024-06-20 10:42:56'),(3900,'Kamal','Jamal','Minu','priyontika@gmail.com','15455999','','priya','54646','2024-06-20 11:57:19',1,NULL,NULL,NULL),(3901,'Computer','retret','rtrdt','q@gmail.com','rdtrdt',NULL,'ryt','trrt','2024-06-22 08:55:19',1,NULL,NULL,NULL);
+INSERT INTO `student` VALUES (0,'','','','','','','','454613','2024-06-16 17:33:02',1,'2024-06-16 17:40:23',1,'2024-06-16 17:40:40'),(101,'Kamal','Jamal','Minu','kamal@gmail.com','1281542','World.jpg','kamal','1234','2024-06-16 16:20:32',1,NULL,1,'2024-06-16 17:25:05'),(451,'Priya','Jamal','Minu','rukiyapriya@gmail.com','1531554','image5.jpg','priya','48484','2024-06-16 17:41:30',1,NULL,1,'2024-06-20 10:17:33'),(454,'Umma Rukiya','Jamal','Minu','priyontika111@gmail.com','523563','carosel4.jpg','Rukiya','156565+','2024-06-16 17:36:39',1,NULL,1,'2024-06-17 18:49:13'),(3895,'','Pamal','','priyontika@gmail.com','','image4.jpg','','','2024-06-16 20:44:33',1,NULL,1,'2024-06-18 18:17:43'),(3896,'','','','','','','','','2024-06-17 18:32:19',1,'2024-06-17 18:35:20',1,'2024-06-17 18:49:10'),(3897,'Umma Rukiya','Pamal','Lilo','priyontika1@gmail.com','5698486155','','Rukiya','6578623123','2024-06-17 18:38:04',1,NULL,1,'2024-06-19 21:41:37'),(3898,'Computer','Jamal','','priyonti1@gmail.com','','','ka','','2024-06-17 18:49:03',1,NULL,1,'2024-06-17 18:49:07'),(3899,'Kamal','Pamal','Lilo','kamal@gmail.com','1281542','','kamal ','15464654','2024-06-20 10:42:49',1,NULL,1,'2024-06-20 10:42:56'),(3900,'Kamal','Jamal','Minu','priyontika@gmail.com','15455999','','priya','54646','2024-06-20 11:57:19',1,NULL,NULL,NULL),(3901,'Computer','retret','rtrdt','q@gmail.com','rdtrdt',NULL,'ryt','trrt','2024-06-22 08:55:19',1,NULL,NULL,NULL),(3902,'Kamal','retret','','nurkhan7494@gmail.com','',NULL,'kamal','','2024-06-22 10:12:39',1,NULL,NULL,NULL),(3903,'ishtiak','retret','rtrdt','nurkhan7494@gmail.com','5555',NULL,'soaha','1235','2024-06-23 06:24:34',1,NULL,NULL,NULL),(3904,'ishtiak','gdtgrd','','tauhidulislam1516@gmail.com','',NULL,'soaha','','2024-06-23 06:26:58',1,NULL,NULL,NULL),(3905,'Tomal','','','','',NULL,'','','2024-06-23 06:42:36',1,NULL,NULL,NULL),(3906,'Sohana','Jamal','Jamila','arif@gmail.com','12435454','17191205374551.jpg','sohana','123','2024-06-23 07:28:57',1,NULL,NULL,NULL),(3907,'Sohana','Jamal','Jamila','arif@gmail.com','12435454','17191210956930.jpg','sohana','','2024-06-23 07:38:15',1,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -446,7 +446,7 @@ CREATE TABLE `student_attendance` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -455,7 +455,7 @@ CREATE TABLE `student_attendance` (
 
 LOCK TABLES `student_attendance` WRITE;
 /*!40000 ALTER TABLE `student_attendance` DISABLE KEYS */;
-INSERT INTO `student_attendance` VALUES (1,4444,NULL,NULL,'2024-06-18','09:24:51','14:30:51','','2024-06-18 22:29:15',0,NULL,1,'2024-06-19 07:19:58'),(2,4,NULL,NULL,'2024-06-18','09:24:55','14:30:55','Late','2024-06-18 22:32:46',0,NULL,NULL,NULL),(3,13,NULL,NULL,'2024-06-22','09:54:51','01:58:51','on time','2024-06-22 07:53:27',0,'2024-06-22 07:54:50',1,'2024-06-22 08:02:14'),(4,3901,NULL,NULL,'2024-06-22','09:49:54','00:00:00','L','2024-06-22 09:50:28',0,NULL,NULL,NULL);
+INSERT INTO `student_attendance` VALUES (1,4444,NULL,NULL,'2024-06-18','09:24:51','14:30:51','','2024-06-18 22:29:15',0,NULL,1,'2024-06-19 07:19:58'),(2,4,NULL,NULL,'2024-06-18','09:24:55','14:30:55','Late','2024-06-18 22:32:46',0,NULL,NULL,NULL),(3,13,NULL,NULL,'2024-06-22','09:54:51','01:58:51','on time','2024-06-22 07:53:27',0,'2024-06-22 07:54:50',1,'2024-06-22 08:02:14'),(4,3901,NULL,NULL,'2024-06-22','09:49:54','00:00:00','L','2024-06-22 09:50:28',0,NULL,NULL,NULL),(5,3902,NULL,NULL,'2024-06-22','10:12:53','00:00:00','P','2024-06-22 10:12:57',0,NULL,NULL,NULL),(6,3902,NULL,NULL,'2024-06-22','10:15:42','00:00:00','A','2024-06-22 10:15:49',0,NULL,NULL,NULL),(7,3901,NULL,NULL,'2024-06-23','05:47:19','00:00:00','A','2024-06-23 05:47:29',0,NULL,NULL,NULL),(8,3905,NULL,NULL,'2024-06-23','06:42:54','00:00:00','P','2024-06-23 06:42:57',0,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `student_attendance` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -473,14 +473,14 @@ CREATE TABLE `student_details` (
   `section_id` int(11) DEFAULT NULL,
   `roll` int(11) DEFAULT NULL,
   `group_id` int(11) DEFAULT NULL,
-  `session` varchar(255) DEFAULT NULL,
+  `session_id` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -489,7 +489,7 @@ CREATE TABLE `student_details` (
 
 LOCK TABLES `student_details` WRITE;
 /*!40000 ALTER TABLE `student_details` DISABLE KEYS */;
-INSERT INTO `student_details` VALUES (1,'4889',1,2,458,2,NULL,'2024-06-17 20:22:21',1,NULL,1,'2024-06-19 08:02:28'),(2,'4888',1,2,4444,1,NULL,'2024-06-17 20:32:16',1,NULL,1,'2024-06-19 11:29:36'),(3,'4877',1,2,455,2,NULL,'2024-06-17 20:50:33',1,'2024-06-19 07:54:25',1,'2024-06-19 08:02:40'),(4,'123',2,2,458,1,NULL,'2024-06-18 07:55:44',0,NULL,1,'2024-06-19 08:02:34'),(5,'4444',3,2,4444,2,NULL,'2024-06-18 08:04:39',0,'2024-06-18 10:20:38',1,'2024-06-20 09:54:21'),(6,'123',3,2,4,2,NULL,'2024-06-18 18:39:09',0,NULL,1,'2024-06-20 10:15:40'),(7,'6',1,2,12,2,NULL,'2024-06-19 08:07:47',0,NULL,1,'2024-06-20 10:15:37'),(8,'7',2,2,5,2,NULL,'2024-06-19 08:54:16',0,NULL,1,'2024-06-20 10:15:31'),(9,'3900',2,2,458,2,NULL,'2024-06-20 11:57:44',0,NULL,1,'2024-06-20 13:02:27'),(10,'123',1,2,123,1,NULL,'2024-06-20 13:05:42',0,NULL,1,'2024-06-20 13:07:38'),(11,'123',1,2,123,1,NULL,'2024-06-20 17:38:34',0,NULL,1,'2024-06-22 06:39:59'),(12,'123',1,2,123,1,NULL,'2024-06-22 07:20:38',0,NULL,1,'2024-06-22 07:20:41'),(13,'12',3,2,12,1,NULL,'2024-06-22 07:52:45',0,NULL,NULL,NULL),(14,'3901',1,2,123,2,NULL,'2024-06-22 08:55:19',1,NULL,NULL,NULL);
+INSERT INTO `student_details` VALUES (1,'4889',1,2,458,2,NULL,'2024-06-17 20:22:21',1,NULL,1,'2024-06-19 08:02:28'),(2,'4888',1,2,4444,1,NULL,'2024-06-17 20:32:16',1,NULL,1,'2024-06-19 11:29:36'),(3,'4877',1,2,455,2,NULL,'2024-06-17 20:50:33',1,'2024-06-19 07:54:25',1,'2024-06-19 08:02:40'),(4,'123',2,2,458,1,NULL,'2024-06-18 07:55:44',0,NULL,1,'2024-06-19 08:02:34'),(5,'4444',3,2,4444,2,NULL,'2024-06-18 08:04:39',0,'2024-06-18 10:20:38',1,'2024-06-20 09:54:21'),(6,'123',3,2,4,2,NULL,'2024-06-18 18:39:09',0,NULL,1,'2024-06-20 10:15:40'),(7,'6',1,2,12,2,NULL,'2024-06-19 08:07:47',0,NULL,1,'2024-06-20 10:15:37'),(8,'7',2,2,5,2,NULL,'2024-06-19 08:54:16',0,NULL,1,'2024-06-20 10:15:31'),(9,'3900',2,2,458,2,NULL,'2024-06-20 11:57:44',0,NULL,1,'2024-06-20 13:02:27'),(10,'123',1,2,123,1,NULL,'2024-06-20 13:05:42',0,NULL,1,'2024-06-20 13:07:38'),(11,'123',1,2,123,1,NULL,'2024-06-20 17:38:34',0,NULL,1,'2024-06-22 06:39:59'),(12,'123',1,2,123,1,NULL,'2024-06-22 07:20:38',0,NULL,1,'2024-06-22 07:20:41'),(13,'12',3,2,12,1,NULL,'2024-06-22 07:52:45',0,NULL,NULL,NULL),(14,'3901',1,2,123,2,NULL,'2024-06-22 08:55:19',1,NULL,NULL,NULL),(15,'3902',2,2,123,1,NULL,'2024-06-22 10:12:39',1,NULL,NULL,NULL),(16,'3903',3,2,1234,1,NULL,'2024-06-23 06:24:34',1,NULL,NULL,NULL),(17,'3904',3,2,1235,1,NULL,'2024-06-23 06:26:58',1,NULL,NULL,NULL),(18,'3905',2,3,123,1,NULL,'2024-06-23 06:42:36',1,NULL,NULL,NULL),(19,'3906',3,2,123456,1,NULL,'2024-06-23 07:28:57',1,NULL,NULL,NULL),(20,'3907',3,2,123456,1,NULL,'2024-06-23 07:38:15',1,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `student_details` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -710,7 +710,7 @@ DROP TABLE IF EXISTS `teacher_attendance`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `teacher_attendance` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `student_id` int(11) DEFAULT NULL,
+  `teacher_id` varchar(255) DEFAULT NULL,
   `att_date` date DEFAULT NULL,
   `in_time` time DEFAULT NULL,
   `out_time` time DEFAULT NULL,
@@ -742,4 +742,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-22 14:08:06
+-- Dump completed on 2024-06-23 13:47:54
