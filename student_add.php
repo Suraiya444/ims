@@ -163,7 +163,7 @@
                     $rs=$mysqli->common_create('student_details',$stud);
                     if($rs){
                         if($rs['data']){
-                            echo "<script>window.location='{$baseurl}student_list.php'</script>";
+                            echo "<script>window.location='{$baseurl}student_list.php</script>";
                         }else{
                             echo $rs['error'];
                         }

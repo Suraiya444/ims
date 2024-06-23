@@ -12,21 +12,6 @@
                             <li><a href="<?= $baseurl ?>assets/index2.html">Dashboard 2</a></li>
                         </ul>
                     </li>
-                    <li class="nav-label">Apps</li>
-                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                                class="icon icon-app-store"></i><span class="nav-text">Apps</span></a>
-                        <ul aria-expanded="false">
-                            <li><a href="<?= $baseurl ?>assets/app-profile.html">Profile</a></li>
-                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Email</a>
-                                <ul aria-expanded="false">
-                                    <li><a href="<?= $baseurl ?>assets/email-compose.html">Compose</a></li>
-                                    <li><a href="<?= $baseurl ?>assets/email-inbox.html">Inbox</a></li>
-                                    <li><a href="<?= $baseurl ?>assets/email-read.html">Read</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="<?= $baseurl ?>assets/app-calender.html">Calendar</a></li>
-                        </ul>
-                    </li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                                 class="icon icon-chart-bar-33"></i><span class="nav-text">Management</span></a>
                         <ul aria-expanded="false">
@@ -60,7 +45,7 @@
                                     <li><a href="<?= $baseurl ?>session_list.php"> List</a>
                                 </ul>
                             </li>
-                            <li><a href="<?= $baseurl ?>assets/chart-peity.html">Peity</a></li>
+                          
                         </ul>
                     </li>
                     <li class="nav-label">Components</li>
@@ -82,13 +67,13 @@
                                 class="icon icon-single-04"></i><span class="nav-text">Teacher</span></a>
                         <ul aria-expanded="false">
                            
-                            <li><a href="<?= $baseurl ?>Teacher form .php">Teacher Form</a></li>
-                            <li><a href="<?= $baseurl ?>teacher_list.php">Details</a></li>
+                            <li><a href="<?= $baseurl ?>Teacher form .php">Add</a></li>
+                            <li><a href="<?= $baseurl ?>teacher_list.php">List</a></li>
                         </ul>
                     </li>
 
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                                class="icon icon-plug"></i><span class="nav-text">Information Add</span></a>
+                                class="con icon-single-04"></i><span class="nav-text">Teacher Information</span></a>
                         <ul aria-expanded="false">
                             <li><a href="<?= $baseurl ?>department_add.php">Department</a></li>
                             <li><a href="<?= $baseurl ?>department_list.php">Department List</a></li>
@@ -98,8 +83,6 @@
                             <li><a href="<?= $baseurl ?>designation_list.php">Designation List</a></li>
                         </ul>
                     </li>
-                    <li><a href="widget-basic.html" aria-expanded="false"><i class="icon icon-globe-2"></i><span
-                                class="nav-text">Widget</span></a></li>
                     <li class="nav-label">Attendance</li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                         class="icon icon-form"></i><span class="nav-text">Student Attendance</span></a>
@@ -114,12 +97,6 @@
                         <ul aria-expanded="false">
                             <li><a href="<?= $baseurl ?>teacher_attendance_add.php">Add</a></li>
                             <li><a href="<?= $baseurl ?>teacher_attendance_list.php">List</a></li>
-                        </ul>
-                    </li>
-                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                                class="icon icon-form"></i><span class="nav-text">Forms</span></a>
-                        <ul aria-expanded="false">
-                            <li><a href="<?= $baseurl ?>student-form.php">Student</a></li>
                         </ul>
                     </li>
                     <li class="nav-label">Subject</li>
@@ -143,25 +120,6 @@
                         <ul aria-expanded="false">
                             <li><a href="class_fees_setting_add.php">Add</a></li>
                             <li><a href="class_fees_setting_list.php">List</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-label">Extra</li>
-                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                                class="icon icon-single-copy-06"></i><span class="nav-text">Pages</span></a>
-                        <ul aria-expanded="false">
-                            <li><a href="<?= $baseurl ?>assets/page-register.html">Register</a></li>
-                            <li><a href="<?= $baseurl ?>assets/page-login.html">Login</a></li>
-                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Error</a>
-                                <ul aria-expanded="false">
-                                    <li><a href="<?= $baseurl ?>assets/page-error-400.html">Error 400</a></li>
-                                    <li><a href="<?= $baseurl ?>assets/page-error-403.html">Error 403</a></li>
-                                    <li><a href="<?= $baseurl ?>assets/page-error-404.html">Error 404</a></li>
-                                    <li><a href="<?= $baseurl ?>assets/page-error-500.html">Error 500</a></li>
-                                    <li><a href="<?= $baseurl ?>assets/page-error-503.html">Error 503</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="<?= $baseurl ?>assets/page-lock-screen.html">Lock Screen</a></li>
                         </ul>
                     </li>
                 </ul>

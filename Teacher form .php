@@ -95,8 +95,19 @@
                                     <input type="text" class="form-control" id="val-email" name="email" placeholder="Enter email..">
                                 </div>
                                 <div class="form-group">
-                                    <label for="val-number">Department ID <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="val-number" name="department_id" placeholder="Department ID..">
+                                <label class="form-label" for="class_id">Department</label>
+                                        <select class="form-control form-select" required name="department_id" id="class_id">
+                                        <option value="">Select Department</option>
+                                        <?php 
+                                            $result=$mysqli->common_select('department');
+                                            if($result){
+                                                if($result['data']){
+                                                    $i=1;
+                                                    foreach($result['data'] as $d){
+                                        ?>
+                                            <option value="<?= $d->id ?>" > <?= $d->department ?></option>
+                                        <?php } } } ?>
+                                    </select>
                                 </div>
                                 <!-- Continue adding other fields -->
                             </div>
