@@ -7835,7 +7835,7 @@ p {
   box-shadow: none !important; }
 
 #main-wrapper {
-  opacity: 0;
+  opacity: 1;
   transition: all 0.25s ease-in;
   overflow: hidden;
   position: relative; }

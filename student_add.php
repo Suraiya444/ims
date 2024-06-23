@@ -28,7 +28,7 @@
                     </div>
                     <div class="card-body">
                         <div class="basic-form">
-                            <form method="post">
+                            <form method="post" enctype="multipart/form-data">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label>Name</label>
@@ -121,6 +121,26 @@
                             </form>
     <?php 
         if($_POST){
+
+            if($_FILES){
+            
+                $img=$_FILES["photo"];
+    
+                if($img['size'] < (100*1024)){
+                    if($img['type'] =="image/jpeg"){
+                        $imagename=time().rand(1111,9999).".jpg";
+                        $rs=move_uploaded_file($img['tmp_name'],'assets/students/'.$imagename);
+                        if($rs){
+                            $stu['photo']=$imagename;
+                        }
+                    }else{
+                        return "Only image can be uploaded.";
+                    }
+                }else{
+                    return "File size cannot be more than 100KB";
+                }
+            }
+
             $stu['name']=$_POST['name'];
             $stu['father_name']=$_POST['father_name'];
             $stu['mother_name']=$_POST['mother_name'];
