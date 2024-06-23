@@ -73,7 +73,7 @@
                     </li>
 
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                                class="con icon-single-04"></i><span class="nav-text">Teacher Information</span></a>
+                                class="icon icon-single-04"></i><span class="nav-text">Teacher Information</span></a>
                         <ul aria-expanded="false">
                             <li><a href="<?= $baseurl ?>department_add.php">Department</a></li>
                             <li><a href="<?= $baseurl ?>department_list.php">Department List</a></li>
@@ -107,7 +107,7 @@
                             <li><a href="<?= $baseurl ?>class_subject_list.php">List</a></li>
                         </ul>
                     </li>
-                    
+                    <li class="nav-label">Fees</li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                                 class="icon icon-layout-25"></i><span class="nav-text">Fees Category</span></a>
                         <ul aria-expanded="false">
@@ -120,6 +120,20 @@
                         <ul aria-expanded="false">
                             <li><a href="class_fees_setting_add.php">Add</a></li>
                             <li><a href="class_fees_setting_list.php">List</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                                class="icon icon-layout-25"></i><span class="nav-text">Student Fees</span></a>
+                        <ul aria-expanded="false">
+                            <li><a href="student_fees_add.php">Add</a></li>
+                            <li><a href="student_fees_list.php">List</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                                class="icon icon-layout-25"></i><span class="nav-text">Student Fees Details</span></a>
+                        <ul aria-expanded="false">
+                            <li><a href="student_fees_details_add.php">Add</a></li>
+                            <li><a href="student_fees_details_list.php">List</a></li>
                         </ul>
                     </li>
                 </ul>
