@@ -108,6 +108,14 @@
                             <li><a href="<?= $baseurl ?>student_attendance_list.php">List</a></li>
                         </ul>
                     </li>
+
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                        class="icon icon-form"></i><span class="nav-text">Teacher Attendance</span></a>
+                        <ul aria-expanded="false">
+                            <li><a href="<?= $baseurl ?>teacher_attendance_add.php">Add</a></li>
+                            <li><a href="<?= $baseurl ?>teacher_attendance_list.php">List</a></li>
+                        </ul>
+                    </li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                                 class="icon icon-form"></i><span class="nav-text">Forms</span></a>
                         <ul aria-expanded="false">
