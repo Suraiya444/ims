@@ -46,10 +46,10 @@
                                     <tbody>
                                         
                                         <?php 
-                                            $result=$mysqli->common_select_query("select student_attendance.id, student_details.student_id, class.class, section.section, student_attendance.att_date, student_attendance.in_time,student_attendance.out_time,student_attendance.note from student_attendance
-                                                                                    join student_details on student_attendance.student_id= student_details.id
+                                            $result=$mysqli->common_select_query("select student_attendance.id, student_details.roll, class.class, section.section, student_attendance.att_date, student_attendance.in_time,student_attendance.out_time,student_attendance.note from student_attendance
+                                                                                     join student_details on student_attendance.student_id=student_details.student_id
                                                                                     join class on student_attendance.class_id=class.id
-                                                                                    join section on student_attendance.section_id= section.id where student_attendance.deleted_at is null");
+                                                                                    join section on student_attendance.section_id=section.id where student_attendance.deleted_at is null");
                                             if($result){
                                                 if($result['data']){
                                                     $i=1;
@@ -57,7 +57,7 @@
                                         ?>
                                         <tr>
                                             <td><?= $i++ ?></td>
-                                            <td><?= $data-> student_id ?></td>
+                                            <td><?= $data-> roll ?></td>
                                             <td><?= $data-> class ?></td>
                                             <td><?= $data-> section ?></td>
                                             <td><?= $data-> att_date ?></td>

@@ -35,17 +35,24 @@
                                     <tr>
                                         <th scope="col">ID</th>
                                         <th scope="col">Name</th>
-                                        <th scope="col">Father</th>
-                                        <th scope="col">Mother</th>
-                                        <th scope="col">Email</th>
                                         <th scope="col">Contact</th>
+                                        <th scope="col">Class</th>
+                                        <th scope="col">Section</th>
+                                        <th scope="col">Group</th>
+                                        <th scope="col">Session</th>
                                         <th scope="col">Photo</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 <?php 
-                                    $result=$mysqli->common_select('student');
+                                    $result=$mysqli->common_select_query('select student.id, student.name, student.contact, class.class,
+                                                                            section.section,`group`.`group`, session.session, student.photo from student
+                                                                            join student_details on student.id=student_details.student_id
+                                                                            join class on student_details.class_id=class.id
+                                                                            join section on student_details.section_id=section.id
+                                                                            join `group` on student_details.group_id=`group`.id 
+                                                                            join session on student_details.session_id=session.id ');
                                     if($result){
                                         if($result['data']){
                                             $i=1;
@@ -54,10 +61,11 @@
                                 <tr>
                                     <td><?= $i++ ?></td>
                                     <td><?= $data-> name ?></td>
-                                    <td><?= $data-> father_name ?></td>
-                                    <td><?= $data-> mother_name ?></td>
-                                    <td><?= $data-> email ?></td>
                                     <td><?= $data-> contact ?></td>
+                                    <td><?= $data-> class ?></td>
+                                    <td><?= $data-> section ?></td>
+                                    <td><?= $data-> group ?></td>
+                                    <td><?= $data-> session ?></td>
                                     <td><img src="<?= $baseurl ?>assets/students/<?= $data-> photo ?>" width="80px" alt=""></td>
                                     <td>
                                         <span>
