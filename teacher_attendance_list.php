@@ -1,7 +1,6 @@
 <?php include('include/header.php') ?>
 <?php include('include/sidebar.php')?>
 
-
 <!--**********************************
     Content body start
 ***********************************-->
@@ -16,8 +15,8 @@
                 </div>
                 <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="teacher_add.php">Teacher</a></li>
-                        <li class="breadcrumb-item active"><a href="teacher_list.php">teacher-List</a></li>
+                        <li class="breadcrumb-item"><a href="teacher_attendance_add.php">Attendance</a></li>
+                        <li class="breadcrumb-item active"><a href="teacher_attendance_list.php">Attendance List</a></li>
                     </ol>
                 </div>
             </div>
@@ -26,7 +25,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Teacher</h4>
+                            <h4 class="card-title">Attendance</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -34,25 +33,19 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">ID</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Father's name</th>
-                                            <th scope="col">Mother's Name</th>
-                                            <th scope="col">Email</th>
-                                            <th scope="col">Contact</th>
-                                            <th scope="col">Photo</th>
-                                            <th scope="col">Assign Class</th>
-                                            <th scope="col">Qualification</th>
-                                            <th scope="col">Joining</th>
-                                            <th scope="col">Resign</th>
-                                            <th scope="col">Designation Id</th>
-                                            <th scope="col">Department Id</th>
-                                            <th scope="col">Edit</th>
+                                            <th scope="col">Teacher ID</th>
+                                            <th scope="col">Teacher Name</th>
+                                            <th scope="col">Attendance Date</th>
+                                            <th scope="col">In Time</th>
+                                            <th scope="col">Out Time</th>
+                                            <th scope="col">Note</th>
+                                            <th scope="col">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         
                                         <?php 
-                                            $result=$mysqli->common_select('teacher');
+                                            $result=$mysqli->common_select('teacher_attendance');
                                             if($result){
                                                 if($result['data']){
                                                     $i=1;
@@ -60,31 +53,24 @@
                                         ?>
                                         <tr>
                                             <td><?= $i++ ?></td>
+                                            <td><?= $data-> teacher_id ?></td>
                                             <td><?= $data-> name ?></td>
-                                            <td><?= $data-> father_name ?></td>
-                                            <td><?= $data-> mother_name ?></td>
-                                            <td><?= $data->  email ?></td>
-                                            <td><?= $data-> contact ?></td>
-                                            <td><?= $data-> photo ?></td>
-                                            <td><?= $data->  assigned_class ?></td>
-                                            <td><?= $data-> qualification ?></td>
-                                            <td><?= $data-> joining ?></td>
-                                            <td><?= $data-> resign ?></td>
-                                            <td><?= $data-> designation_id ?></td>
-                                            <td><?= $data->  department_id?></td>
+                                            <td><?= $data-> att_date ?></td>
+                                            <td><?= $data-> in_time ?></td>
+                                            <td><?= $data-> out_time ?></td>
+                                            <td><?= $data-> note ?></td>
                                             <td>
                                                 <span>
-                                                    <a href="<?= $baseurl ?>teacher_edit.php?id=<?= $data ->id ?>" class="mr-4" data-toggle="tooltip"
+                                                    <a href="<?= $baseurl ?>teacher_attendance_edit.php?id=<?= $data ->id ?>" class="mr-4" data-toggle="tooltip"
                                                         data-placement="top" title="Edit"><i
                                                             class="fa fa-pencil color-muted"></i> </a>
-                                                    <a href="<?= $baseurl ?>teacher_delete.php?id=<?= $data ->id ?>" data-toggle="tooltip"
+                                                    <a href="<?= $baseurl ?>teacher_attendance_delete.php?id=<?= $data ->id ?>" data-toggle="tooltip"
                                                         data-placement="top" title="Close"><i
                                                             class="fa fa-close color-danger"></i></a>
                                                 </span>
                                             </td>
                                         </tr>
-                                        <?php } } }?>
-
+                                        <?php } } } ?>
                                     </tbody> 
                                 </table>
                             </div>
@@ -106,7 +92,5 @@
     <script src="<?= $baseurl ?>assets/js/quixnav-init.js"></script>
     <script src="<?= $baseurl ?>assets/js/custom.min.js"></script>
     
-    
 </body>
 <?php include('include/footer.php') ?> 
-
