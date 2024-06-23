@@ -46,7 +46,9 @@
                                 </thead>
                                 <tbody>
                                 <?php 
-                                    $result=$mysqli->common_select_query('select student.id, student.name, student.contact, class.class, section.section,`group`.`group`, session.session, student.photo from student
+                                    $result=$mysqli->common_select_query('select student.id, student.name, student.contact, class.class,
+                                                                            section.section,`group`.`group`, session.session, student.photo from student
+                                                                            join student_details on student.id=student_details.student_id
                                                                             join class on student_details.class_id=class.id
                                                                             join section on student_details.section_id=section.id
                                                                             join `group` on student_details.group_id=`group`.id 
@@ -64,7 +66,6 @@
                                     <td><?= $data-> section ?></td>
                                     <td><?= $data-> group ?></td>
                                     <td><?= $data-> session ?></td>
-                                    <td><?= $data-> photo ?></td>
                                     <td><img src="<?= $baseurl ?>assets/students/<?= $data-> photo ?>" width="80px" alt=""></td>
                                     <td>
                                         <span>
