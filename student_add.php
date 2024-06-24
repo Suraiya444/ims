@@ -177,9 +177,10 @@
                     $stud['created_at']=date('Y-m-d H:i:s');
                     $stud['created_by']=1;
                     $st=$mysqli->common_create('student_details',$stud);
+                    
                     if($st){
                         if($st['data']){
-                            echo "<script>window.location='{$baseurl}student_list.php</script>";
+                            echo "<script>window.location='{$baseurl}student_list.php'</script>";
                         }else{
                             echo $st['error'];
                         }

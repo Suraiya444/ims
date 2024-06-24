@@ -9,8 +9,8 @@
             <div class="row page-titles mx-0">
                 <div class="col-sm-6 p-md-0">
                     <div class="welcome-text">
-                        <h4>Hi, welcome back!</h4>
-                        <p class="mb-0">Your school dashboard</p>
+                        <h4>Attendance</h4>
+                        <p class="mb-0">List</p>
                     </div>
                 </div>
                 <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
@@ -49,8 +49,8 @@
                                             $result=$mysqli->common_select_query("select student_attendance.id, student_details.roll, class.class, section.section, student_attendance.att_date, student_attendance.in_time,
                                                                                     student_attendance.out_time,student_attendance.note from student_attendance
                                                                                     join student_details on student_attendance.student_id=student_details.student_id
-                                                                                    join class on student_attendance.class_id=class.id
-                                                                                    join section on student_attendance.section_id=section.id where student_attendance.deleted_at is null");
+                                                                                    join class on student_details.class_id=class.id
+                                                                                    join section on student_details.section_id=section.id where student_attendance.deleted_at is null");
                                             if($result){
                                                 if($result['data']){
                                                     $i=1;
