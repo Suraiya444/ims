@@ -116,6 +116,21 @@
                                         <?php } } } ?>
                                     </select>
                                     </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label" for="session_id">Session</label>
+                                        <select class="form-control form-select" required name="session_id" id="session_id">
+                                        <option value="">Select Group</option>
+                                        <?php 
+                                            $result=$mysqli->common_select('session');
+                                            if($result){
+                                                if($result['data']){
+                                                    $i=1;
+                                                    foreach($result['data'] as $d){
+                                        ?>
+                                            <option value="<?= $d->id ?>" > <?= $d->session ?></option>
+                                        <?php } } } ?>
+                                    </select>
+                                    </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
@@ -134,10 +149,10 @@
                             $stu['photo']=$imagename;
                         }
                     }else{
-                        return "Only image can be uploaded.";
+                        echo "Only image can be uploaded.";
                     }
                 }else{
-                    return "File size cannot be more than 100KB";
+                    echo "File size cannot be more than 100KB";
                 }
             }
 
@@ -158,14 +173,15 @@
                     $stud['section_id']=$_POST['section_id'];
                     $stud['roll']=$_POST['roll'];
                     $stud['group_id']=$_POST['group_id'];
+                    $stud['session_id']=$_POST['session_id'];
                     $stud['created_at']=date('Y-m-d H:i:s');
                     $stud['created_by']=1;
-                    $rs=$mysqli->common_create('student_details',$stud);
-                    if($rs){
-                        if($rs['data']){
+                    $st=$mysqli->common_create('student_details',$stud);
+                    if($st){
+                        if($st['data']){
                             echo "<script>window.location='{$baseurl}student_list.php</script>";
                         }else{
-                            echo $rs['error'];
+                            echo $st['error'];
                         }
                     }
                 }else{
