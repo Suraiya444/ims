@@ -52,7 +52,7 @@
                                                                             join class on student_details.class_id=class.id
                                                                             join section on student_details.section_id=section.id
                                                                             join `group` on student_details.group_id=`group`.id 
-                                                                            join session on student_details.session_id=session.id ');
+                                                                            join session on student_details.session_id=session.id  where student.deleted_at is null');
                                     if($result){
                                         if($result['data']){
                                             $i=1;
