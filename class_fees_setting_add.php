@@ -119,14 +119,4 @@
             Content body end
         ***********************************-->
 
-    <!--**********************************
-        Scripts
-    ***********************************-->
-    <!-- Required vendors -->
-   
-    <script src="<?= $baseurl ?>assets/vendor/global/global.min.js"></script>
-    <script src="<?= $baseurl ?>assets/js/quixnav-init.js"></script>
-    <script src="<?= $baseurl ?>assets/js/custom.min.js"></script>
-    
-</body>
 <?php include('include/footer.php') ?> 
