@@ -15,8 +15,8 @@
                 </div>
                 <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="session_add.php">Session</a></li>
-                        <li class="breadcrumb-item active"><a href="session_list.php">Session Table</a></li>
+                        <li class="breadcrumb-item"><a href=" ">Class Period</a></li>
+                        <li class="breadcrumb-item active"><a href=" ">Class Period</a></li>
                     </ol>
                 </div>
             </div>
@@ -25,7 +25,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">Session</h4>
+                            <h4 class="card-title">Class Period</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -33,14 +33,14 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">ID</th>
-                                            <th scope="col">Session</th>
+                                            <th scope="col">Period</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         
                                         <?php 
-                                            $result=$mysqli->common_select('session');
+                                            $result=$mysqli->common_select('period');
                                             if($result){
                                                 if($result['data']){
                                                     $i=1;
@@ -48,13 +48,13 @@
                                         ?>
                                         <tr>
                                             <td><?= $i++ ?></td>
-                                            <td><?= $data->session ?></td>
+                                            <td><?= $data->period ?></td>
                                             <td>
                                                 <span>
-                                                    <a href="<?= $baseurl ?>session_edit.php?id=<?= $data ->id ?>" class="mr-4" data-toggle="tooltip"
+                                                    <a href="<?= $baseurl ?> class_routine_edit.php?id=<?= $data ->id ?>" class="mr-4" data-toggle="tooltip"
                                                         data-placement="top" title="Edit"><i
                                                             class="fa fa-pencil color-muted"></i> </a>
-                                                    <a href="<?= $baseurl ?>session_delete.php?id=<?= $data ->id ?>" data-toggle="tooltip"
+                                                    <a href="<?= $baseurl ?> class_routine_delete.php?id=<?= $data ->period ?>" data-toggle="tooltip"
                                                         data-placement="top" title="Close"><i
                                                             class="fa fa-close color-danger"></i></a>
                                                 </span>

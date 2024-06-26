@@ -46,7 +46,7 @@
                     <label class="col-lg-4 col-form-label" for="student_id">subject</label>
                     <div class="col-lg-6">
                         <select class="form-control" id="subject_id" name="subject_id">
-                            <option value="">Select Student ID</option>
+                            <option value="">Select Subject</option>
                             <?php 
                                 $result=$mysqli->common_select('subject');
                                 if($result){
@@ -116,7 +116,7 @@
                 </div>
                 <div class="form-group row">
                     <label class="col-lg-4 col-form-label" for="day_time">Day Time</label>
-                    <input type="date" name="day_time" id="day_time" >
+                    <input type="text" name="class_routine" id="class_routine" >
                 </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -128,7 +128,7 @@
                     $rs=$mysqli->common_create('class_routine',$_POST);
                     if($rs){
                         if($rs['data']){
-                            echo "<script>window.location='{$baseurl} '</script>";
+                            echo "<script>window.location='{$baseurl}class_routine_list.php'</script>";
                         }else{
                             echo $rs['error'];
                         }

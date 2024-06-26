@@ -83,6 +83,23 @@
                             <li><a href="<?= $baseurl ?>designation_list.php">Designation List</a></li>
                         </ul>
                     </li>
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                                class="icon icon-single-04"></i><span class="nav-text"> Class Routine</span></a>
+                        <ul aria-expanded="false">
+                            <li><a href="<?= $baseurl ?>class_routin_add.php">Routine Add</a></li>
+                            <li><a href="<?= $baseurl ?>class_routine_list.php "> Routine List</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                                class="icon icon-single-04"></i><span class="nav-text">Routine Components</span></a>
+                        <ul aria-expanded="false">
+                            <li><a href="<?= $baseurl ?>period_add.php">Class Period</a></li>
+                            <li><a href="<?= $baseurl ?>period_list.php"> Period List</a></li>
+                            <li><a href="<?= $baseurl ?>day_name_add.php">Day Name</a></li>
+                            <li><a href="<?= $baseurl ?>day_name_list.php">Day List</a></li>
+                        </ul>
+                    </li>
                     <li class="nav-label">Attendance</li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                         class="icon icon-form"></i><span class="nav-text">Student Attendance</span></a>
