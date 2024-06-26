@@ -28,7 +28,7 @@
                     </div>
                     <div class="card-body">
                         <div class="basic-form">
-                            <form method="post">
+                            <form method="post" enctype="multipart/form-data">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label>Name</label>
@@ -116,11 +116,46 @@
                                         <?php } } } ?>
                                     </select>
                                     </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label" for="session_id">Session</label>
+                                        <select class="form-control form-select" required name="session_id" id="session_id">
+                                        <option value="">Select Group</option>
+                                        <?php 
+                                            $result=$mysqli->common_select('session');
+                                            if($result){
+                                                if($result['data']){
+                                                    $i=1;
+                                                    foreach($result['data'] as $d){
+                                        ?>
+                                            <option value="<?= $d->id ?>" > <?= $d->session ?></option>
+                                        <?php } } } ?>
+                                    </select>
+                                    </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
     <?php 
         if($_POST){
+
+            if($_FILES){
+            
+                $img=$_FILES["photo"];
+    
+                if($img['size'] < (100*1024)){
+                    if($img['type'] =="image/jpeg"){
+                        $imagename=time().rand(1111,9999).".jpg";
+                        $rs=move_uploaded_file($img['tmp_name'],'assets/students/'.$imagename);
+                        if($rs){
+                            $stu['photo']=$imagename;
+                        }
+                    }else{
+                        echo "Only image can be uploaded.";
+                    }
+                }else{
+                    echo "File size cannot be more than 100KB";
+                }
+            }
+
             $stu['name']=$_POST['name'];
             $stu['father_name']=$_POST['father_name'];
             $stu['mother_name']=$_POST['mother_name'];
@@ -138,14 +173,16 @@
                     $stud['section_id']=$_POST['section_id'];
                     $stud['roll']=$_POST['roll'];
                     $stud['group_id']=$_POST['group_id'];
+                    $stud['session_id']=$_POST['session_id'];
                     $stud['created_at']=date('Y-m-d H:i:s');
                     $stud['created_by']=1;
-                    $rs=$mysqli->common_create('student_details',$stud);
-                    if($rs){
-                        if($rs['data']){
+                    $st=$mysqli->common_create('student_details',$stud);
+                    
+                    if($st){
+                        if($st['data']){
                             echo "<script>window.location='{$baseurl}student_list.php'</script>";
                         }else{
-                            echo $rs['error'];
+                            echo $st['error'];
                         }
                     }
                 }else{

@@ -27,7 +27,7 @@
             <form method="post" action="">
                 <div class="mb-3">
                     <label class="form-label" for="department">Department</label>
-                    <input type="text" name="department" class="form-control" id="department" placeholder="department Name.." />
+                    <input type="text" name="department" class="form-control" id="department" placeholder="department Id.." />
                 </div>
                 
                 <button type="submit" class="btn btn-primary">Submit</button>

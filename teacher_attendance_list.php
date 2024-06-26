@@ -34,7 +34,6 @@
                                         <tr>
                                             <th scope="col">ID</th>
                                             <th scope="col">Teacher ID</th>
-                                            <th scope="col">Teacher Name</th>
                                             <th scope="col">Attendance Date</th>
                                             <th scope="col">In Time</th>
                                             <th scope="col">Out Time</th>
@@ -53,8 +52,7 @@
                                         ?>
                                         <tr>
                                             <td><?= $i++ ?></td>
-                                            <td><?= $data-> teacher_id ?></td>
-                                            <td><?= $data-> name ?></td>
+                                            <td><?= $data->  teacher_id  ?></td>
                                             <td><?= $data-> att_date ?></td>
                                             <td><?= $data-> in_time ?></td>
                                             <td><?= $data-> out_time ?></td>

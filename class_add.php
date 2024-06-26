@@ -3,9 +3,9 @@
 
 
 <body>
-        <!--**********************************
+        <!--************************************
             Content body start
-        ***********************************-->
+        *************************************-->
         <div class="content-body">
             <div class="container-fluid">
                 <div class="row page-titles mx-0">

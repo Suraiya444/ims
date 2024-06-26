@@ -34,7 +34,7 @@
                                     $i=1;
                                     foreach($result['data'] as $d){
                         ?>
-                            <option <?= isset($_GET['teacher_id']) && $_GET['teacher_id']==$d->id?"selected":"" ?> value="<?= $d->id ?>" > <?= $d->name ?></option>
+                            <option <?= isset($_GET['teacher_id']) && $_GET['teacher_id']==$d->id?"selected":"" ?>><?= $d->name ?></option>
                         <?php } } } ?>
                     </select>
                 </div>
@@ -43,13 +43,13 @@
                     <select class="form-control form-select" required name="department_id" id="department_id">
                         <option value="">Select Id</option>
                         <?php 
-                            $result=$mysqli->common_select('teacher');
+                            $result=$mysqli->common_select('department');
                             if($result){
                                 if($result['data']){
                                     $i=1;
                                     foreach($result['data'] as $d){
                         ?>
-                            <option value="<?= $d->id ?>" <?= isset($_GET['department_id']) && $_GET['department_id']==$d->id?"selected":"" ?>> <?= $d->department_id ?></option>
+                            <option value="<?= $d->id ?>" <?= isset($_GET['department_id']) && $_GET['department_id']==$d->id?"selected":"" ?>> <?= $d->department ?></option>
                         <?php } } } ?>
                     </select>
                 </div>
@@ -74,7 +74,7 @@
                     <?php 
                         if(isset($_GET['class_id']) && isset($_GET['section_id'])){
                             $result=$mysqli->common_select_query("select teacher.name, teacher_attendance.* from teacher_attendance
-                                                                join teacher on  teacher_attendance.teacher_id=teacher.name");
+                                                                join teacher on  teacher-attendance.teacher_id=teacher.name");
                                                                  
                                                                
                         if($result){
