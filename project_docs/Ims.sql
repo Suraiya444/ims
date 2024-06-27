@@ -1,8 +1,8 @@
--- MariaDB dump 10.19  Distrib 10.4.22-MariaDB, for Win64 (AMD64)
+-- MariaDB dump 10.19  Distrib 10.4.32-MariaDB, for Win64 (AMD64)
 --
 -- Host: localhost    Database: ims
 -- ------------------------------------------------------
--- Server version	10.4.22-MariaDB
+-- Server version	10.4.32-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -37,7 +37,7 @@ CREATE TABLE `auth` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,7 +46,7 @@ CREATE TABLE `auth` (
 
 LOCK TABLES `auth` WRITE;
 /*!40000 ALTER TABLE `auth` DISABLE KEYS */;
-INSERT INTO `auth` VALUES (1,NULL,'kamal@gmail.com',NULL,NULL,'kamal','40bd001563085fc35165329ea1ff5c5ecbdbbeef',NULL,'2024-06-14 20:06:58',NULL,NULL,NULL,NULL);
+INSERT INTO `auth` VALUES (1,NULL,'kamal@gmail.com',NULL,NULL,'kamal','40bd001563085fc35165329ea1ff5c5ecbdbbeef',NULL,'2024-06-14 20:06:58',NULL,NULL,NULL,NULL),(2,NULL,'',NULL,NULL,'suraiya','cba3802d0d10dd128a8e065c2a48a78d94ed40ab',NULL,'2024-06-27 05:19:12',NULL,NULL,NULL,NULL),(3,NULL,'',NULL,NULL,'suraiya','40bd001563085fc35165329ea1ff5c5ecbdbbeef',NULL,'2024-06-27 05:19:31',NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `auth` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -66,7 +66,7 @@ CREATE TABLE `class` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -99,7 +99,7 @@ CREATE TABLE `class_fees_setting` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -120,7 +120,7 @@ DROP TABLE IF EXISTS `class_routine`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `class_routine` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `subject_id` varchar(255) DEFAULT NULL,
+  `subject_name` int(11) DEFAULT NULL,
   `teacher_id` int(11) DEFAULT NULL,
   `day_name` int(11) DEFAULT NULL,
   `period` int(11) DEFAULT NULL,
@@ -134,7 +134,7 @@ CREATE TABLE `class_routine` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -169,7 +169,7 @@ CREATE TABLE `class_subject` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -198,7 +198,7 @@ CREATE TABLE `day_name` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -207,6 +207,7 @@ CREATE TABLE `day_name` (
 
 LOCK TABLES `day_name` WRITE;
 /*!40000 ALTER TABLE `day_name` DISABLE KEYS */;
+INSERT INTO `day_name` VALUES (1,'saturday','2024-06-27 07:11:52',1,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `day_name` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -226,7 +227,7 @@ CREATE TABLE `department` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -255,7 +256,7 @@ CREATE TABLE `designation` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -285,7 +286,7 @@ CREATE TABLE `fees_category` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -313,7 +314,7 @@ CREATE TABLE `group` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -335,14 +336,14 @@ DROP TABLE IF EXISTS `period`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `period` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `period` decimal(2,2) DEFAULT NULL,
+  `period` time DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -351,7 +352,7 @@ CREATE TABLE `period` (
 
 LOCK TABLES `period` WRITE;
 /*!40000 ALTER TABLE `period` DISABLE KEYS */;
-INSERT INTO `period` VALUES (1,0.99,'2024-06-26 19:35:18',1,NULL,NULL,NULL),(2,0.99,'2024-06-26 19:38:37',1,NULL,NULL,NULL),(3,0.99,'2024-06-26 21:18:04',1,NULL,NULL,NULL);
+INSERT INTO `period` VALUES (1,NULL,'2024-06-26 19:35:18',1,NULL,1,'2024-06-27 07:47:44'),(2,NULL,'2024-06-26 19:38:37',1,NULL,1,'2024-06-27 07:47:43'),(3,NULL,'2024-06-26 21:18:04',1,NULL,1,'2024-06-27 07:47:42'),(4,NULL,'2024-06-27 07:23:54',1,NULL,1,'2024-06-27 07:47:41'),(5,'08:39:50','2024-06-27 07:38:57',1,NULL,1,'2024-06-27 07:47:40');
 /*!40000 ALTER TABLE `period` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -371,7 +372,7 @@ CREATE TABLE `section` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -400,7 +401,7 @@ CREATE TABLE `session` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -436,7 +437,7 @@ CREATE TABLE `student` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3903 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3904 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -445,7 +446,7 @@ CREATE TABLE `student` (
 
 LOCK TABLES `student` WRITE;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
-INSERT INTO `student` VALUES (0,'','','','','','','','454613','2024-06-16 17:33:02',1,'2024-06-16 17:40:23',1,'2024-06-16 17:40:40'),(101,'Kamal','Jamal','Minu','kamal@gmail.com','1281542','World.jpg','kamal','1234','2024-06-16 16:20:32',1,NULL,1,'2024-06-16 17:25:05'),(451,'Priya','Jamal','Minu','rukiyapriya@gmail.com','1531554','image5.jpg','priya','48484','2024-06-16 17:41:30',1,NULL,1,'2024-06-20 10:17:33'),(454,'Umma Rukiya','Jamal','Minu','priyontika111@gmail.com','523563','carosel4.jpg','Rukiya','156565+','2024-06-16 17:36:39',1,NULL,1,'2024-06-17 18:49:13'),(3895,'','Pamal','','priyontika@gmail.com','','image4.jpg','','','2024-06-16 20:44:33',1,NULL,1,'2024-06-18 18:17:43'),(3896,'','','','','','','','','2024-06-17 18:32:19',1,'2024-06-17 18:35:20',1,'2024-06-17 18:49:10'),(3897,'Umma Rukiya','Pamal','Lilo','priyontika1@gmail.com','5698486155','','Rukiya','6578623123','2024-06-17 18:38:04',1,NULL,1,'2024-06-19 21:41:37'),(3898,'Computer','Jamal','','priyonti1@gmail.com','','','ka','','2024-06-17 18:49:03',1,NULL,1,'2024-06-17 18:49:07'),(3899,'Kamal','Pamal','Lilo','kamal@gmail.com','1281542','','kamal ','15464654','2024-06-20 10:42:49',1,NULL,1,'2024-06-20 10:42:56'),(3900,'Kamal','Jamal','Minu','priyontika@gmail.com','15455999','','priya','54646','2024-06-20 11:57:19',1,NULL,NULL,NULL),(3901,'suraiya','','','','',NULL,'','','2024-06-26 17:17:13',1,NULL,NULL,NULL),(3902,'suraiya','','','','',NULL,'','','2024-06-26 17:27:34',1,NULL,NULL,NULL);
+INSERT INTO `student` VALUES (0,'','','','','','','','454613','2024-06-16 17:33:02',1,'2024-06-16 17:40:23',1,'2024-06-16 17:40:40'),(101,'Kamal','Jamal','Minu','kamal@gmail.com','1281542','World.jpg','kamal','1234','2024-06-16 16:20:32',1,NULL,1,'2024-06-16 17:25:05'),(451,'Priya','Jamal','Minu','rukiyapriya@gmail.com','1531554','image5.jpg','priya','48484','2024-06-16 17:41:30',1,NULL,1,'2024-06-20 10:17:33'),(454,'Umma Rukiya','Jamal','Minu','priyontika111@gmail.com','523563','carosel4.jpg','Rukiya','156565+','2024-06-16 17:36:39',1,NULL,1,'2024-06-17 18:49:13'),(3895,'','Pamal','','priyontika@gmail.com','','image4.jpg','','','2024-06-16 20:44:33',1,NULL,1,'2024-06-18 18:17:43'),(3896,'','','','','','','','','2024-06-17 18:32:19',1,'2024-06-17 18:35:20',1,'2024-06-17 18:49:10'),(3897,'Umma Rukiya','Pamal','Lilo','priyontika1@gmail.com','5698486155','','Rukiya','6578623123','2024-06-17 18:38:04',1,NULL,1,'2024-06-19 21:41:37'),(3898,'Computer','Jamal','','priyonti1@gmail.com','','','ka','','2024-06-17 18:49:03',1,NULL,1,'2024-06-17 18:49:07'),(3899,'Kamal','Pamal','Lilo','kamal@gmail.com','1281542','','kamal ','15464654','2024-06-20 10:42:49',1,NULL,1,'2024-06-20 10:42:56'),(3900,'Kamal','Jamal','Minu','priyontika@gmail.com','15455999','','priya','54646','2024-06-20 11:57:19',1,NULL,NULL,NULL),(3901,'suraiya','','','','',NULL,'','','2024-06-26 17:17:13',1,NULL,NULL,NULL),(3902,'suraiya','','','','',NULL,'','','2024-06-26 17:27:34',1,NULL,NULL,NULL),(3903,'maksuda',' mack','jun','kamal@gmail.com','45654646','17194584161566.jpg','kamal','1223','2024-06-27 05:20:16',1,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -469,7 +470,7 @@ CREATE TABLE `student_attendance` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -503,7 +504,7 @@ CREATE TABLE `student_details` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -512,7 +513,7 @@ CREATE TABLE `student_details` (
 
 LOCK TABLES `student_details` WRITE;
 /*!40000 ALTER TABLE `student_details` DISABLE KEYS */;
-INSERT INTO `student_details` VALUES (1,'4889',1,2,NULL,458,2,'2024-06-17 20:22:21',1,NULL,1,'2024-06-19 08:02:28'),(2,'4888',1,2,NULL,4444,1,'2024-06-17 20:32:16',1,NULL,1,'2024-06-19 11:29:36'),(3,'4877',1,2,NULL,455,2,'2024-06-17 20:50:33',1,'2024-06-19 07:54:25',1,'2024-06-19 08:02:40'),(4,'123',2,2,NULL,458,1,'2024-06-18 07:55:44',0,NULL,1,'2024-06-19 08:02:34'),(5,'4444',3,2,NULL,4444,2,'2024-06-18 08:04:39',0,'2024-06-18 10:20:38',1,'2024-06-20 09:54:21'),(6,'123',3,2,NULL,4,2,'2024-06-18 18:39:09',0,NULL,1,'2024-06-20 10:15:40'),(7,'6',1,2,NULL,12,2,'2024-06-19 08:07:47',0,NULL,1,'2024-06-20 10:15:37'),(8,'7',2,2,NULL,5,2,'2024-06-19 08:54:16',0,NULL,1,'2024-06-20 10:15:31'),(9,'3900',2,2,NULL,458,2,'2024-06-20 11:57:44',0,NULL,1,'2024-06-20 13:02:27'),(10,'123',1,2,NULL,123,1,'2024-06-20 13:05:42',0,NULL,1,'2024-06-20 13:07:38'),(11,'123',1,2,NULL,123,1,'2024-06-20 17:38:34',0,NULL,NULL,NULL),(12,'3902',1,2,1,1,1,'2024-06-26 17:27:34',1,NULL,NULL,NULL);
+INSERT INTO `student_details` VALUES (1,'4889',1,2,NULL,458,2,'2024-06-17 20:22:21',1,NULL,1,'2024-06-19 08:02:28'),(2,'4888',1,2,NULL,4444,1,'2024-06-17 20:32:16',1,NULL,1,'2024-06-19 11:29:36'),(3,'4877',1,2,NULL,455,2,'2024-06-17 20:50:33',1,'2024-06-19 07:54:25',1,'2024-06-19 08:02:40'),(4,'123',2,2,NULL,458,1,'2024-06-18 07:55:44',0,NULL,1,'2024-06-19 08:02:34'),(5,'4444',3,2,NULL,4444,2,'2024-06-18 08:04:39',0,'2024-06-18 10:20:38',1,'2024-06-20 09:54:21'),(6,'123',3,2,NULL,4,2,'2024-06-18 18:39:09',0,NULL,1,'2024-06-20 10:15:40'),(7,'6',1,2,NULL,12,2,'2024-06-19 08:07:47',0,NULL,1,'2024-06-20 10:15:37'),(8,'7',2,2,NULL,5,2,'2024-06-19 08:54:16',0,NULL,1,'2024-06-20 10:15:31'),(9,'3900',2,2,NULL,458,2,'2024-06-20 11:57:44',0,NULL,1,'2024-06-20 13:02:27'),(10,'123',1,2,NULL,123,1,'2024-06-20 13:05:42',0,NULL,1,'2024-06-20 13:07:38'),(11,'123',1,2,NULL,123,1,'2024-06-20 17:38:34',0,NULL,NULL,NULL),(12,'3902',1,2,1,1,1,'2024-06-26 17:27:34',1,NULL,NULL,NULL),(13,'3903',1,2,1,12,1,'2024-06-27 05:20:16',1,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `student_details` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -539,7 +540,7 @@ CREATE TABLE `student_fees` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -570,7 +571,7 @@ CREATE TABLE `student_fees_details` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -610,7 +611,7 @@ CREATE TABLE `student_marks` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -640,7 +641,7 @@ CREATE TABLE `subject` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -680,7 +681,7 @@ CREATE TABLE `teacher` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -713,7 +714,7 @@ CREATE TABLE `teacher_attendance` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -734,4 +735,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-27  1:28:54
+-- Dump completed on 2024-06-27  1:35:50
