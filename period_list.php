@@ -54,7 +54,7 @@
                                                     <a href="<?= $baseurl ?>period_edit.php?id=<?= $data ->id ?>" class="mr-4" data-toggle="tooltip"
                                                         data-placement="top" title="Edit"><i
                                                             class="fa fa-pencil color-muted"></i> </a>
-                                                    <a href="<?= $baseurl ?>period_delete.php?id=<?= $data ->period ?>" data-toggle="tooltip"
+                                                    <a href="<?= $baseurl ?>period_delete.php?id=<?= $data ->id ?>" data-toggle="tooltip"
                                                         data-placement="top" title="Close"><i
                                                             class="fa fa-close color-danger"></i></a>
                                                 </span>

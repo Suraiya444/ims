@@ -40,7 +40,7 @@
                                     <tbody>
                                         
                                         <?php 
-                                            $result=$mysqli->common_select('day_name');
+                                            $result=$mysqli->common_select('Day_name');
                                             if($result){
                                                 if($result['data']){
                                                     $i=1;
@@ -48,7 +48,7 @@
                                         ?>
                                         <tr>
                                             <td><?= $i++ ?></td>
-                                            <td><?= $data-> department ?></td>
+                                            <td><?= $data->name ?></td>
                                             <td>
                                                 <span>
                                                     <a href="<?= $baseurl ?>day_name_edit.php?id=<?= $data ->id ?>" class="mr-4" data-toggle="tooltip"

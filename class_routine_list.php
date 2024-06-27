@@ -32,8 +32,12 @@
                                 <table class="table table-bordered verticle-middle table-responsive-sm">
                                     <thead>
                                         <tr>
-                                            <th scope="col">ID</th>
-                                            <th scope="col">Period</th>
+                                            <th scope="col">Sub</th>
+                                            <th scope="col">1st Period</th>
+                                            <th scope="col">2nd Period</th>
+                                            <th scope="col">3rd Period</th>
+                                            <th scope="col">4th Period</th>
+                                            <th scope="col">5th Period</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
@@ -48,7 +52,13 @@
                                         ?>
                                         <tr>
                                             <td><?= $i++ ?></td>
-                                            <td><?= $data->period ?></td>
+                                            <td><?= $data->day_time ?></td>
+                                            <td><?= $data->subject ?></td>
+                                            <td><?= $data->subject ?></td>
+                                            <td><?= $data->subject ?></td>
+                                            <td><?= $data->subject ?></td>
+                                            <td><?= $data->subject ?></td>
+                                            <td><?= $data->subject ?></td>
                                             <td>
                                                 <span>
                                                     <a href="<?= $baseurl ?> class_routine_edit.php?id=<?= $data ->id ?>" class="mr-4" data-toggle="tooltip"

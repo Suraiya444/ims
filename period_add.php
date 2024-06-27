@@ -27,7 +27,7 @@
             <form method="post" action="">
                 <div class="mb-3">
                     <label class="form-label" for="department">Period</label>
-                    <input type="text" name="period" class="form-control" id="period" placeholder="period " />
+                    <input type="time" name="period" class="form-control" id="period" value="<?= date('H:i:s')?>"/>
                 </div>
                 
                 <button type="submit" class="btn btn-primary">Submit</button>

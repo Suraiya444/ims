@@ -26,8 +26,8 @@
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="">Day Name</a></li>
-                            <li class="breadcrumb-item active"><a href="">Day Name</a></li>
+                            <li class="breadcrumb-item"><a href="">Period</a></li>
+                            <li class="breadcrumb-item active"><a href="">Period</a></li>
                         </ol>
                     </div>
                 </div>
@@ -35,8 +35,8 @@
            
             <form method="post" action="">
                 <div class="mb-3">
-                    <label class="form-label" for="day_name">Period</label>
-                    <input type="text" name="day_name" class="form-control" id="day_name" placeholder="day_name.." value="<?= $olddata->department ?>" />
+                    <label class="form-label" for="period">Period</label>
+                    <input type="time" name="period" class="form-control" id="period" value="<?= date('H:i:s')?>"/>
                 </div>
                 
                 <button type="submit" class="btn btn-primary">Save</button>
@@ -45,10 +45,10 @@
                 if($_POST){
                     $_POST['updated_at']=date('Y-m-d H:i:s');
                     $_POST['updated_by']=1;
-                    $rs=$mysqli->common_update('day_name',$_POST,$con);
+                    $rs=$mysqli->common_update('period',$_POST,$con);
                     if($rs){
                         if($rs['data']){
-                            echo "<script>window.location='{$baseurl}day_name_list.php'</script>";
+                            echo "<script>window.location='{$baseurl}period_list.php'</script>";
                         }else{
                             echo $rs['error'];
                         }
