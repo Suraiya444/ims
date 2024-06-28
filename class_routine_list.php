@@ -31,7 +31,8 @@
                             <div class="table-responsive">
                                 <table class="table table-bordered verticle-middle table-responsive-sm">
                                     <thead>
-                                        <tr>
+                                        <tr> 
+                                            <th scope="col">Day</th>
                                             <th scope="col">Sub</th>
                                             <th scope="col">1st Period</th>
                                             <th scope="col">2nd Period</th>
@@ -44,7 +45,10 @@
                                     <tbody>
                                         
                                         <?php 
-                                            $result=$mysqli->common_select('period');
+                                            $result=$mysqli->common_select('select class-routine.*, period.*,Day_name.daya_name,subject.subject_name,class.class,teacher.teacher_id,
+                                            from class_routine 
+                                            join Day_name.id on class_routine on=Day_name.id
+                                            join subject.subject_name on class-routine= subject.subject_name');
                                             if($result){
                                                 if($result['data']){
                                                     $i=1;
@@ -53,18 +57,18 @@
                                         <tr>
                                             <td><?= $i++ ?></td>
                                             <td><?= $data->day_time ?></td>
-                                            <td><?= $data->subject ?></td>
-                                            <td><?= $data->subject ?></td>
-                                            <td><?= $data->subject ?></td>
-                                            <td><?= $data->subject ?></td>
-                                            <td><?= $data->subject ?></td>
-                                            <td><?= $data->subject ?></td>
+                                            <td><?= $data->first_sub ?></td>
+                                            <td><?= $data->second_sub ?></td>
+                                            <td><?= $data->third_sub?></td>
+                                            <td><?= $data->forth_sub ?></td>
+                                            <td><?= $data->fifth_sub ?></td>
+                                            <td><?= $data->sixth_sub ?></td>
                                             <td>
                                                 <span>
                                                     <a href="<?= $baseurl ?> class_routine_edit.php?id=<?= $data ->id ?>" class="mr-4" data-toggle="tooltip"
                                                         data-placement="top" title="Edit"><i
                                                             class="fa fa-pencil color-muted"></i> </a>
-                                                    <a href="<?= $baseurl ?> class_routine_delete.php?id=<?= $data ->period ?>" data-toggle="tooltip"
+                                                    <a href="<?= $baseurl ?> class_routine_delete.php?id=<?= $data ->subject_name ?>" data-toggle="tooltip"
                                                         data-placement="top" title="Close"><i
                                                             class="fa fa-close color-danger"></i></a>
                                                 </span>

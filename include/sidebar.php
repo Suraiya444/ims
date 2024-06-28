@@ -94,8 +94,6 @@
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                                 class="icon icon-single-04"></i><span class="nav-text">Routine Components</span></a>
                         <ul aria-expanded="false">
-                            <li><a href="<?= $baseurl ?>period_add.php">Class Period</a></li>
-                            <li><a href="<?= $baseurl ?>period_list.php"> Period List</a></li>
                             <li><a href="<?= $baseurl ?>day_name_add.php">Day Name</a></li>
                             <li><a href="<?= $baseurl ?>day_name_list.php">Day List</a></li>
                         </ul>
