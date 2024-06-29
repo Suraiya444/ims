@@ -131,7 +131,18 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="val-digits">Designation  <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="val-digits" name="designation_id" placeholder="Designation ..">
+                                    <select class="form-control form-select" required name="designation_id" id="class_id">
+                                        <option value="">Select Department</option>
+                                        <?php 
+                                            $result=$mysqli->common_select('designation');
+                                            if($result){
+                                                if($result['data']){
+                                                    $i=1;
+                                                    foreach($result['data'] as $d){
+                                        ?>
+                                            <option value="<?= $d->id ?>" > <?= $d->designation ?></option>
+                                        <?php } } } ?>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="val-currency">Photo <span class="text-danger">*</span></label>
