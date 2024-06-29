@@ -1,8 +1,6 @@
 <?php include('include/header.php'); ?>
 <?php include('include/sidebar.php'); ?>
 
-
-<body>
         <!--**********************************
             Content body start
         ***********************************-->
@@ -25,231 +23,135 @@
                 <!-- row -->
            
             <form method="post" action="">
-                 <div class="form-group row">
-                    <label class="col-lg-4 col-form-label" for="class_id">Class</label>
-                    <div class="col-lg-6">
-                        <select class="form-control" id="class" name="class">
+                 <div class="row">
+                    <div class="col-lg-3">
+                        <label for="class_id">Class</label>
+                        <select class="form-control" id="class_id" name="class_id">
                             <option value="">Select Class</option>
                             <?php 
                                 $result=$mysqli->common_select('class');
                                 if($result){
                                     if($result['data']){
-                                        $i=1;
                                         foreach($result['data'] as $d){
                             ?>
                             <option value="<?= $d->id ?>"><?= $d->class ?> </option>
                             <?php } } } ?>
                         </select>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-lg-4 col-form-label" for="teacher_id">Teacher</label>
-                    <div class="col-lg-6">
-                        <select class="form-control" id="name" name="name">
-                            <option value="">Select Teacher</option>
-                            <?php 
-                                $result=$mysqli->common_select('teacher');
-                                if($result){
-                                    if($result['data']){
-                                        $i=1;
-                                        foreach($result['data'] as $d){
-                            ?>
-                            <option value="<?= $d->id ?>"><?= $d->name ?></option>
-                            <?php } } } ?>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-lg-4 col-form-label" for="class_id">Section</label>
-                    <div class="col-lg-6">
-                        <select class="form-control" id="section" name="section">
-                            <option value="">Select Class</option>
+                    <div class="col-lg-3">
+                        <label for="class_id">Section</label>
+                        <select class="form-control" id="section_id" name="section_id">
+                            <option value="">Select Section</option>
                             <?php 
                                 $result=$mysqli->common_select('section');
                                 if($result){
                                     if($result['data']){
-                                        $i=1;
                                         foreach($result['data'] as $d){
                             ?>
                             <option value="<?= $d->id ?>"><?= $d->section ?> </option>
                             <?php } } } ?>
                         </select>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-lg-4 col-form-label" for="group_id">Session</label>
-                    <div class="col-lg-6">
-                        <select class="form-control" id="session" name="session">
-                            <option value="">Select Group </option>
+                    
+                    <div class="col-lg-3">
+                        <label for="group_id">Session</label>
+                        <select class="form-control" id="session_id" name="session_id">
+                            <option value="">Select Session </option>
                             <?php 
                                 $result=$mysqli->common_select('session');
                                 if($result){
                                     if($result['data']){
-                                        $i=1;
                                         foreach($result['data'] as $d){
                             ?>
                             <option value="<?= $d->id ?>"><?= $d->session ?></option>
                             <?php } } } ?>
                         </select>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-lg-4 col-form-label" for="subject_name">1st Period</label>
-                    <div class="col-lg-6">
-                        <select class="form-control" id="subject_name" name="subject_name">
-                            <option value="">Select Subject</option>
-                            <?php 
-                                $result=$mysqli->common_select('subject');
-                                if($result){
-                                    if($result['data']){
-                                        $i=1;
-                                        foreach($result['data'] as $d){
-                            ?>
-                            <option value="<?= $d->id ?>"><?= $d->subject_name ?></option>
-                            <?php } } } ?>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-lg-4 col-form-label" for="subject_name">2nd Period</label>
-                    <div class="col-lg-6">
-                        <select class="form-control" id="subject_name" name="subject_name">
-                            <option value="">Select Subject</option>
-                            <?php 
-                                $result=$mysqli->common_select('subject');
-                                if($result){
-                                    if($result['data']){
-                                        $i=1;
-                                        foreach($result['data'] as $d){
-                            ?>
-                            <option value="<?= $d->id ?>"><?= $d->subject_name ?></option>
-                            <?php } } } ?>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-lg-4 col-form-label" for="subject_name">3rd Period</label>
-                    <div class="col-lg-6">
-                        <select class="form-control" id="subject_name" name="subject_name">
-                            <option value="">Select Subject</option>
-                            <?php 
-                                $result=$mysqli->common_select('subject');
-                                if($result){
-                                    if($result['data']){
-                                        $i=1;
-                                        foreach($result['data'] as $d){
-                            ?>
-                            <option value="<?= $d->id ?>"><?= $d->subject_name ?></option>
-                            <?php } } } ?>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-lg-4 col-form-label" for="subject_name">4th Period</label>
-                    <div class="col-lg-6">
-                        <select class="form-control" id="subject_name" name="subject_name">
-                            <option value="">Select Subject</option>
-                            <?php 
-                                $result=$mysqli->common_select('subject');
-                                if($result){
-                                    if($result['data']){
-                                        $i=1;
-                                        foreach($result['data'] as $d){
-                            ?>
-                            <option value="<?= $d->id ?>"><?= $d->subject_name ?></option>
-                            <?php } } } ?>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-lg-4 col-form-label" for="subject_name">5th Period</label>
-                    <div class="col-lg-6">
-                        <select class="form-control" id="subject_name" name="subject_name">
-                            <option value="">Select Subject</option>
-                            <?php 
-                                $result=$mysqli->common_select('subject');
-                                if($result){
-                                    if($result['data']){
-                                        $i=1;
-                                        foreach($result['data'] as $d){
-                            ?>
-                            <option value="<?= $d->id ?>"><?= $d->subject_name ?></option>
-                            <?php } } } ?>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-lg-4 col-form-label" for="subject_name">6th Period</label>
-                    <div class="col-lg-6">
-                        <select class="form-control" id="subject_name" name="subject_name">
-                            <option value="">Select Subject</option>
-                            <?php 
-                                $result=$mysqli->common_select('subject');
-                                if($result){
-                                    if($result['data']){
-                                        $i=1;
-                                        foreach($result['data'] as $d){
-                            ?>
-                            <option value="<?= $d->id ?>"><?= $d->subject_name ?></option>
-                            <?php } } } ?>
-                        </select>
-                    </div>
-                </div>
-
-
-                    <div class="form-group row">
-                    <label class="col-lg-4 col-form-label" for="day_name">Day </label>
-                    <div class="col-lg-6 ">
+                    <div class="col-lg-3">
+                        <label for="day_name">Day </label>
                         <select class="form-control" id="day_name" name="day_name">
                             <option value="">Select Day </option>
                             <?php 
                                 $result=$mysqli->common_select('Day_name');
                                 if($result){
                                     if($result['data']){
-                                        $i=1;
                                         foreach($result['data'] as $d){
                             ?>
-                            <option value="<?= $d->id ?>"><?= $d->day_name ?></option>
+                            <option value="<?= $d->sl ?>"><?= $d->day_name ?></option>
                             <?php } } } ?>
                         </select>
                     </div>
-                    <div class="col-lg-10 justify-content-end mt-2 pt-3 mt-sm-0 d-flex">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            <?php 
+                $result=$mysqli->common_select('period');
+                if($result){
+                    if($result['data']){
+                        $i=1;
+                        foreach($result['data'] as $d){
+            ?>
+                <div class="row mt-2">
+                    <div class="col-lg-3">
+                        <?= $d->period_name ?> (<?= $d->period_time ?>)
+                        <input type="hidden" name="period_id[<?= $d->sl ?>]" value="<?= $d->sl ?>">
+                    </div>
+                    <div class="col-lg-3">
+                        <select class="form-control" name="subject_name[<?= $d->sl ?>]">
+                            <option value="">Select Subject</option>
+                            <?php 
+                                $result=$mysqli->common_select('subject');
+                                if($result){
+                                    if($result['data']){
+                                        $i=1;
+                                        foreach($result['data'] as $sub){
+                            ?>
+                            <option value="<?= $sub->id ?>"><?= $sub->subject_name ?></option>
+                            <?php } } } ?>
+                        </select>
+                    </div>
+                    <div class="col-lg-3">
+                        <select class="form-control" name="teacher_name[<?= $d->sl ?>]">
+                            <option value="">Select Teacher</option>
+                            <?php 
+                                $result=$mysqli->common_select('teacher');
+                                if($result){
+                                    if($result['data']){
+                                        foreach($result['data'] as $teach){
+                            ?>
+                            <option value="<?= $teach->id ?>"><?= $teach->name ?></option>
+                            <?php } } } ?>
+                        </select>
+                    </div>
+                </div>
+            <?php } } } ?>
+                
+
+            
+                    
+                <div class="col-lg-10 justify-content-end mt-2 pt-3 mt-sm-0 d-flex">
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </form>
             <?php 
         if($_POST){
-            $stu['class']=$_POST['class'];
-            $stu['name']=$_POST['name'];
-            $stu['section']=$_POST['section'];
-            $stu['session']=$_POST['session'];
-            $stu['day_name']=$_POST['day_name'];
-            $stu['created_at']=date('Y-m-d H:i:s');
-            $stu['created_by']=1;
-            $rs=$mysqli->common_create('Class_routine',$stu);
-            if($rs){
-                if($rs['data']){
-                    $stud['subject_id']=$rs['data'];
-                    $stud['subject_name']=$_POST['first_sub'];
-                    $stud['subject_name']=$_POST['second_sub'];
-                    $stud['subject_name']=$_POST['third_sub'];
-                    $stud['subject_name']=$_POST['forth_sub'];
-                    $stud['subject_name']=$_POST['fifth_sub'];
-                    $stud['subject_name']=$_POST['sixth_sub'];
-                    $stud['created_at']=date('Y-m-d H:i:s');
-                    $stud['created_by']=1;
-                    $st=$mysqli->common_create('period',$stud);
-                    
-                    if($st){
-                        if($st['data']){
-                            echo "<script>window.location='{$baseurl}class_routine_list.php'</script>";
-                        }else{
-                            echo $st['error'];
-                        }
+            if($_POST['period_id']){
+                foreach($_POST['period_id'] as $p){
+                    $stu['class_id']=$_POST['class_id'];
+                    $stu['section_id']=$_POST['section_id'];
+                    $stu['session_id']=$_POST['session_id'];
+                    $stu['day_name']=$_POST['day_name'];
+                    $stu['period']=$p;
+                    $stu['subject_name']=$_POST['subject_name'][$p];
+                    $stu['teacher_id']=$_POST['teacher_name'][$p];
+                    $stu['created_at']=date('Y-m-d H:i:s');
+                    $stu['created_by']=1;
+                    $rs=$mysqli->common_create('Class_routine',$stu);
+                }
+                if($rs){
+                    if($rs['data']){
+                        echo "<script>window.location='{$baseurl}class_routine_list.php'</script>";
+                    }else{
+                        echo $rs['error'];
                     }
-                }else{
-                    echo $rs['error'];
                 }
             }
         }

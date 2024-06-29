@@ -1,8 +1,6 @@
 <?php include('include/header.php'); ?>
 <?php include('include/sidebar.php'); ?>
 
-
-<body>
         <!--************************************
             Content body start
         *************************************-->

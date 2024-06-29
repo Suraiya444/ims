@@ -25,12 +25,51 @@
                 <!-- row -->
            
             <form method="post" action="">
-                <div class="mb-3">
-                    <label class="form-label" for="department">Period</label>
-                    <input type="time" name="period" class="form-control" id="period" value="<?= date('H:i:s')?>"/>
+                <div class="row">
+                    <div class="col-3">
+                        <label>Class</label>
+                        <select class="form-control" id="class" name="class_id">
+                            <option value="">Select Class</option>
+                            <?php 
+                                $result=$mysqli->common_select('class');
+                                if($result){
+                                    if($result['data']){
+                                        foreach($result['data'] as $d){
+                            ?>
+                            <option value="<?= $d->id ?>"><?= $d->class ?> </option>
+                            <?php } } } ?>
+                        </select>
+                    </div>
+                    <div class="col-3">
+                        <label>Section</label>
+                        <select class="form-control" id="section" name="section_id">
+                            <option value="">Select Section</option>
+                            <?php 
+                                $result=$mysqli->common_select('section');
+                                if($result){
+                                    if($result['data']){
+                                        foreach($result['data'] as $d){
+                            ?>
+                            <option value="<?= $d->id ?>"><?= $d->section ?> </option>
+                            <?php } } } ?>
+                        </select>
+                    </div>
+                    <div class="col-3">
+                        <?php $period=array("1st","2nd","3rd","4th","5th","6th","7th","8th","9th","Tiffin"); ?>
+                        <label class="form-label" for="department">Period</label>
+                        <select name="period_name" class="form-control" id="">
+                            <?php foreach($period as $p){ ?>
+                                <option value="<?= $p ?>"><?= $p ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                    <div class="col-3">
+                        <label class="form-label" for="period_time">Time</label>
+                        <input type="text" name="period_time" class="form-control" id="period_time" placeholder="00:00 - 00:00"/>
+                    </div>
                 </div>
                 
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary mt-3">Submit</button>
             </form>
             <?php 
                 if($_POST){

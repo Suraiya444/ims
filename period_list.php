@@ -42,13 +42,13 @@
                                         <?php 
                                             $result=$mysqli->common_select('period');
                                             if($result){
-                                                if($result['data']){
-                                                    $i=1;
+                                                if($result['data']){ $i=1;
                                                     foreach($result['data'] as $data){
                                         ?>
                                         <tr>
                                             <td><?= $i++ ?></td>
-                                            <td><?= $data->period ?></td>
+                                            <td><?= $data->period_name ?></td>
+                                            <td><?= $data->period_time ?></td>
                                             <td>
                                                 <span>
                                                     <a href="<?= $baseurl ?>period_edit.php?id=<?= $data ->id ?>" class="mr-4" data-toggle="tooltip"
