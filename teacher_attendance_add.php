@@ -24,24 +24,24 @@
         <form method="get" action="">
             <div class="row">
                 <div class="col-md-4">
-                    <label class="form-label" for="teacher_id">Name</label>
-                    <select class="form-control form-select" required name="teacher_id" id="teacher_id">
-                        <option value="">Select Name</option>
+                    <label class="form-label" for="designation_id">Designation</label>
+                    <select class="form-control form-select" required name="designation_id" id="designation_id">
+                        <option value="">Select Class</option>
                         <?php 
-                            $result=$mysqli->common_select('teacher');
+                            $result=$mysqli->common_select('designation');
                             if($result){
                                 if($result['data']){
                                     $i=1;
                                     foreach($result['data'] as $d){
                         ?>
-                            <option <?= isset($_GET['teacher_id']) && $_GET['teacher_id']==$d->id?"selected":"" ?>><?= $d->name ?></option>
+                            <option <?= isset($_GET['designation_id']) && $_GET['designation_id']==$d->id?"selected":"" ?> value="<?= $d->id ?>" > <?= $d->designation ?></option>
                         <?php } } } ?>
                     </select>
                 </div>
                 <div class="col-md-4">
-                    <label class="form-label" for="department_id">Department ID</label>
+                    <label class="form-label" for="department_id">Department</label>
                     <select class="form-control form-select" required name="department_id" id="department_id">
-                        <option value="">Select Id</option>
+                        <option value="">Select Section</option>
                         <?php 
                             $result=$mysqli->common_select('department');
                             if($result){
@@ -72,31 +72,30 @@
                 </thead>
                 <tbody>
                     <?php 
-                        if(isset($_GET['teacher_id']) && isset($_GET['department_id'])){
-                            $result=$mysqli->common_select_query("select teacher.name,teacher_attendance.* from teacher_attendance
-                             join teacher on teacher_attendance.teacher_id=teacher.id
-                           ");
-                                                                 
-                                                               
+                        if(isset($_GET['designation_id']) && isset($_GET['department_id'])){
+                            $result=$mysqli->common_select_query("select teacher.* from teacher
+                                                                 where teacher.designation_id={$_GET['designation_id']}
+                                                                  and teacher.department_id={$_GET['department_id']}
+                                                                and teacher.deleted_at is null");
                         if($result){
                             if($result['data']){
                                 foreach($result['data'] as $sid=>$data){
                     ?>
                     <tr>
                         <td>
-                            <input type="checkbox" name="teacher_id[]" value="<?= $data->teacher_id ?>" >
+                            <input type="checkbox" name="teacher_id[]" value="<?= $data->name ?>" >
                         </td>
                         <td> 
                             <?= $data->name ?>
                         </td>
                         <td>
-                            <input type="time" class="form-control" value="<?= date('H:i:s') ?>" name="in_time[<?= $data->teacher_id ?>]">
+                            <input type="time" class="form-control" value="<?= date('H:i:s') ?>" name="in_time[<?= $data->name ?>]">
                         </td>
                         <td>
-                            <input type="time" name="out_time[<?= $data->teacher_id ?>]" class="form-control">
+                            <input type="time" name="out_time[<?= $data->name ?>]" class="form-control">
                         </td>
                         <td>
-                            <select name="note[<?= $data->teacher_id ?>]" class="form-control">
+                            <select name="note[<?= $data->name ?>]" class="form-control">
                                 <option value="P">P</option>
                                 <option value="A">A</option>
                                 <option value="L">L</option>
