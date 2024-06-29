@@ -72,9 +72,10 @@
                 </thead>
                 <tbody>
                     <?php 
-                        if(isset($_GET['class_id']) && isset($_GET['section_id'])){
-                            $result=$mysqli->common_select_query("select teacher.name, teacher_attendance.* from teacher_attendance
-                                                                join teacher on  teacher-attendance.teacher_id=teacher.name");
+                        if(isset($_GET['teacher_id']) && isset($_GET['department_id'])){
+                            $result=$mysqli->common_select_query("select teacher.name,teacher_attendance.* from teacher_attendance
+                             join teacher on teacher_attendance.teacher_id=teacher.id
+                           ");
                                                                  
                                                                
                         if($result){

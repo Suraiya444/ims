@@ -44,15 +44,18 @@
                                             <th scope="col">Qualification</th>
                                             <th scope="col">Joining</th>
                                             <th scope="col">Resign</th>
-                                            <th scope="col">Designation Id</th>
-                                            <th scope="col">Department Id</th>
+                                            <th scope="col">Designation </th>
+                                            <th scope="col">Department </th>
                                             <th scope="col">Edit</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         
                                         <?php 
-                                            $result=$mysqli->common_select('teacher');
+                                            $result=$mysqli->common_select_query('select teacher.*,designation.designation,department.department
+                                            from teacher 
+                                            join designation on teacher.designation_id=designation.id
+                                            join department on teacher.department_id=department.id');
                                             if($result){
                                                 if($result['data']){
                                                     $i=1;
@@ -63,15 +66,15 @@
                                             <td><?= $data-> name ?></td>
                                             <td><?= $data-> father_name ?></td>
                                             <td><?= $data-> mother_name ?></td>
-                                            <td><?= $data->  email ?></td>
+                                            <td><?= $data-> email ?></td>
                                             <td><?= $data-> contact ?></td>
                                             <td><?= $data-> photo ?></td>
-                                            <td><?= $data->  assigned_class ?></td>
+                                            <td><?= $data-> assigned_class ?></td>
                                             <td><?= $data-> qualification ?></td>
                                             <td><?= $data-> joining ?></td>
                                             <td><?= $data-> resign ?></td>
-                                            <td><?= $data-> designation_id ?></td>
-                                            <td><?= $data->  department_id?></td>
+                                            <td><?= $data-> designation ?></td>
+                                            <td><?= $data-> department?></td>
                                             <td>
                                                 <span>
                                                     <a href="<?= $baseurl ?>teacher_edit.php?id=<?= $data ->id ?>" class="mr-4" data-toggle="tooltip"
