@@ -39,6 +39,8 @@
                                             <th scope="col">4th Period</th>
                                             <th scope="col">5th Period</th>
                                             <th scope="col">6th Period</th>
+                                            <th scope="col">6th Period</th>
+                                            <th scope="col">7th Period</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
