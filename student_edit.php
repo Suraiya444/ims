@@ -109,7 +109,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label" for="roll">Roll</label>
-                                        <input type="text" name="roll" class="form-control" id="roll"  value="<?= $olddata-> roll                                              ?>">
+                                        <input type="text" name="roll" class="form-control" id="roll"  value="<?= $olddata->roll ?>">
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label" for="group_id">Group</label>
@@ -144,20 +144,43 @@
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
-                            <?php 
-                if($_POST){
-                    $_POST['updated_at']=date('Y-m-d H:i:s');
-                    $_POST['updated_by']=1;
-                    $rs=$mysqli->common_update('student',$_POST,$con);
-                    if($rs){
-                        if($rs['data']){
-                            echo "<script>window.location='{$baseurl}student_list.php'</script>";
-                        }else{
-                            echo $rs['error'];
+    <?php 
+        if($_POST){
+
+            if($_FILES){
+            
+                $img=$_FILES["photo"];
+    
+                if($img['size'] < (100*1024)){
+                    if($img['type'] =="image/jpeg"){
+                        $imagename=time().rand(1111,9999).".jpg";
+                        $rs=move_uploaded_file($img['tmp_name'],'assets/students/'.$imagename);
+                        if($rs){
+                            $stu['photo']=$imagename;
                         }
+                    }else{
+                        echo "Only image can be uploaded.";
+                    }
+                }else{
+                    echo "File size cannot be more than 100KB";
+                }
+            }
+
+            
+            if($_POST){
+                $_POST['updated_at']=date('Y-m-d H:i:s');
+                $_POST['updated_by']=1;
+                $rs=$mysqli->common_update('student',$_POST,$con);
+                if($rs){
+                    if($rs['data']){
+                        echo "<script>window.location='{$baseurl}student_list.php'</script>";
+                    }else{
+                        echo $rs['error'];
                     }
                 }
-            ?>
+            }
+        }
+    ?>
                         </div>
                     </div>
                 </div>

@@ -52,10 +52,10 @@
                                     <tbody>
                                         
                                         <?php 
-                                            $result=$mysqli->common_select_query('select teacher.*,designation.designation,department.department
+                                            $result=$mysqli->common_select_query("select teacher.*, designation.designation, department.department
                                             from teacher 
                                             join designation on teacher.designation_id=designation.id
-                                            join department on teacher.department_id=department.id');
+                                            join department on teacher.department_id=department.id where teacher.deleted_at is null");
                                             if($result){
                                                 if($result['data']){
                                                     $i=1;
@@ -68,13 +68,13 @@
                                             <td><?= $data-> mother_name ?></td>
                                             <td><?= $data-> email ?></td>
                                             <td><?= $data-> contact ?></td>
-                                            <td><?= $data-> photo ?></td>
+                                            <td><img src="<?= $baseurl ?>assets/teachers/<?= $data-> photo ?>" width="80px" alt=""></td>
                                             <td><?= $data-> assigned_class ?></td>
                                             <td><?= $data-> qualification ?></td>
                                             <td><?= $data-> joining ?></td>
                                             <td><?= $data-> resign ?></td>
                                             <td><?= $data-> designation ?></td>
-                                            <td><?= $data-> department?></td>
+                                            <td><?= $data-> department ?></td>
                                             <td>
                                                 <span>
                                                     <a href="<?= $baseurl ?>teacher_edit.php?id=<?= $data ->id ?>" class="mr-4" data-toggle="tooltip"
@@ -101,15 +101,5 @@
     Content body end
 ***********************************-->
 
-    <!--**********************************
-        Scripts
-    ***********************************-->
-    <!-- Required vendors -->
-    <script src="<?= $baseurl ?>assets/vendor/global/global.min.js"></script>
-    <script src="<?= $baseurl ?>assets/js/quixnav-init.js"></script>
-    <script src="<?= $baseurl ?>assets/js/custom.min.js"></script>
-    
-    
-</body>
 <?php include('include/footer.php') ?> 
 
