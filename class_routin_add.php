@@ -237,7 +237,6 @@
                     $stud['subject_name']=$_POST['forth_sub'];
                     $stud['subject_name']=$_POST['fifth_sub'];
                     $stud['subject_name']=$_POST['sixth_sub'];
-                    $stud['session_id']=$_POST['session_id'];
                     $stud['created_at']=date('Y-m-d H:i:s');
                     $stud['created_by']=1;
                     $st=$mysqli->common_create('period',$stud);

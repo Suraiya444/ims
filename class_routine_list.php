@@ -33,22 +33,22 @@
                                     <thead>
                                         <tr> 
                                             <th scope="col">Day</th>
-                                            <th scope="col">Sub</th>
                                             <th scope="col">1st Period</th>
                                             <th scope="col">2nd Period</th>
                                             <th scope="col">3rd Period</th>
                                             <th scope="col">4th Period</th>
                                             <th scope="col">5th Period</th>
+                                            <th scope="col">6th Period</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         
                                         <?php 
-                                            $result=$mysqli->common_select('select class-routine.*, period.*,Day_name.daya_name,subject.subject_name,class.class,teacher.teacher_id,
+                                            $result=$mysqli->common_select_query('select class_routine.*,period.*,class.class,teacher.name,subject.subject_name,session.session,Day_name.day_name
                                             from class_routine 
-                                            join Day_name.id on class_routine on=Day_name.id
-                                            join subject.subject_name on class-routine= subject.subject_name');
+                                            join class_routine on Day_name.day_name=class_routine.day_name
+                                            join class_routine on subject.subject_name=class_routine. subject_name');
                                             if($result){
                                                 if($result['data']){
                                                     $i=1;
