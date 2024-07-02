@@ -21,44 +21,7 @@
             </div>
         </div>
         <!-- row -->
-        <form method="get" action="">
-            <div class="row">
-                <div class="col-md-4">
-                    <label class="form-label" for="designation_id">Designation</label>
-                    <select class="form-control form-select" required name="designation_id" id="designation_id">
-                        <option value="">Select Class</option>
-                        <?php 
-                            $result=$mysqli->common_select('designation');
-                            if($result){
-                                if($result['data']){
-                                    $i=1;
-                                    foreach($result['data'] as $d){
-                        ?>
-                            <option <?= isset($_GET['designation_id']) && $_GET['designation_id']==$d->id?"selected":"" ?> value="<?= $d->id ?>" > <?= $d->designation ?></option>
-                        <?php } } } ?>
-                    </select>
-                </div>
-                <div class="col-md-4">
-                    <label class="form-label" for="department_id">Department</label>
-                    <select class="form-control form-select" required name="department_id" id="department_id">
-                        <option value="">Select Section</option>
-                        <?php 
-                            $result=$mysqli->common_select('department');
-                            if($result){
-                                if($result['data']){
-                                    $i=1;
-                                    foreach($result['data'] as $d){
-                        ?>
-                            <option value="<?= $d->id ?>" <?= isset($_GET['department_id']) && $_GET['department_id']==$d->id?"selected":"" ?>> <?= $d->department ?></option>
-                        <?php } } } ?>
-                    </select>
-                </div>
-                <div class="col-md-4">
-                    <button type="submit" class="btn btn-primary mt-4">Get Teacher</button>
-                </div>
-            </div>
-            
-        </form>
+       
         <form method="post" action="">
             <table class="table">
                 <thead>
@@ -74,9 +37,7 @@
                     <?php 
                         if(isset($_GET['designation_id']) && isset($_GET['department_id'])){
                             $result=$mysqli->common_select_query("select teacher.* from teacher
-                                                                 where teacher.designation_id={$_GET['designation_id']}
-                                                                  and teacher.department_id={$_GET['department_id']}
-                                                                and teacher.deleted_at is null");
+                                                                 where teacher.deleted_at is null");
                         if($result){
                             if($result['data']){
                                 foreach($result['data'] as $sid=>$data){
