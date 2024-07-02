@@ -47,10 +47,7 @@
                                     <tbody>
                                         
                                         <?php 
-                                            $result=$mysqli->common_select_query('select class_routine.*,period.*,class.class,teacher.name,subject.subject_name,session.session,Day_name.day_name
-                                            from class_routine 
-                                            join class_routine on Day_name.day_name=class_routine.day_name
-                                            join class_routine on subject.subject_name=class_routine. subject_name');
+                                            $result=$mysqli->common_select_query( );
                                             if($result){
                                                 if($result['data']){
                                                     $i=1;
