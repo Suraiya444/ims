@@ -44,7 +44,8 @@
                                     <tbody>
                                         
                                         <?php 
-                                            $result=$mysqli->common_select('teacher_attendance');
+                                            $result=$mysqli->common_select_query('select teacher.name ,teacher_attendance.* from teacher_attendance
+                                                                            join teacher on teacher_attendance.teacher_id=teacher.id');
                                             if($result){
                                                 if($result['data']){
                                                     $i=1;

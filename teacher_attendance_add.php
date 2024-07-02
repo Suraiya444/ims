@@ -35,7 +35,7 @@
                 </thead>
                 <tbody>
                     <?php 
-                        if(isset($_GET['designation_id']) && isset($_GET['department_id'])){
+                       
                             $result=$mysqli->common_select_query("select teacher.* from teacher
                                                                  where teacher.deleted_at is null");
                         if($result){
@@ -63,7 +63,7 @@
                             </select>
                         </td>
                     </tr>
-                    <?php } } } } ?>
+                    <?php } } }  ?>
                 </tbody>
             </table>
             
