@@ -1,8 +1,8 @@
--- MariaDB dump 10.19  Distrib 10.4.22-MariaDB, for Win64 (AMD64)
+-- MariaDB dump 10.19  Distrib 10.4.32-MariaDB, for Win64 (AMD64)
 --
 -- Host: localhost    Database: ims
 -- ------------------------------------------------------
--- Server version	10.4.22-MariaDB
+-- Server version	10.4.32-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -37,7 +37,7 @@ CREATE TABLE `auth` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -66,7 +66,7 @@ CREATE TABLE `class` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -99,7 +99,7 @@ CREATE TABLE `class_fees_setting` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -108,6 +108,7 @@ CREATE TABLE `class_fees_setting` (
 
 LOCK TABLES `class_fees_setting` WRITE;
 /*!40000 ALTER TABLE `class_fees_setting` DISABLE KEYS */;
+INSERT INTO `class_fees_setting` VALUES (1,'1',1,5,2,1000.00,'2024-07-03 07:47:39',1,NULL,NULL,NULL),(2,'2',1,5,2,500.00,'2024-07-03 07:48:02',1,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `class_fees_setting` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -133,7 +134,7 @@ CREATE TABLE `class_routine` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=97 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=97 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -169,7 +170,7 @@ CREATE TABLE `class_subject` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -199,7 +200,7 @@ CREATE TABLE `day_name` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -228,7 +229,7 @@ CREATE TABLE `department` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -257,7 +258,7 @@ CREATE TABLE `designation` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -281,13 +282,14 @@ CREATE TABLE `fees_category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `type` int(11) DEFAULT NULL,
+  `fees_id` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -296,6 +298,7 @@ CREATE TABLE `fees_category` (
 
 LOCK TABLES `fees_category` WRITE;
 /*!40000 ALTER TABLE `fees_category` DISABLE KEYS */;
+INSERT INTO `fees_category` VALUES (1,'Sports',1,NULL,'2024-07-03 07:46:47',1,NULL,NULL,NULL),(2,'Exam Fees',2,NULL,'2024-07-03 07:47:01',1,NULL,NULL,NULL),(3,'Monthly Fees',3,NULL,'2024-07-03 07:47:18',1,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `fees_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -315,7 +318,7 @@ CREATE TABLE `group` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -348,7 +351,7 @@ CREATE TABLE `period` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -377,7 +380,7 @@ CREATE TABLE `section` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -406,7 +409,7 @@ CREATE TABLE `session` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -442,7 +445,7 @@ CREATE TABLE `student` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3905 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3905 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -475,7 +478,7 @@ CREATE TABLE `student_attendance` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -484,7 +487,7 @@ CREATE TABLE `student_attendance` (
 
 LOCK TABLES `student_attendance` WRITE;
 /*!40000 ALTER TABLE `student_attendance` DISABLE KEYS */;
-INSERT INTO `student_attendance` VALUES (1,4444,'2024-06-18','09:24:51','14:30:51','','2024-06-18 22:29:15',0,NULL,1,'2024-06-19 07:19:58'),(2,4,'2024-06-18','09:24:55','14:30:55','Late','2024-06-18 22:32:46',0,NULL,NULL,NULL),(3,3902,'2024-06-26','17:27:53','00:00:00','P','2024-06-26 17:27:56',0,NULL,1,'2024-06-26 17:28:01'),(4,3902,'2024-06-26','17:28:12','02:00:00','Late','2024-06-26 17:28:15',0,'2024-06-26 17:28:36',1,NULL),(5,3902,'2024-06-28','18:32:23','00:00:00','P','2024-06-28 18:32:26',0,NULL,NULL,NULL),(6,3904,'2024-06-29','09:31:50','00:00:00','P','2024-06-29 09:31:53',0,NULL,NULL,NULL),(7,3904,'2024-06-29','09:54:38','00:00:00','P','2024-06-29 09:54:40',0,NULL,NULL,NULL),(8,3904,'2024-06-29','09:56:05','00:00:00','P','2024-06-29 09:56:36',0,NULL,NULL,NULL),(9,3904,'2024-06-29','20:18:04','00:00:00','P','2024-06-29 20:18:08',0,NULL,NULL,NULL);
+INSERT INTO `student_attendance` VALUES (1,4444,'2024-06-18','09:24:51','14:30:51','','2024-06-18 22:29:15',0,NULL,1,'2024-06-19 07:19:58'),(2,4,'2024-06-18','09:24:55','14:30:55','Late','2024-06-18 22:32:46',0,NULL,NULL,NULL),(3,3902,'2024-06-26','17:27:53','00:00:00','P','2024-06-26 17:27:56',0,NULL,1,'2024-06-26 17:28:01'),(4,3902,'2024-06-26','17:28:12','02:00:00','Late','2024-06-26 17:28:15',0,'2024-06-26 17:28:36',1,NULL),(5,3902,'2024-06-28','18:32:23','00:00:00','P','2024-06-28 18:32:26',0,NULL,NULL,NULL),(6,3904,'2024-06-29','09:31:50','00:00:00','P','2024-06-29 09:31:53',0,NULL,NULL,NULL),(7,3904,'2024-06-29','09:54:38','00:00:00','P','2024-06-29 09:54:40',0,NULL,NULL,NULL),(8,3904,'2024-06-29','09:56:05','00:00:00','P','2024-06-29 09:56:36',0,NULL,NULL,NULL),(9,3904,'2024-06-29','20:18:04','00:00:00','P','2024-06-29 20:18:08',0,NULL,NULL,NULL),(10,3904,'2024-07-03','07:30:01','00:00:00','P','2024-07-03 07:56:30',0,NULL,NULL,NULL),(11,3904,'2024-07-03','09:26:47','01:00:00','P','2024-07-03 09:27:04',0,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `student_attendance` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -509,7 +512,7 @@ CREATE TABLE `student_details` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -531,6 +534,7 @@ DROP TABLE IF EXISTS `student_fees`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `student_fees` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fees_id` int(11) DEFAULT NULL,
   `student_id` varchar(255) DEFAULT NULL,
   `session_id` int(11) DEFAULT NULL,
   `class_id` int(11) DEFAULT NULL,
@@ -545,7 +549,7 @@ CREATE TABLE `student_fees` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -576,7 +580,7 @@ CREATE TABLE `student_fees_details` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -616,7 +620,7 @@ CREATE TABLE `student_marks` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -646,7 +650,7 @@ CREATE TABLE `subject` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -686,7 +690,7 @@ CREATE TABLE `teacher` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -719,7 +723,7 @@ CREATE TABLE `teacher_attendance` (
   `updated_by` int(11) DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -740,4 +744,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-30  0:40:48
+-- Dump completed on 2024-07-03  2:06:55
