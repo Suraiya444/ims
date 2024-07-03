@@ -34,8 +34,8 @@
                                     if($result['data']){
                                         foreach($result['data'] as $d){
                             ?>
-                            <option value="<?= $d->id ?>"><?= $d->class ?> </option>
-                            <?php } } } ?>
+                             <option value="<?= $d->id ?>" <?= isset($_GET['class_id']) && $_GET['class_id']==$d->id?"selected":"" ?>> <?= $d->class ?></option>
+                             <?php } } } ?>
                         </select>
                     </div>
                     <div class="col-lg-3">
@@ -48,8 +48,8 @@
                                     if($result['data']){
                                         foreach($result['data'] as $d){
                             ?>
-                            <option value="<?= $d->id ?>"><?= $d->group ?> </option>
-                            <?php } } } ?>
+                             <option value="<?= $d->id ?>" <?= isset($_GET['group_id']) && $_GET['group_id']==$d->id?"selected":"" ?>> <?= $d->group ?></option>
+                             <?php } } } ?>
                         </select>
                     </div>
                     
@@ -63,7 +63,7 @@
                                     if($result['data']){
                                         foreach($result['data'] as $d){
                             ?>
-                            <option value="<?= $d->id ?>"><?= $d->session ?></option>
+                            <option value="<?= $d->id ?>" <?= isset($_GET['session_id']) && $_GET['session_id']==$d->id?"selected":"" ?>> <?= $d->session ?></option>
                             <?php } } } ?>
                         </select>
                     </div>
@@ -77,8 +77,8 @@
                                     if($result['data']){
                                         foreach($result['data'] as $d){
                             ?>
-                            <option value="<?= $d->student_id ?>"><?= $d->student_id ?></option>
-                            <?php } } } ?>
+                             <option value="<?= $d->id ?>" <?= isset($_GET['student_id']) && $_GET['student_id']==$d->id?"selected":"" ?>> <?= $d->student_id ?></option>
+                             <?php } } } ?>
                         </select>
                     </div>
                     <div class="col-lg-4 pt-3 px-0">
@@ -103,12 +103,8 @@
                 </thead>
                 <tbody>
                     <?php 
-                        if(isset($_GET['class_id']) && isset($_GET['session_id']) && isset($_GET['group_id'])){
-                            $result=$mysqli->common_select_query("select student.name, student_details.* from student
-                                                                join student_details on student_details.student_id=student.id
-                                                                 where student_details.class_id={$_GET['class_id']}
-                                                                  and student_details.section_id={$_GET['section_id']}
-                                                                and student_details.deleted_at is null");
+                        if(isset($_GET['class_id']) && isset($_GET['session_id']) && isset($_GET['group_id']) && $_GET['student_id']){
+                            $result=$mysqli->common_select_query("select fees_catagory.name,student_fees.*, from student_fees join  student_fees on student_fees.fees_id=fees.name");
                         if($result){
                             if($result['data']){
                                 foreach($result['data'] as $sid=>$data){

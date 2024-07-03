@@ -56,7 +56,7 @@
                     </div>
                     <div class="col-3">
                         <?php $period=array("1st","2nd","3rd","4th","5th","6th","7th","8th","9th","Tiffin"); ?>
-                        <label class="form-label" for="department">Period</label>
+                        <label class="form-label" for="period">Period</label>
                         <select name="period_name" class="form-control" id="">
                             <?php foreach($period as $p){ ?>
                                 <option value="<?= $p ?>"><?= $p ?></option>
