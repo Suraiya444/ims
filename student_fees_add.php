@@ -83,7 +83,7 @@
                     </div>
                     <div class="col-lg-4 pt-3 px-0">
                     <label class="col-lg-4 col-form-label" for="fees_date">Fees Date</label>
-                    <input type="date" name="fees_date" id="fees_date" >
+                    <input type="date" id="fees_date" class="form-control" value="<?= date("Y-m-d") ?>" name="fees_date">
                 </div>
                 </div>
                 <div class="col-md-4">
@@ -104,10 +104,14 @@
                 <tbody>
                     <?php 
                         if(isset($_GET['class_id']) && isset($_GET['session_id']) && isset($_GET['group_id']) && $_GET['student_id']){
-                            $result=$mysqli->common_select_query("select fees_catagory.name,student_fees.*, from student_fees join  student_fees on student_fees.fees_id=fees.name");
-                        if($result){
-                            if($result['data']){
-                                foreach($result['data'] as $sid=>$data){
+                            $result=$mysqli->common_select_query("SELECT class_fees_setting.fees_id,class_fees_setting.amount, student_fees.*,fees_catagory.name FROM  
+                                        JOIN class_fees_setting on student_fees.fees_id=class_fees_setting.fees_id
+                                       
+                                        where student_fees.fees_id={$_GET['fees_id']}");
+                                                                      if($result){
+                                                                        if($result['data']){
+                                                                            foreach($result['data'] as $d) 
+                                                                            
                     ?>
                     <tr>
                         <td>
@@ -117,14 +121,17 @@
                             <?= $data->name ?>
                         </td>
                         <td>
-                            <input type="text" class="form-control" name="amount[<?= $data->student_id ?>]">
+                            <input type="text" class="form-control" name="amount[<?= $data->fees_id ?>]">
                         </td>
                         <td>
-                            <input type="text" name="<?= $data->student_id ?>" class="form-control">
+                            <input type="text" name="discount<?= $data->fees_id ?>" class="form-control">
+                        </td>
+                        <td>
+                            <input type="text" name="due<?= $data->fees_id ?>" class="form-control">
                         </td>
                        
                     </tr>
-                    <?php } } } } ?>
+                    <?php } } }  ?>
                 </tbody>
             </table>
             
@@ -133,23 +140,22 @@
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </form>
-    <?php 
+            <?php 
         if($_POST){
-           
-            if(isset($rs['data'])){
-            foreach($_POST['student_id'] as $i=>$student_id){
-                $fee['student_id']=$student_id;
-                $fee['fees_id']=$_POST['fees_id'][$student_id];
-                $fee['amount']=$_POST['amount'][$student_id];
-                $fee['discount']=$_POST['discount'][$student_id];
-                $fee['due']=$_POST['due'][$student_id];
+            
+           if($fees_id){
+                $fee['fees_id']=$fees_id;
+                $fee['name']=$_POST['name'][$fees_id];
+                $fee['amount']=$_POST['amount'][$fees_id];
+                $fee['discount']=$_POST['discount'][$fees_id];
+                $fee['due']=$_POST['due'][$fees_id];
+                $fee['fees_date']=date('Y-m-d');
                 $fee['created_at']=date('Y-m-d H:i:s');
                 $fee['created_by']=$_SESSION['id'];
                 
                 $rs=$mysqli->common_create('student_fees',$fee);
             }
-        }
-            if(isset($rs)){
+            if($rs){
                 if($rs['data']){
                     echo "<script>window.location='{$baseurl}student_fees_list.php'</script>";
                 }else{
