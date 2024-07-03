@@ -91,7 +91,7 @@
                                 <div class="form-group">
                                     <label for="val-digits">Designation</label>
                                     <select class="form-control form-select" required name="designation_id" id="designation_id">
-                                        <option value="">Select Department</option>
+                                        <option value="">Select Designation</option>
                                         <?php 
                                             $result=$mysqli->common_select('designation');
                                             if($result){
@@ -120,25 +120,25 @@
                     </div>
                 </form>
     <?php 
-        if($_POST){
+      if($_POST){
 
-            if($_FILES){
-            
-                $img=$_FILES["photo"];
-    
-                if($img['size'] < (100*1024)){
-                    if($img['type'] =="image/jpeg"){
-                        $imagename=time().rand(1111,9999).".jpg";
-                        $rs=move_uploaded_file($img['tmp_name'],'assets/teachers/'.$imagename);
-                        if($rs){
-                            $stu['photo']=$imagename;
-                        }
-                    }else{
-                        echo "Only image can be uploaded.";
+        if($_FILES){
+        
+            $img=$_FILES["photo"];
+
+            if($img['size'] < (1000*1024)){
+                if($img['type'] =="image/jpeg"){
+                    $imagename=time().rand(1111,9999).".jpg";
+                    $rs=move_uploaded_file($img['tmp_name'],'assets/students/'.$imagename);
+                    if($rs){
+                        $stu['photo']=$imagename;
                     }
                 }else{
-                    echo "File size cannot be more than 100KB";
+                    echo "Only image can be uploaded.";
                 }
+                }else{
+                echo "File size cannot be more than 100KB";
+             }
             }
 
             $tec['name']=$_POST['name'];

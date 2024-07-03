@@ -109,7 +109,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label" for="roll">Roll</label>
-                                        <input type="text" name="roll" class="form-control" id="roll"  value="<?= $olddata->roll ?>">
+                                        <input type="text" name="roll" class="form-control" id="roll"   value="<?= $olddata->roll ?>">
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label" for="group_id">Group</label>

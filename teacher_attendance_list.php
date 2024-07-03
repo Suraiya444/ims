@@ -33,7 +33,7 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">ID</th>
-                                            <th scope="col">Teacher ID</th>
+                                            <th scope="col">Teacher Name</th>
                                             <th scope="col">Attendance Date</th>
                                             <th scope="col">In Time</th>
                                             <th scope="col">Out Time</th>
@@ -44,7 +44,8 @@
                                     <tbody>
                                         
                                         <?php 
-                                            $result=$mysqli->common_select('teacher_attendance');
+                                            $result=$mysqli->common_select_query('select teacher.name ,teacher_attendance.* from teacher_attendance
+                                                                            join teacher on teacher_attendance.teacher_id=teacher.name');
                                             if($result){
                                                 if($result['data']){
                                                     $i=1;
@@ -52,17 +53,17 @@
                                         ?>
                                         <tr>
                                             <td><?= $i++ ?></td>
-                                            <td><?= $data->  teacher_id  ?></td>
+                                            <td><?= $data-> name  ?></td>
                                             <td><?= $data-> att_date ?></td>
                                             <td><?= $data-> in_time ?></td>
                                             <td><?= $data-> out_time ?></td>
                                             <td><?= $data-> note ?></td>
                                             <td>
                                                 <span>
-                                                    <a href="<?= $baseurl ?>teacher_attendance_edit.php?id=<?= $data ->id ?>" class="mr-4" data-toggle="tooltip"
+                                                    <a href="<?= $baseurl ?>teacher_attendance_edit.php?id=<?=$data->id ?>" class="mr-4" data-toggle="tooltip"
                                                         data-placement="top" title="Edit"><i
                                                             class="fa fa-pencil color-muted"></i> </a>
-                                                    <a href="<?= $baseurl ?>teacher_attendance_delete.php?id=<?= $data ->id ?>" data-toggle="tooltip"
+                                                    <a href="<?= $baseurl ?>teacher_attendance_delete.php?id=<?=$data->id ?>" data-toggle="tooltip"
                                                         data-placement="top" title="Close"><i
                                                             class="fa fa-close color-danger"></i></a>
                                                 </span>

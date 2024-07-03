@@ -68,7 +68,7 @@
                                             <td><?= $data-> mother_name ?></td>
                                             <td><?= $data-> email ?></td>
                                             <td><?= $data-> contact ?></td>
-                                            <td><img src="<?= $baseurl ?>assets/teachers/<?= $data-> photo ?>" width="80px" alt=""></td>
+                                            <td><img src="<?= $baseurl ?>assets/students/<?= $data->photo ?>" width="80px" alt=""></td>
                                             <td><?= $data-> assigned_class ?></td>
                                             <td><?= $data-> qualification ?></td>
                                             <td><?= $data-> joining ?></td>
@@ -77,10 +77,10 @@
                                             <td><?= $data-> department ?></td>
                                             <td>
                                                 <span>
-                                                    <a href="<?= $baseurl ?>teacher_edit.php?id=<?= $data ->id ?>" class="mr-4" data-toggle="tooltip"
+                                                    <a href="<?= $baseurl ?>teacher_edit.php?id=<?= $data->id ?>" class="mr-4" data-toggle="tooltip"
                                                         data-placement="top" title="Edit"><i
                                                             class="fa fa-pencil color-muted"></i> </a>
-                                                    <a href="<?= $baseurl ?>teacher_delete.php?id=<?= $data ->id ?>" data-toggle="tooltip"
+                                                    <a href="<?= $baseurl ?>teacher_delete.php?id=<?= $data->id ?>" data-toggle="tooltip"
                                                         data-placement="top" title="Close"><i
                                                             class="fa fa-close color-danger"></i></a>
                                                 </span>

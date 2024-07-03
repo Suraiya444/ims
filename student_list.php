@@ -66,7 +66,7 @@
                                     <td><?= $data-> section ?></td>
                                     <td><?= $data-> group ?></td>
                                     <td><?= $data-> session ?></td>
-                                    <td><img src="<?= $baseurl ?>assets/students/<?= $data-> photo ?>" width="80px" alt=""></td>
+                                    <td><img src="<?= $baseurl ?>assets/students/<?= $data->photo ?>" width="80px" alt=""></td>
                                     <td>
                                         <span>
                                             <a href="<?= $baseurl ?>student_edit.php?id=<?= $data ->id ?>" class="mr-4" data-toggle="tooltip"

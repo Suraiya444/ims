@@ -41,11 +41,11 @@
                     </div>
                     <div class="col-md-6">
                         <label class="form-label" for="att_date">Attendance Date</label>
-                        <input type="date" id="att_date" class="form-control" value="<?= $olddata->att_date ?>" name="att_date" >
+                        <input type="date" id="att_date" class="form-control" value="<?=$olddata->att_date ?>" name="att_date" >
                     </div>
                     <div class="col-md-6">
                         <label class="form-label" for="in_time">In_Time</label>
-                        <input type="time" id="in_time" class="form-control" value="<?= $olddata->in_time ?>" name="in_time">
+                        <input type="time" id="in_time" class="form-control" value="<?=$olddata->in_time ?>" name="in_time">
                     </div>
                     <div class="col-md-6">
                         <label class="form-label" for="out_time">Out_Time</label>
@@ -53,7 +53,7 @@
                     </div>
                     <div class="col-md-6">
                         <label class="form-label" for="note">Note</label>
-                        <textarea name="note" id="note" class="form-control"><?= $olddata->note ?></textarea>
+                        <textarea name="note" id="note" class="form-control"><?=$olddata->note ?></textarea>
                     </div>
                 </div><br>
                 <button type="submit" class="btn btn-primary">Submit</button>
