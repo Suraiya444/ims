@@ -44,19 +44,19 @@
                     ?>
                     <tr>
                         <td>
-                            <input type="checkbox" name="teacher_id[]" value="<?= $data->name ?>" >
+                            <input type="checkbox" name="teacher_id[<?= $data->id ?>]" value="<?= $data->name ?>" >
                         </td>
                         <td> 
                             <?= $data->name ?>
                         </td>
                         <td>
-                            <input type="time" class="form-control" value="<?= date('H:i:s') ?>" name="in_time[<?= $data->name ?>]">
+                            <input type="time" class="form-control" value="<?= date('H:i:s') ?>" name="in_time[<?= $data->id ?>]">
                         </td>
                         <td>
-                            <input type="time" name="out_time[<?= $data->name ?>]" class="form-control">
+                            <input type="time" name="out_time[<?= $data->id ?>]" class="form-control">
                         </td>
                         <td>
-                            <select name="note[<?= $data->name ?>]" class="form-control">
+                            <select name="note[<?= $data->id ?>]" class="form-control">
                                 <option value="P">P</option>
                                 <option value="A">A</option>
                                 <option value="L">L</option>
@@ -71,7 +71,6 @@
         </form>
     <?php 
         if($_POST){
-            
             foreach($_POST['teacher_id'] as $i=>$teacher_id){
                 $att['teacher_id']=$teacher_id;
                 $att['in_time']=$_POST['in_time'][$teacher_id];
@@ -80,7 +79,6 @@
                 $att['att_date']=date('Y-m-d');
                 $att['created_at']=date('Y-m-d H:i:s');
                 $att['created_by']=$_SESSION['id'];
-                
                 $rs=$mysqli->common_create('teacher_attendance',$att);
             }
             if($rs){
