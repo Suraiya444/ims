@@ -37,6 +37,7 @@
                     <?php 
                        
                             $result=$mysqli->common_select_query("select teacher.* from teacher
+                            
                                                                  where teacher.deleted_at is null");
                         if($result){
                             if($result['data']){
@@ -44,19 +45,19 @@
                     ?>
                     <tr>
                         <td>
-                            <input type="checkbox" name="teacher_id[]" value="<?= $data->name ?>" >
+                             <input type="checkbox" name="teacher_id[]" value="<?= $data->teacher_id ?>" >
                         </td>
                         <td> 
                             <?= $data->name ?>
                         </td>
                         <td>
-                            <input type="time" class="form-control" value="<?= date('H:i:s') ?>" name="in_time[<?= $data->name ?>]">
+                            <input type="time" class="form-control" value="<?= date('H:i:s') ?>" name="in_time[<?= $data->teacher_id ?>]">
                         </td>
                         <td>
-                            <input type="time" name="out_time[<?= $data->name ?>]" class="form-control">
+                            <input type="time" name="out_time[<?= $data->teacher_id ?>]" class="form-control">
                         </td>
                         <td>
-                            <select name="note[<?= $data->name ?>]" class="form-control">
+                            <select name="note[<?= $data->teacher_id ?>]" class="form-control">
                                 <option value="P">P</option>
                                 <option value="A">A</option>
                                 <option value="L">L</option>
