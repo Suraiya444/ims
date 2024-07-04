@@ -27,12 +27,19 @@
                         <h4 class="card-title">Student Form</h4>
                     </div>
         <?php 
-            $olddata=array();
+            $olddata=$classdata=array();
             $con['id']=$_GET['id'];
             $result=$mysqli->common_select_single('student','*',$con);
             if($result){
                 if($result['data']){
                     $olddata=$result['data'];
+                }
+            }
+            $cons['student_id']=$_GET['id'];
+            $result=$mysqli->common_select_single('student_details','*',$cons);
+            if($result){
+                if($result['data']){
+                    $classdata=$result['data'];
                 }
             }
        ?>
@@ -85,10 +92,9 @@
                                             $result=$mysqli->common_select('class');
                                             if($result){
                                                 if($result['data']){
-                                                    $i=1;
                                                     foreach($result['data'] as $d){
                                         ?>
-                                            <option value="<?= $d->id ?>" <?= $d->id==$olddata->class_id ? "selected" :"" ?>> <?= $d->class ?></option>
+                                            <option value="<?= $d->id ?>" <?= $d->id==$classdata->class_id ? "selected" :"" ?>> <?= $d->class ?></option>
                                         <?php } } } ?>
                                     </select>
                                     </div>
@@ -100,16 +106,15 @@
                                             $result=$mysqli->common_select('section');
                                             if($result){
                                                 if($result['data']){
-                                                    $i=1;
                                                     foreach($result['data'] as $d){
                                         ?>
-                                            <option value="<?= $d->id ?>"<?= $d->id==$olddata->section ? "selected" :"" ?> > <?= $d->section ?></option>
+                                            <option value="<?= $d->id ?>"<?= $d->id==$classdata->section_id ? "selected" :"" ?> > <?= $d->section ?></option>
                                         <?php } } } ?>
                                     </select>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label" for="roll">Roll</label>
-                                        <input type="text" name="roll" class="form-control" id="roll"   value="<?= $olddata->roll ?>">
+                                        <input type="text" name="roll" class="form-control" id="roll"  value="<?= $classdata->roll ?>">
                                     </div>
                                     <div class="col-md-6">
                                         <label class="form-label" for="group_id">Group</label>
@@ -122,7 +127,7 @@
                                                     $i=1;
                                                     foreach($result['data'] as $d){
                                         ?>
-                                            <option value="<?= $d->id ?>" <?= $d->id==$olddata->group_id ? "selected" :"" ?> > <?= $d->group ?></option>
+                                            <option value="<?= $d->id ?>" <?= $d->id==$classdata->group_id ? "selected" :"" ?> > <?= $d->group ?></option>
                                         <?php } } } ?>
                                     </select>
                                     </div>
@@ -137,7 +142,7 @@
                                                     $i=1;
                                                     foreach($result['data'] as $d){
                                         ?>
-                                            <option value="<?= $d->id ?>" <?= $d->id==$olddata->session_id ? "selected" :"" ?>> <?= $d->session ?></option>
+                                            <option value="<?= $d->id ?>" <?= $d->id==$classdata->session_id ? "selected" :"" ?>> <?= $d->session ?></option>
                                         <?php } } } ?>
                                     </select>
                                     </div>
@@ -168,10 +173,30 @@
 
             
             if($_POST){
-                $_POST['updated_at']=date('Y-m-d H:i:s');
-                $_POST['updated_by']=1;
-                $rs=$mysqli->common_update('student',$_POST,$con);
+                $stu['name']=$_POST['name'];
+                $stu['father_name']=$_POST['father_name'];
+                $stu['mother_name']=$_POST['mother_name'];
+                $stu['email']=$_POST['email'];
+                $stu['contact']=$_POST['contact'];
+                $stu['username']=$_POST['username'];
+                if($_POST['password'])
+                    $stu['password']=$_POST['password'];
+
+                $stu['updated_at']=date('Y-m-d H:i:s');
+                $stu['updated_by']=1;
+                $rs=$mysqli->common_update('student',$stu,$con);
                 if($rs){
+                    $stud['student_id']=$rs['data'];
+                    $stud['class_id']=$_POST['class_id'];
+                    $stud['section_id']=$_POST['section_id'];
+                    $stud['roll']=$_POST['roll'];
+                    $stud['group_id']=$_POST['group_id'];
+                    $stud['session_id']=$_POST['session_id'];
+                    $stud['updated_at']=date('Y-m-d H:i:s');
+                    $stud['updated_by']=1;
+                    $cons['id']=$classdata->id;
+                    $st=$mysqli->common_update('student_details',$stud,$cons);
+
                     if($rs['data']){
                         echo "<script>window.location='{$baseurl}student_list.php'</script>";
                     }else{
