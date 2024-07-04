@@ -1,15 +1,5 @@
-<?php
-    include_once('class/crud.php');
-    session_start();
-    if(isset($_SESSION['loggedin']) && $_SESSION['loggedin']){
-
-    }else{
-        header('location:login.php');
-    }
-    include_once('class/crud.php');
-    $mysqli=new crud;
-?>
-<?php $baseurl="http://localhost/ims/";?>
+<?php require_once('auth_check.php'); ?>
+<?php require_once('connection.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
