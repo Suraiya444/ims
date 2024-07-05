@@ -43,7 +43,7 @@
                                         </thead>
                                     <tbody>
                                         <?php 
-                                            $result=$mysqli->common_select_query("select class_fees_setting.id, class_fees_setting.amount, fees_category.name, session.session, class.class, `group`.`group` from class_fees_setting 
+                                            $result=$mysqli->common_select_query("select class_fees_setting.*, fees_category.name, session.session, class.class, `group`.`group` from class_fees_setting 
                                             join fees_category on class_fees_setting.fees_id= fees_category.id
                                             join session on class_fees_setting.session_id= session.id
                                             join class on class_fees_setting.class_id= class.id
