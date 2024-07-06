@@ -70,10 +70,11 @@
                    
                 </div>
             <?php 
-                $result=$mysqli->common_select_query('select * from fees_category');
+                $result=$mysqli->common_select_query('select fees_category.* from fees_category
+                                                        where fees_category.deleted_at is null');
                 if($result){
                     if($result['data']){
-                        $i=1;
+                       
                         foreach($result['data'] as $d){
             ?>
                 <div class="row mt-2">
@@ -87,7 +88,7 @@
                     
                     <div class="col-lg-3">
                         <label for="amount">Amount</label>
-                       <input type="text" name="amount" id="amount">
+                       <input type="text" name="amount[<?= $d->id ?>]" id="amount">
                     </div>
                 </div>
             <?php } } } ?>
@@ -101,14 +102,15 @@
             </form>
             <?php 
         if($_POST){
-            if($_POST['fees_id']){
-                foreach($_POST['fees_id'] as $f){
+            if(isset($_POST['fees_id'])){
+                foreach($_POST['fees_id'] as $f=>$fees_id){
                     $stu['class_id']=$_POST['class_id'];
                     $stu['group_id']=$_POST['group_id'];
                     $stu['session_id']=$_POST['session_id'];
                     $stu['fees_id']=$f;
+                    $stu['amount'] = $amount; 
                     $stu['created_at']=date('Y-m-d H:i:s');
-                    $stu['created_by']=1;
+                    $stu['created_by']=$_SESSION['id'];
                     $rs=$mysqli->common_create('class_fees_setting',$stu);
                 }
                 if($rs){
