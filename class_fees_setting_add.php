@@ -79,7 +79,7 @@
             ?>
                 <div class="row mt-2">
                     <div>
-                        <input type="checkbox" name="fees_id[<?= $d->id ?>]" value="<?= $d->name ?>" >
+                        <input type="checkbox" name="fees_id[<?= $d->id ?>]" ?>
                     </div>
     
                     <div class="col-lg-3">
@@ -89,7 +89,8 @@
                     
                     <div class="col-lg-3">
                         <label for="">Amount</label>
-                       <input type="text" name="amount" id="amount">
+                        <input type="text" name="amount"  class="form-control">
+                        </td>
                     </div>
                 </div>
             <?php } } } ?>
