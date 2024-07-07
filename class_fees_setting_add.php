@@ -81,14 +81,15 @@
                     <div>
                         <input type="checkbox" name="fees_id[<?= $d->id ?>]" value="<?= $d->name ?>" >
                     </div>
+    
                     <div class="col-lg-3">
                         <?= $d->name ?> 
                         <input type="hidden" name="fees_id[<?= $d->name ?>]" value="<?= $d->name ?>">
                     </div>
                     
                     <div class="col-lg-3">
-                        <label for="amount">Amount</label>
-                       <input type="text" name="amount[<?= $d->id ?>]" id="amount">
+                        <label for="">Amount</label>
+                       <input type="text" name="amount" id="amount">
                     </div>
                 </div>
             <?php } } } ?>
@@ -108,7 +109,6 @@
                     $stu['group_id']=$_POST['group_id'];
                     $stu['session_id']=$_POST['session_id'];
                     $stu['fees_id']=$f;
-                    $stu['amount'] = $amount; 
                     $stu['created_at']=date('Y-m-d H:i:s');
                     $stu['created_by']=$_SESSION['id'];
                     $rs=$mysqli->common_create('class_fees_setting',$stu);
