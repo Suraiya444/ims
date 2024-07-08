@@ -106,12 +106,11 @@
                         if(isset($_GET['class_id']) && isset($_GET['session_id']) && isset($_GET['group_id']) && $_GET['student_id']){
                             $result=$mysqli->common_select_query("SELECT class_fees_setting.fees_id,class_fees_setting.amount, student_fees.*,fees_catagory.name FROM  
                                         JOIN class_fees_setting on student_fees.fees_id=class_fees_setting.fees_id
-                                       
-                                        where student_fees.fees_id={$_GET['fees_id']}");
-                                                                      if($result){
-                                                                        if($result['data']){
-                                                                            foreach($result['data'] as $d) 
-                                                                            
+                                         where student_fees.fees_id={$_GET['fees_id']}");
+                        if($result){
+                        if($result['data']){
+                            foreach($result['data'] as $d) 
+                            
                     ?>
                     <tr>
                         <td>

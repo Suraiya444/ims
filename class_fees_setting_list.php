@@ -91,20 +91,23 @@
                     </thead>
                     <tbody>
                     <?php 
+
+
     
             if(isset($_GET['class_id']) && $_GET['group_id'] && $_GET['session_id']){
-            $result=$mysqli->common_select_query("SELECT class_fees_setting.*,fees_category.name ,fees_category.id FROM `class_fees_setting` 
-     JOIN fees_category on fees_category.fees_id=class_fees_setting.fees_id                                 
-           where class_fees_setting.class_id={$_GET['class_id']} 
-           and class_fees_setting.group_id={$_GET['group_id']}
-            and class_fees_setting.session_id={$_GET['session_id']}");
+            $result=$mysqli->common_select_query("SELECT  fees_category.name ,fees_category.id,class_fees_setting.* FROM `class_fees_setting` 
+            JOIN fees_category on class_fees_setting.fees_id=fees_category.id                               
+             where class_fees_setting.class_id={$_GET['class_id']} 
+            and class_fees_setting.group_id={$_GET['group_id']}
+            and class_fees_setting.session_id={$_GET['session_id']} ");
                         if($result){
                             if($result['data']){
+                                $i=1;
                                 foreach($result['data'] as $data){ ?>
             <tr>
-            <td><?=$data->id ?></td>
-            <td><?=$data->name?></td>
-            <td><?=$data->amount?></td>
+            <td><?= $i++ ?></td>
+            <td><?= $data-> name?></td>
+            <td><?= $data-> amount?></td>
             <td>
                 <span>
                     <a href="<?= $baseurl ?>class_fees_setting_edit.php?id=<?=$data->id ?>" class="mr-4" data-toggle="tooltip"
