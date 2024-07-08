@@ -94,23 +94,23 @@
     
             if(isset($_GET['class_id']) && $_GET['group_id'] && $_GET['session_id']){
             $result=$mysqli->common_select_query("SELECT class_fees_setting.*,fees_category.name ,fees_category.id FROM `class_fees_setting` 
-            JOIN fees_category on fees_category.fees_id=class_fees_setting.fees_id                                 
-          where class_fees_setting.class_id={$_GET['class_id']} 
-          and class_fees_setting.group_id={$_GET['group_id']}
-            and class_fees_setting.session_id={$_GET['session_id']} ");
+     JOIN fees_category on fees_category.fees_id=class_fees_setting.fees_id                                 
+           where class_fees_setting.class_id={$_GET['class_id']} 
+           and class_fees_setting.group_id={$_GET['group_id']}
+            and class_fees_setting.session_id={$_GET['session_id']}");
                         if($result){
                             if($result['data']){
                                 foreach($result['data'] as $data){ ?>
             <tr>
-            <td><?= $data->id ?></td>
-            <td><?= $data-> name?></td>
-            <td><?= $data-> amount?></td>
+            <td><?=$data->id ?></td>
+            <td><?=$data->name?></td>
+            <td><?=$data->amount?></td>
             <td>
                 <span>
-                    <a href="<?= $baseurl ?>class_fees_setting_edit.php?id=<?= $data ->id ?>" class="mr-4" data-toggle="tooltip"
+                    <a href="<?= $baseurl ?>class_fees_setting_edit.php?id=<?=$data->id ?>" class="mr-4" data-toggle="tooltip"
                         data-placement="top" title="Edit"><i
                             class="fa fa-pencil color-muted"></i> </a>
-                    <a href="<?= $baseurl ?>class_fees_setting_delete.php?id=<?= $data ->id ?>" data-toggle="tooltip"
+                    <a href="<?= $baseurl ?>class_fees_setting_delete.php?id=<?=$data->id ?>" data-toggle="tooltip"
                         data-placement="top" title="Close"><i
                             class="fa fa-close color-danger"></i></a>
                 </span>

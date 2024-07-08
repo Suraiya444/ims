@@ -75,11 +75,11 @@
                 if($result){
                     if($result['data']){
                        
-                        foreach($result['data'] as $d){
-            ?>
+                        foreach($result['data'] as $d){  ?>
+           
                 <div class="row mt-2">
                     <div>
-                        <input type="checkbox" name="fees_id[<?= $d->id ?>]" value="<?= $d->name ?>" >
+                        <input type="checkbox" name="fees_id[<?= $d->id ?>]" value="<?= $d->id ?>" >
                     </div>
     
                     <div class="col-lg-3">
