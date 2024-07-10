@@ -39,13 +39,12 @@
                                             <th scope="col">Mother's Name</th>
                                             <th scope="col">Email</th>
                                             <th scope="col">Contact</th>
-                                            <th scope="col">Photo</th>
                                             <th scope="col">Assign Class</th>
                                             <th scope="col">Qualification</th>
                                             <th scope="col">Joining</th>
-                                            <th scope="col">Resign</th>
                                             <th scope="col">Designation </th>
                                             <th scope="col">Department </th>
+                                            <th scope="col">Photo</th>
                                             <th scope="col">Edit</th>
                                         </tr>
                                     </thead>
@@ -68,13 +67,16 @@
                                             <td><?= $data-> mother_name ?></td>
                                             <td><?= $data-> email ?></td>
                                             <td><?= $data-> contact ?></td>
+<<<<<<< HEAD
                                             <td><img src="<?= $baseurl ?>assets/students/<?= $data->photo ?>" width="60px" alt=""></td>
+=======
+>>>>>>> cc652dbb30c439db3d3b13a85cd764333761480b
                                             <td><?= $data-> assigned_class ?></td>
                                             <td><?= $data-> qualification ?></td>
                                             <td><?= $data-> joining ?></td>
-                                            <td><?= $data-> resign ?></td>
                                             <td><?= $data-> designation ?></td>
                                             <td><?= $data-> department ?></td>
+                                            <td><img src="<?= $baseurl ?>assets/teachers/<?= $data->photo ?>" width="80px" alt=""></td>
                                             <td>
                                                 <span>
                                                     <a href="<?= $baseurl ?>teacher_edit.php?id=<?= $data->id ?>" class="mr-4" data-toggle="tooltip"

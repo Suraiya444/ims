@@ -127,6 +127,7 @@
                                         ?>
                                             <tr>
                                                 <th><?= $d->day_name?></th>
+                                                
                                                 <?php if($period){
                                                         foreach($period as $p){
                                                 ?>
