@@ -29,7 +29,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="form-validation">
-                                    <form class="form-valide" action="#" method="post">
+                                    <form class="form-valide" action="#" method="post" enctype="multipart/form-data">
                                     <div class="row">
                             <div class="col-lg-6">
                                 <!-- First Column -->
@@ -129,9 +129,9 @@
             if($img['size'] < (1000*1024)){
                 if($img['type'] =="image/jpeg"){
                     $imagename=time().rand(1111,9999).".jpg";
-                    $rs=move_uploaded_file($img['tmp_name'],'assets/students/'.$imagename);
+                    $rs=move_uploaded_file($img['tmp_name'],'assets/teachers/'.$imagename);
                     if($rs){
-                        $stu['photo']=$imagename;
+                        $tec['photo']=$imagename;
                     }
                 }else{
                     echo "Only image can be uploaded.";
