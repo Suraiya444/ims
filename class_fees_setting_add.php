@@ -67,52 +67,54 @@
                             <?php } } } ?>
                         </select>
                     </div>
-                   
+              
                 </div>
+                </form>   
+                <form method="post" action="">
+                <table class="table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Fees</th>
+                        <th>Amount</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
             <?php 
                 $result=$mysqli->common_select_query('select fees_category.* from fees_category
                                                         where fees_category.deleted_at is null');
                 if($result){
                     if($result['data']){
                        
-                        foreach($result['data'] as $d){
+                        foreach($result['data'] as $data=>$d){
             ?>
-                <div class="row mt-2">
-                    <div>
-                        <input type="checkbox" name="fees_id[<?= $d->id ?>]" ?>
-                    </div>
-    
-                    <div class="col-lg-3">
-                        <?= $d->name ?> 
-                        <input type="hidden" name="fees_id[<?= $d->name ?>]" value="<?= $d->name ?>">
-                    </div>
-                    
-                    <div class="col-lg-3">
-                        <label for="">Amount</label>
-                        <input type="text" name="amount"  class="form-control">
+                     <tr>
+                        <td>
+                        <input type="checkbox" name="fees_id[<?= $d->id ?>]" value="<?= $d->name ?>" >
                         </td>
-                    </div>
-                </div>
-            <?php } } } ?>
-                
-
-            
-                    
-                <div class="col-lg-10 justify-content-end mt-2 pt-3 mt-sm-0 d-flex">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
+                        <td> 
+                        <?= $d->name ?>
+                        </td>
+                            <td>
+                            <label for="">Amount</label>
+                            <input type="text" class="form-control"  name="amount[<?= $d->fees_id ?>]">
+ 
+                            <?php }}} ?>
+                         </tr>
+                         </tbody>
+                        </table>
+                         <button type="submit" class="btn btn-primary">Submit</button>
             </form>
             <?php 
         if($_POST){
             if(isset($_POST['fees_id'])){
                 foreach($_POST['fees_id'] as $f=>$fees_id){
-                    $stu['class_id']=$_POST['class_id'];
-                    $stu['group_id']=$_POST['group_id'];
-                    $stu['session_id']=$_POST['session_id'];
-                    $stu['fees_id']=$f;
-                    $stu['created_at']=date('Y-m-d H:i:s');
-                    $stu['created_by']=$_SESSION['id'];
-                    $rs=$mysqli->common_create('class_fees_setting',$stu);
+                    $fee['fees_id']=$fees_id;
+                    $fee['amount']=$_POST['amount'][$fees_id];
+                    $fee['created_at']=date('Y-m-d H:i:s');
+                    $fee['created_by']=$_SESSION['id'];
+                    $rs=$mysqli->common_create('class_fees_setting',$fee);
                 }
                 if($rs){
                     if($rs['data']){

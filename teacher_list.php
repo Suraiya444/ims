@@ -52,7 +52,7 @@
                                     <tbody>
                                         
                                         <?php 
-                                            $result=$mysqli->common_select_query("select teacher.*, designation.designation, department.department
+                                            $result=$mysqli->common_select_query("select teacher.*, designation.designation,teacher.photo, department.department
                                             from teacher 
                                             join designation on teacher.designation_id=designation.id
                                             join department on teacher.department_id=department.id where teacher.deleted_at is null");
@@ -68,7 +68,7 @@
                                             <td><?= $data-> mother_name ?></td>
                                             <td><?= $data-> email ?></td>
                                             <td><?= $data-> contact ?></td>
-                                            <td><img src="<?= $baseurl ?>assets/students/<?= $data->photo ?>" width="80px" alt=""></td>
+                                            <td><img src="<?= $baseurl ?>assets/students/<?= $data->photo ?>" width="60px" alt=""></td>
                                             <td><?= $data-> assigned_class ?></td>
                                             <td><?= $data-> qualification ?></td>
                                             <td><?= $data-> joining ?></td>

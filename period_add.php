@@ -64,6 +64,7 @@
                         </select>
                     </div>
                     <div class="col-3">
+
                         <label class="form-label" for="period_time">Time</label>
                         <input type="text" name="period_time" class="form-control" id="period_time" placeholder="00:00 - 00:00"/>
                     </div>

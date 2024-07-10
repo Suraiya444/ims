@@ -29,7 +29,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="form-validation">
-                                    <form class="form-valide" action="#" method="post">
+                           <form class="form-valide" method="post" enctype="multipart/form-data">
                                     <div class="row">
                             <div class="col-lg-6">
                                 <!-- First Column -->
@@ -45,6 +45,10 @@
                                     <label for="val-password">Mother's Name</label>
                                     <input type="text" class="form-control" id="val-password" name="mother_name" placeholder="Enter name..">
                                 </div>
+                                <div class="form-group col-md-6 ms-0">
+                                        <label>Photo</label>
+                                        <input type="file" name="photo" id="photo" class="form-control" placeholder="Photo..">
+                                    </div>
                                 <div class="form-group">
                                     <label for="val-email">Contact</label>
                                     <input type="text" class="form-control" id="val-email" name="contact" placeholder="Enter phone no..">
@@ -103,22 +107,13 @@
                                         <?php } } } ?>
                                     </select>
                                 </div>
-                                <div class="form-group">
-                                    <label for="val-currency">Photo </label>
-                                    <input type="file" class="form-control" id="val-currency" name="photo" >
-                                </div>
+
                                
                             </div>
-                        </div>
-                          
-                        <div class="form-group row">
-                            <div class="col-lg-8 ml-2">
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                </form>
+                       
+                             <button type="submit" class="btn btn-primary">Submit</button>
+                             
+                       </form>
     <?php 
       if($_POST){
 
@@ -126,7 +121,7 @@
         
             $img=$_FILES["photo"];
 
-            if($img['size'] < (1000*1024)){
+            if($img['size'] < (100*1024)){
                 if($img['type'] =="image/jpeg"){
                     $imagename=time().rand(1111,9999).".jpg";
                     $rs=move_uploaded_file($img['tmp_name'],'assets/students/'.$imagename);
@@ -136,10 +131,10 @@
                 }else{
                     echo "Only image can be uploaded.";
                 }
-                }else{
+            }else{
                 echo "File size cannot be more than 100KB";
-             }
             }
+        }
 
             $tec['name']=$_POST['name'];
             $tec['father_name']=$_POST['father_name'];
