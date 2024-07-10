@@ -45,7 +45,7 @@
                                         
                                         <?php 
                                             $result=$mysqli->common_select_query('select teacher.name ,teacher_attendance.* from teacher_attendance
-                                                                            join teacher on teacher_attendance.teacher_id=teacher.name');
+                                                                            join teacher on teacher_attendance.teacher_id=teacher.name where teacher_attendance.deleted_at is null');
                                             if($result){
                                                 if($result['data']){
                                                     $i=1;
@@ -63,7 +63,7 @@
                                                     <a href="<?= $baseurl ?>teacher_attendance_edit.php?id=<?=$data->id ?>" class="mr-4" data-toggle="tooltip"
                                                         data-placement="top" title="Edit"><i
                                                             class="fa fa-pencil color-muted"></i> </a>
-                                                    <a href="<?= $baseurl ?>teacher_attendance_delete.php?id=<?=$data->id ?>" data-toggle="tooltip"
+                                                    <a href="<?= $baseurl ?>teacher_attendance_delete.php?id=<?= $data ->id ?>" data-toggle="tooltip"
                                                         data-placement="top" title="Close"><i
                                                             class="fa fa-close color-danger"></i></a>
                                                 </span>

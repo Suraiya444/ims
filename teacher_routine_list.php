@@ -27,38 +27,11 @@
                         <div class="card-header">
                             <form method="get" action="">
                                 <div class="row">
-                                    <div class="col-md-4">
-                                        <label class="form-label" for="class_id">class</label>
-                                        <select class="form-control form-select" required name="class_id" id="class_id">
-                                            <option value="">Select Class</option>
-                                            <?php 
-                                                $result=$mysqli->common_select('class');
-                                                if($result){
-                                                    if($result['data']){
-                                                        foreach($result['data'] as $d){
-                                            ?>
-                                                <option <?= isset($_GET['class_id']) && $_GET['class_id']==$d->id?"selected":"" ?> value="<?= $d->id ?>" > <?= $d->class ?></option>
-                                            <?php } } } ?>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label class="form-label" for="section_id">Section</label>
-                                        <select class="form-control form-select" required name="section_id" id="section_id">
-                                            <option value="">Select Section</option>
-                                            <?php 
-                                                $result=$mysqli->common_select('section');
-                                                if($result){
-                                                    if($result['data']){
-                                                        foreach($result['data'] as $d){
-                                            ?>
-                                                <option value="<?= $d->id ?>" <?= isset($_GET['section_id']) && $_GET['section_id']==$d->id?"selected":"" ?>> <?= $d->section ?></option>
-                                            <?php } } } ?>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-4">
+                                   
+                                    <div class="col-md-8">
                                         <label class="form-label" for="session_id">Session</label>
                                         <select class="form-control form-select" required name="session_id" id="session_id">
-                                            <option value="">Select Section</option>
+                                            <option value="">Select Session</option>
                                             <?php 
                                                 $result=$mysqli->common_select('session');
                                                 if($result){
@@ -85,23 +58,25 @@
             }
         }
     }
-    $result=$mysqli->common_select('day_name');
+    $result=$mysqli->common_select('teacher');
     if($result){
         if($result['data']){
             foreach($result['data'] as $d){
-                $day_name[$d->sl]=$d;
+                $name[$d->id]=$d;
             }
         }
     }
-    if(isset($_GET['class_id']) && $_GET['section_id'] && $_GET['session_id']){
-        $result=$mysqli->common_select_query("SELECT class_routine.*, teacher.name as teacher_name, subject.subject_name as sub_name FROM `class_routine` 
-                                        JOIN subject on subject.id=class_routine.subject_name
-                                        JOIN teacher on teacher.id=class_routine.teacher_id
-                                        where class_routine.class_id={$_GET['class_id']} and class_routine.section_id={$_GET['section_id']} and class_routine.session_id={$_GET['session_id']}");
+    if(isset($_GET['session_id'])){
+        $result=$mysqli->common_select_query("SELECT teacher_routine.*, teacher.name as teacher_name, subject.subject_name as sub_name , class.class, section.section FROM `teacher_routine` 
+                                        JOIN subject on subject.id=teacher_routine.subject_name
+                                        JOIN teacher on teacher.id=teacher_routine.teacher_id
+                                        JOIN class on class.id=teacher_routine.class_id
+                                        JOIN section on section.id=teacher_routine.section_id
+                                        where teacher_routine.session_id={$_GET['session_id']}");
         if($result){
             if($result['data']){
                 foreach($result['data'] as $d){
-                    $class_routine[$d->day_name][$d->period]=$d;
+                    $teacher_routine[$d->teacher][$d->period]=$d;
                 }
             }
         }
@@ -113,7 +88,7 @@
                                 <table class="table table-bordered verticle-middle table-responsive-sm">
                                     <thead>
                                         <tr> 
-                                            <th scope="col">Day</th>
+                                            <th scope="col">Teacher</th>
                                             <?php if($period){
                                                     foreach($period as $p){
                                             ?>
@@ -122,20 +97,21 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php if($day_name){
-                                                foreach($day_name as $d){
+                                        <?php if($name){
+                                                foreach($name as $d){
                                         ?>
                                             <tr>
-                                                <th><?= $d->day_name?></th>
-                                                
+                                                <th><?= $d->name?></th>
                                                 <?php if($period){
                                                         foreach($period as $p){
                                                 ?>
                                                     <td>
                                                         <?php 
-                                                            if(isset($class_routine[$d->sl][$p->sl])){
-                                                                echo $class_routine[$d->sl][$p->sl]->sub_name;
-                                                                echo "<br/>".$class_routine[$d->sl][$p->sl]->teacher_name;
+                                                            if(isset($teacher_routine[$d->name][$p->sl])){
+                                                                echo $teacher_routine[$d->sl][$p->sl]->class;
+                                                                echo "<br/>".$teacher_routine[$d->sl][$p->sl]->section;
+                                                                echo "<br/>".$teacher_routine[$d->sl][$p->sl]->sub_name;
+                                                                echo "<br/>".$teacher_routine[$d->sl][$p->sl]->day_name;
                                                             }
                                                         ?>
                                                     </th>

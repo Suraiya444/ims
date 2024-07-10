@@ -37,6 +37,7 @@
                     <?php 
                        
                             $result=$mysqli->common_select_query("select teacher.* from teacher
+                            
                                                                  where teacher.deleted_at is null");
                         if($result){
                             if($result['data']){
