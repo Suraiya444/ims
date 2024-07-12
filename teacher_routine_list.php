@@ -49,7 +49,7 @@
                             </form>
                         </div>
 <?php 
-    $period=$day_name=$class_routine=[];
+    $period=$name=$teacher_routine=[];
     $result=$mysqli->common_select('period');
     if($result){
         if($result['data']){
@@ -67,7 +67,7 @@
         }
     }
     if(isset($_GET['session_id'])){
-        $result=$mysqli->common_select_query("SELECT teacher_routine.*, teacher.name as teacher_name, subject.subject_name as sub_name , class.class, section.section FROM `teacher_routine` 
+        $result=$mysqli->common_select_query("SELECT teacher_routine.*, teacher.name , subject.subject_name as sub_name , class.class, section.section FROM `teacher_routine` 
                                         JOIN subject on subject.id=teacher_routine.subject_name
                                         JOIN teacher on teacher.id=teacher_routine.teacher_id
                                         JOIN class on class.id=teacher_routine.class_id
