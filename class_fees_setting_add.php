@@ -108,7 +108,7 @@
             </form>
             <?php 
         if($_POST){
-            if(isset($_POST['fees_id'])){
+            if($_POST['fees_id']){
                 foreach($_POST['fees_id'] as $f=>$fees_id){
                     $fee['fees_id']=$fees_id;
                     $fee['amount']=$_POST['amount'][$fees_id];

@@ -15,8 +15,8 @@
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">Form</a></li>
-                            <li class="breadcrumb-item active"><a href="javascript:void(0)">Validation</a></li>
+                            <li class="breadcrumb-item"><a href="teacher_list.php">Teacher List</a></li>
+                            
                         </ol>
                     </div>
                 </div>
@@ -29,11 +29,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="form-validation">
-<<<<<<< HEAD
                            <form class="form-valide" method="post" enctype="multipart/form-data">
-=======
-                                    <form class="form-valide" action="#" method="post" enctype="multipart/form-data">
->>>>>>> cc652dbb30c439db3d3b13a85cd764333761480b
                                     <div class="row">
                             <div class="col-lg-6">
                                 <!-- First Column -->

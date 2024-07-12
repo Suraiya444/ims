@@ -16,8 +16,8 @@
                 </div>
                 <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="teacher_add.php">Teacher</a></li>
-                        <li class="breadcrumb-item active"><a href="teacher_list.php">teacher-List</a></li>
+                        <li class="breadcrumb-item"><a href="teacher_add.php">Teacher Add</a></li>
+                         
                     </ol>
                 </div>
             </div>
@@ -44,8 +44,9 @@
                                             <th scope="col">Joining</th>
                                             <th scope="col">Designation </th>
                                             <th scope="col">Department </th>
+                                            <th scope="col">Subject</th>
                                             <th scope="col">Photo</th>
-                                            <th scope="col">Edit</th>
+                                            <th scope="col">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -67,10 +68,7 @@
                                             <td><?= $data-> mother_name ?></td>
                                             <td><?= $data-> email ?></td>
                                             <td><?= $data-> contact ?></td>
-<<<<<<< HEAD
                                             <td><img src="<?= $baseurl ?>assets/students/<?= $data->photo ?>" width="60px" alt=""></td>
-=======
->>>>>>> cc652dbb30c439db3d3b13a85cd764333761480b
                                             <td><?= $data-> assigned_class ?></td>
                                             <td><?= $data-> qualification ?></td>
                                             <td><?= $data-> joining ?></td>

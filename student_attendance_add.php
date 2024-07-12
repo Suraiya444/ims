@@ -119,6 +119,7 @@
                 $att['note']=$_POST['note'][$student_id];
                 $att['att_date']=date('Y-m-d');
                 $att['created_at']=date('Y-m-d H:i:s');
+                
                 $att['created_by']=$_SESSION['id'];
                 
                 $rs=$mysqli->common_create('student_attendance',$att);
