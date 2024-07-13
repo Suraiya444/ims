@@ -115,7 +115,7 @@
                         <select class="form-control"  multiple="multiple" id="day_name" name="day_name[]" >
                             <option value="">Select Day </option>
                             <?php 
-                                $result=$mysqli->common_select('Day_name');
+                                $result=$mysqli->common_select('day_name');
                                 if($result){
                                     if($result['data']){
                                         foreach($result['data'] as $d){
