@@ -44,8 +44,10 @@
                                     <tbody>
                                         
                                         <?php 
-                                            $result=$mysqli->common_select_query('select teacher.name ,teacher_attendance.* from teacher_attendance
-                                                                            join teacher on teacher_attendance.teacher_id=teacher.name where teacher_attendance.deleted_at is null');
+                                            $result=$mysqli->common_select_query("SELECT teacher.name,teacher_attendance.*
+                                        FROM teacher_attendance
+                                          JOIN teacher ON teacher_attendance.teacher_id = teacher.teacher_id
+                                                 WHERE teacher_attendance.deleted_at IS NULL");
                                             if($result){
                                                 if($result['data']){
                                                     $i=1;
@@ -54,6 +56,8 @@
                                         <tr>
                                             <td><?= $i++ ?></td>
                                             <td><?= $data-> name  ?></td>
+
+                                            
                                             <td><?= $data-> att_date ?></td>
                                             <td><?= $data-> in_time ?></td>
                                             <td><?= $data-> out_time ?></td>

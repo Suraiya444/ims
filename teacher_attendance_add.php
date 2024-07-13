@@ -15,13 +15,13 @@
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="student_attendance_list.php">Attendance List</a></li>
-                 
+                    <li class="breadcrumb-item"><a href="student_attendance_list.php">Attendance</a></li>
+                    <li class="breadcrumb-item active"><a href="#">Add New</a></li>
                 </ol>
             </div>
         </div>
         <!-- row -->
-       
+         
         <form method="post" action="">
             <table class="table">
                 <thead>
@@ -36,28 +36,30 @@
                 <tbody>
                     <?php 
                        
-                            $result=$mysqli->common_select_query("select teacher.* from teacher
+                       $result=$mysqli->common_select_query("select teacher.* from teacher
                             
                                                                  where teacher.deleted_at is null");
+
+    
                         if($result){
                             if($result['data']){
                                 foreach($result['data'] as $sid=>$data){
                     ?>
                     <tr>
                         <td>
-                            <input type="checkbox" name="teacher_id[<?= $data->id ?>]" value="<?= $data->name ?>" >
+                            <input type="checkbox" name="teacher_id[]" value="<?= $data->teacher_id ?>" >
                         </td>
                         <td> 
                             <?= $data->name ?>
                         </td>
                         <td>
-                            <input type="time" class="form-control" value="<?= date('H:i:s') ?>" name="in_time[<?= $data->id ?>]">
+                            <input type="time" class="form-control" value="<?= date('H:i:s') ?>" name="in_time[<?= $data->teacher_id ?>]">
                         </td>
                         <td>
-                            <input type="time" name="out_time[<?= $data->id ?>]" class="form-control">
+                            <input type="time" name="out_time[<?= $data->teacher_id ?>]" value="<?= date('H:i:s') ?>" class="form-control">
                         </td>
                         <td>
-                            <select name="note[<?= $data->id ?>]" class="form-control">
+                            <select name="note[<?= $data->teacher_id ?>]" class="form-control">
                                 <option value="P">P</option>
                                 <option value="A">A</option>
                                 <option value="L">L</option>
@@ -72,6 +74,7 @@
         </form>
     <?php 
         if($_POST){
+            
             foreach($_POST['teacher_id'] as $i=>$teacher_id){
                 $att['teacher_id']=$teacher_id;
                 $att['in_time']=$_POST['in_time'][$teacher_id];
