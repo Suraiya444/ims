@@ -16,8 +16,8 @@
                 </div>
                 <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="teacher_add.php">Teacher</a></li>
-                        <li class="breadcrumb-item active"><a href="teacher_list.php">teacher-List</a></li>
+                        <li class="breadcrumb-item"><a href="teacher_add.php">Teacher Add</a></li>
+                         
                     </ol>
                 </div>
             </div>
@@ -39,20 +39,20 @@
                                             <th scope="col">Mother's Name</th>
                                             <th scope="col">Email</th>
                                             <th scope="col">Contact</th>
-                                            <th scope="col">Photo</th>
                                             <th scope="col">Assign Class</th>
                                             <th scope="col">Qualification</th>
                                             <th scope="col">Joining</th>
-                                            <th scope="col">Resign</th>
                                             <th scope="col">Designation </th>
                                             <th scope="col">Department </th>
-                                            <th scope="col">Edit</th>
+                                            <th scope="col">Subject</th>
+                                            <th scope="col">Photo</th>
+                                            <th scope="col">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         
                                         <?php 
-                                            $result=$mysqli->common_select_query("select teacher.*, designation.designation, department.department
+                                            $result=$mysqli->common_select_query("select teacher.*, designation.designation,teacher.photo, department.department
                                             from teacher 
                                             join designation on teacher.designation_id=designation.id
                                             join department on teacher.department_id=department.id where teacher.deleted_at is null");
@@ -68,13 +68,13 @@
                                             <td><?= $data-> mother_name ?></td>
                                             <td><?= $data-> email ?></td>
                                             <td><?= $data-> contact ?></td>
-                                            <td><img src="<?= $baseurl ?>assets/students/<?= $data->photo ?>" width="80px" alt=""></td>
+                                            <td><img src="<?= $baseurl ?>assets/students/<?= $data->photo ?>" width="60px" alt=""></td>
                                             <td><?= $data-> assigned_class ?></td>
                                             <td><?= $data-> qualification ?></td>
                                             <td><?= $data-> joining ?></td>
-                                            <td><?= $data-> resign ?></td>
                                             <td><?= $data-> designation ?></td>
                                             <td><?= $data-> department ?></td>
+                                            <td><img src="<?= $baseurl ?>assets/teachers/<?= $data->photo ?>" width="80px" alt=""></td>
                                             <td>
                                                 <span>
                                                     <a href="<?= $baseurl ?>teacher_edit.php?id=<?= $data->id ?>" class="mr-4" data-toggle="tooltip"

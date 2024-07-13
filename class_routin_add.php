@@ -72,7 +72,7 @@
                         <select class="form-control" id="day_name" name="day_name">
                             <option value="">Select Day </option>
                             <?php 
-                                $result=$mysqli->common_select('Day_name');
+                                $result=$mysqli->common_select('day_name');
                                 if($result){
                                     if($result['data']){
                                         foreach($result['data'] as $d){
@@ -89,8 +89,9 @@
                         $i=1;
                         foreach($result['data'] as $d){
             ?>
+
                 <div class="row mt-4">
-                    <div class="col-lg-3">
+                    <div class=""col-lg-3>
                         <?= $d->period_name ?> (<?= $d->period_time ?>)
                         <input type="hidden" name="period_id[<?= $d->sl ?>]" value="<?= $d->sl ?>">
                     </div>

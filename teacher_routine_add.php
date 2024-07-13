@@ -41,7 +41,7 @@
                     </div>
                     <div class="col-lg-3">
                     <label for="teacher_id">Teacher </label>
-                        <select class="form-control" name="teacher_name[<?= $d->sl ?>]">
+                        <select class="form-control" name="teacher_name">
                             <option value="">Select Teacher</option>
                             <?php 
                                 $result=$mysqli->common_select('teacher');
@@ -69,7 +69,7 @@
                     </div>
                     <div class="col-lg-3">
                         
-                        <select class="form-control" id="class_id" name="class_id">
+                        <select class="form-control"  multiple="multiple" id="class_id" name="class_id[]">
                             <option value="">Select Class</option>
                             <?php 
                                 $result=$mysqli->common_select('class');
@@ -83,7 +83,7 @@
                     </div>
                     <div class="col-lg-3">
                         
-                        <select class="form-control" id="section_id" name="section_id">
+                        <select class="form-control"  multiple="multiple" id="section_id" name="section_id[]">
                             <option value="">Select Section</option>
                             <?php 
                                 $result=$mysqli->common_select('section');
@@ -96,7 +96,7 @@
                         </select>
                     </div>
                     <div class="col-lg-2">
-                        <select class="form-control" name="subject_id[<?= $d->sl ?>]">
+                        <select class="form-control"  multiple="multiple" name="subject_id[]" value="<?= $d->sl ?>">
                             <option value="">Select Subject</option>
                             <?php 
                                 $result=$mysqli->common_select('subject');
@@ -112,7 +112,7 @@
                    
                     <div class="col-lg-2">
                        
-                        <select class="form-control multiple-select" id="day_name" name="day_name" multiple>
+                        <select class="form-control"  multiple="multiple" id="day_name" name="day_name[]" >
                             <option value="">Select Day </option>
                             <?php 
                                 $result=$mysqli->common_select('day_name');
@@ -138,16 +138,16 @@
         if($_POST){
             if($_POST['period_id']){
                 foreach($_POST['period_id'] as $p){
-                    $stu['class_id']=$_POST['class_id'];
-                    $stu['section_id']=$_POST['section_id'];
-                    $stu['session_id']=$_POST['session_id'];
-                    $stu['day_name']=$_POST['day_name'];
-                    $stu['period']=$p;
-                    $stu['subject_name']=$_POST['subject_name'][$p];
-                    $stu['teacher_id']=$_POST['teacher_name'][$p];
-                    $stu['created_at']=date('Y-m-d H:i:s');
-                    $stu['created_by']=1;
-                    $rs=$mysqli->common_create('teacher_routine',$stu);
+                    $r['class_id']=$_POST['class_id'][$p];
+                    $r['section_id']=$_POST['section_id'][$p];
+                    $r['session_id']=$_POST['session_id'];
+                    $r['day_name']=$_POST['day_name'][$p];
+                    $r['period']=$p;
+                    $r['subject_name']=$_POST['subject_name'][$p];
+                    $r['teacher_id']=$_POST['teacher_name'];
+                    $r['created_at']=date('Y-m-d H:i:s');
+                    $r['created_by']=1;
+                    $rs=$mysqli->common_create("teacher_routine",$r);
                 }
                 if($rs){
                     if($rs['data']){
