@@ -93,7 +93,7 @@
                             <input type="time" class="form-control" value="<?= date('H:i:s') ?>" name="in_time[<?= $data->student_id ?>]">
                         </td>
                         <td>
-                            <input type="time" name="out_time[<?= $data->student_id ?>]" value="<?= date('H:i:s') ?> "class="form-control">
+                            <input type="time" name="out_time[<?= $data->student_id ?>]" value="<?= date('H:i:s') ?>" class="form-control">
                         </td>
                         <td>
                             <select name="note[<?= $data->student_id ?>]" class="form-control">
