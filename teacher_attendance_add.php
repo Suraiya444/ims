@@ -48,7 +48,7 @@
                     <tr>
                         <td>
                         <input type="checkbox" name="teacher_id[]" value="<?= $data->teacher_id ?>" >
-                            <input type="checkbox" name="teacher_id[]" value="<?= $data->teacher_id ?>" >
+                            
                         </td>
                         <td> 
                             <?= $data->name ?>
