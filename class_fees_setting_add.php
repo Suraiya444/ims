@@ -90,13 +90,14 @@
                     ?>
                     <tr>
                         <td>
-                            <input type="checkbox" name="fees_category_id[<?= $data->id ?>]" value="<?= $data->name ?>" >
+                        <input type="checkbox" name="fees_id[]" value="<?= $data->fees_id ?>" >
+                        </td>
                         </td>
                         <td> 
                             <?= $data->name ?>
                         </td>
                         <td>
-                            <input type="amount" class="form-control"  name="amount[<?= $data->id ?>]">
+                            <input type="text" class="form-control"  name="amount[<?= $data->fees_id ?>]">
                         </td>
                     </tr>
                     <?php } } }  ?>
@@ -108,13 +109,13 @@
             </form>
             <?php 
         if($_POST){
-            if($_POST['fees_category_id']){
-                foreach($_POST['fees_category_id'] as $p){
+            
+            foreach($_POST['fees_id'] as $i=>$fees_id){
+                    $stu['fees_id']=$fees_id;
                     $stu['class_id']=$_POST['class_id'];
                     $stu['group_id']=$_POST['group_id'];
                     $stu['session_id']=$_POST['session_id'];
-                    $stu['fees_id']=$_POST['fees_id'];
-                    $stu['amount']=$_POST['amount'];
+                    $stu['amount']=$_POST['amount'][$fees_id];;
                     $stu['created_at']=date('Y-m-d H:i:s');
                     $stu['created_by']=1;
                     $rs=$mysqli->common_create('class_fees_setting',$stu);
@@ -127,7 +128,7 @@
                     }
                 }
             }
-        }
+        
     ?>
             </div>
         </div>
