@@ -45,16 +45,18 @@
                     ?>
                     <tr>
                         <td>
-                            <input type="checkbox" name="teacher_id[<?= $data->id ?>]" value="<?= $data->name ?>" >
+                        <input type="checkbox" name="teacher_id[]" value="<?= $data->teacher_id ?>" >
                         </td>
                         <td> 
                             <?= $data->name ?>
                         </td>
                         <td>
-                            <input type="time" class="form-control" value="<?= date('H:i:s') ?>" name="in_time[<?= $data->id ?>]">
+                        <input type="time" class="form-control" value="<?= date('H:i:s') ?>" 
+                         name="in_time[<?= $data->teacher_id ?>]">
                         </td>
                         <td>
-                            <input type="time" name="out_time[<?= $data->id ?>]" class="form-control">
+                        <input type="time" class="form-control" value="<?= date('H:i:s') ?>" 
+                        name="out_time[<?= $data->teacher_id ?>]">
                         </td>
                         <td>
                             <select name="note[<?= $data->id ?>]" class="form-control">
@@ -70,8 +72,9 @@
             
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
-    <?php 
+        <?php 
         if($_POST){
+            
             foreach($_POST['teacher_id'] as $i=>$teacher_id){
                 $att['teacher_id']=$teacher_id;
                 $att['in_time']=$_POST['in_time'][$teacher_id];
@@ -79,7 +82,9 @@
                 $att['note']=$_POST['note'][$teacher_id];
                 $att['att_date']=date('Y-m-d');
                 $att['created_at']=date('Y-m-d H:i:s');
+                
                 $att['created_by']=$_SESSION['id'];
+                
                 $rs=$mysqli->common_create('teacher_attendance',$att);
             }
             if($rs){
@@ -89,8 +94,7 @@
                     echo $rs['error'];
                 }
             }
-        }
-    ?>
+        } ?>
     </div>
 </div>
 <!--**********************************
