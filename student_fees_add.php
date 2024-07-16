@@ -120,7 +120,7 @@
                             ?>
                                 <tr>
                                     <td>
-                                    <input type="checkbox" name="fees_category_id[]" value="<?= $data->fees_category_id ?>" >
+                                    <input type="checkbox" name="fees_category_id[]" value="<?= $data->fees_category_id ?> <?= json_encode($data) ?>" >
                                     </td>
                                     <td> 
                                         <?= $data->name ?>
@@ -141,8 +141,8 @@
                                 <label for="" class="form-group"><h6>Fees Amount</h6></label> 
                             </div>
                             <div class="col-4 mt-2">
-                                <label for="" class="form-group"><h6 id="total_qty">0</h6></label>
-                                <input type="hidden" name="total_qty" id="total_qty_p">
+                                <label for="" class="form-group"><h6 id="fees_amount">0</h6></label>
+                                <input type="hidden" name="fees_amount" id="fees_amount_t">
                             </div>
                         </div>
                         <div class="row">
@@ -164,7 +164,7 @@
                                 <label for="" class="form-group"><h6>Due</h6></label> 
                             </div>
                             <div class="col-4 mt-2">
-                                <input type="text" class="form-control form-group" id="vat" onkeyup="check_change()">
+                                <input type="text" class="form-control form-group" id="due" onkeyup="check_change()">
                             </div>
                         </div>
                     </div>
@@ -175,8 +175,8 @@
                                 <label for="" class="form-group"><h6>Total Amount</h6></label> 
                             </div>
                             <div class="col-4 mt-2 pe-5 text-end">
-                                <label for="" class="form-group"><h6 id="tsubtotal">0.00</h6></label>
-                                <input type="hidden" name="tsubtotal" id="tsubtotal_p">
+                                <label for="" class="form-group"><h6 id="totalamount">0.00</h6></label>
+                                <input type="hidden" name="totalamount" id="totalamount_f">
                             </div>
                         </div>   
                         
@@ -185,8 +185,8 @@
                                 <label for="" class="form-group"><h6>Fee Waiver</h6></label> 
                             </div>
                             <div class="col-4 mt-2 pe-5 text-end">
-                                <label for="" class="form-group"><h6 id="tdiscount">0.00</h6></label>
-                                <input type="hidden" name="tdiscount" id="tdiscount_p">
+                                <label for="" class="form-group"><h6 id="fdiscount">0.00</h6></label>
+                                <input type="hidden" name="fdiscount" id="fdiscount_a">
                             </div>
                         </div>  
                         <div class="row">
@@ -195,7 +195,7 @@
                             </div>
                             <div class="col-4 mt-2 pe-5 text-end">
                                 <label for="" class="form-group"><h6 id="tgrandtotal">0.00</h6></label>
-                                <input type="hidden" name="tgrandtotal" id="tgrandtotal_p">
+                                <input type="hidden" name="tgrandtotal" id="tgrandtotal_f">
                             </div>
                         </div>
                         <div class="row">
@@ -203,8 +203,17 @@
                                 <label for="" class="form-group"><h6>Due</h6></label> 
                             </div>
                             <div class="col-4 mt-2 pe-5 text-end">
-                                <label for="" class="form-group"><h6 id="vat_v">0.00</h6></label>
-                                <input type="hidden" name="vat" id="vat_p">
+                                <label for="" class="form-group"><h6 id="due_d">0.00</h6></label>
+                                <input type="hidden" name="due" id="due_f">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4 offset-4 mt-2 pe-2 text-end">
+                                <label for="" class="form-group"><h6>Total</h6></label> 
+                            </div>
+                            <div class="col-4 mt-2 pe-5 text-end">
+                                <label for="" class="form-group"><h6 id="total">0.00</h6></label>
+                                <input type="hidden" name="total" id="total_a">
                             </div>
                         </div>
                         
@@ -247,3 +256,44 @@
 
  
 <?php include('include/footer.php') ?> 
+
+
+<script>
+    var fees_amount=<?= json_encode($sid) ?>;
+    var selected_fees=[];
+    function return_row_with_data(item){
+        let data=JSON.parse(item.value);
+        if(!selected_fees.some(k => k == data.id)){
+            let row=`<tr>
+                        <td class="p-2">
+                            ${data.brand_name}
+                            <input type="hidden" name="fees_category_id[]" value="${data.id}">
+                        </td>
+                       
+                        <td class="p-2">
+                            ${data.amount}
+                            <input type="hidden" class="amount" name="amount[]" value="${data.amount}">
+                        </td>
+                        <td class="p-2">
+                            <span id="amount${data.id}" class="subprice"> </span>
+                        </td>
+                        <td class="p-2">Action</td>
+                    </tr>`
+            document.getElementById('details_data').insertRow().innerHTML=row;
+            selected_medicine.push(data.id)
+        }
+        
+    }
+//CALCUALATED SALES PRICE
+    function get_cal(fees_amount,cfsid){
+        var price = (isNaN(parseFloat(fees_category_id[cfsid].price))) ? 0 :parseFloat(fees_category_id[cfsid].price); 
+        var fees_amount = (isNaN(parseFloat(fees_amount.value))) ? 0 :parseFloat(fees_amount.value); 
+    
+        var subtotal = price * fees_amount;
+            document.getElementById('price'+cfsid).innerHTML=subtotal
+
+        total_calculate();
+    }
+    //END
+
+</script>
