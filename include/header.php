@@ -28,7 +28,7 @@
         ***********************************-->
         <div class="nav-header">
             <a href="index.php" class="brand-logo">
-                <img class="logo-abbr" src="<?= $baseurl ?>assets/images/logo.png" alt="">
+                <img class="logo-abbr" src="<?= $baseurl ?>assets/images/logo3.png" alt="">
                 <img class="logo-compact" src="<?= $baseurl ?>assets/images/logo3.png" alt="">
                 <img class="brand-title" src="<?= $baseurl ?>assets/images/logo3.png" alt="">
             </a>

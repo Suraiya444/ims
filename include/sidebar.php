@@ -44,6 +44,13 @@
                                 </ul>
                             </li>
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                            class="icon icon-form"></i><span class="nav-text">Subject</span></a>
+                                <ul aria-expanded="false">
+                                    <li><a href="<?= $baseurl ?>subject_add.php"> Add</a>
+                                    <li><a href="<?= $baseurl ?>subject_list.php"> List</a>
+                                </ul>
+                            </li>
+                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                             class="icon icon-form"></i><span class="nav-text">Section</span></a>
                                 <ul aria-expanded="false">
                                     <li><a href="<?= $baseurl ?>section_add.php"> Add</a>
@@ -62,6 +69,13 @@
                                 <ul aria-expanded="false">
                                     <li><a href="<?= $baseurl ?>session_add.php"> Add</a>
                                     <li><a href="<?= $baseurl ?>session_list.php"> List</a>
+                                </ul>
+                            </li> 
+                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                        class="icon icon-form"></i><span class="nav-text">Exam Terms</span></a>
+                                <ul aria-expanded="false">
+                                    <li><a href="<?= $baseurl ?>exam_term_add.php"> Add</a>
+                                    <li><a href="<?= $baseurl ?>exam_term_list.php"> List</a>
                                 </ul>
                             </li> 
                     </li>
