@@ -149,6 +149,14 @@
                             <li><a href="teacher_routine_list.php">List</a></li>
                         </ul>
                     </li>
+                    <li class="nav-label">Employees</li>
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                                class="icon icon-layout-25"></i><span class="nav-text">Employee</span></a>
+                        <ul aria-expanded="false">
+                            <li><a href="Employee_add.php">Add</a></li>
+                            <li><a href="Employee_list.php">List</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
 
