@@ -34,12 +34,12 @@
                                     if($result['data']){
                                         foreach($result['data'] as $d){
                             ?>
-                            <option value="<?= $d->id ?>"><?= $d->class ?> </option>
+                            <option value="<?= $d->id ?>" <?= isset($_GET['class_id']) && $_GET['class_id']==$d->id?"selected":"" ?>><?= $d->class ?> </option>
                             <?php } } } ?>
                         </select>
                     </div>
                     <div class="col-lg-3">
-                        <label for="class_id">Section</label>
+                        <label for="section_id">Section</label>
                         <select class="form-control" id="section_id" name="section_id">
                             <option value="">Select Section</option>
                             <?php 
@@ -48,13 +48,13 @@
                                     if($result['data']){
                                         foreach($result['data'] as $d){
                             ?>
-                            <option value="<?= $d->id ?>"><?= $d->section ?> </option>
+                             <option value="<?= $d->id ?>" <?= isset($_GET['section_id']) && $_GET['section_id']==$d->id?"selected":"" ?>><?= $d->section ?> </option>
                             <?php } } } ?>
                         </select>
                     </div>
                     
                     <div class="col-lg-3 pt-2">
-                        <label for="group_id">Session</label>
+                        <label for="session_id">Session</label>
                         <select class="form-control" id="session_id" name="session_id">
                             <option value="">Select Session </option>
                             <?php 
@@ -63,14 +63,14 @@
                                     if($result['data']){
                                         foreach($result['data'] as $d){
                             ?>
-                            <option value="<?= $d->id ?>"><?= $d->session ?></option>
+                             <option value="<?= $d->id ?>" <?= isset($_GET['session_id']) && $_GET['session_id']==$d->id?"selected":"" ?>><?= $d->session ?> </option>
                             <?php } } } ?>
                         </select>
                     </div>
                     </div>
                     <div class="row">
                     <div class="col-lg-3">
-                        <label for="class_id">Exam Term</label>
+                        <label for="term">Exam Term</label>
                         <select class="form-control" id="term" name="term">
                             <option value="">Select Class</option>
                             <?php 
@@ -79,12 +79,12 @@
                                     if($result['data']){
                                         foreach($result['data'] as $d){
                             ?>
-                            <option value="<?= $d->id ?>"><?= $d->term ?> </option>
+                            <option value="<?= $d->id ?>" <?= isset($_GET['id']) && $_GET['id']==$d->id?"selected":"" ?>><?= $d->term ?> </option>
                             <?php } } } ?>
                         </select>
                     </div>
                     <div class="col-lg-3">
-                        <label for="class_id">Subject</label>
+                        <label for="subject_id">Subject</label>
                         <select class="form-control" id="subject" name="subject_id">
                             <option value="">Select Class</option>
                             <?php 
@@ -93,14 +93,14 @@
                                     if($result['data']){
                                         foreach($result['data'] as $d){
                             ?>
-                            <option value="<?= $d->id ?>"><?= $d->subject_name ?> </option>
+                                 <option value="<?= $d->id ?>" <?= isset($_GET['subject_id']) && $_GET['subject_id']==$d->id?"selected":"" ?>><?= $d->subject_name ?> </option>
                             <?php } } } ?>
                         </select>
                     </div>
-                    </div> 
+                    </div>  
                     
                 <div class="col-lg-10 justify-content-start mt-2 pt-3 mt-sm-0 d-flex">
-                    <button type="submit" class="btn btn-primary">gert Student</button>
+                    <button type="submit" class="btn btn-primary">Get Student</button>
                 </div>
             </form>
             <form action="" method="post">
@@ -114,15 +114,19 @@
                     </thead>
                     <tbody>
                     <?php 
-                        if(isset($_GET['class_id']) && isset($_GET['section_id']) && isset($_GET['session_id'])){
-                            $result=$mysqli->common_select_query("select student.name, student_details.* from student_details
-                                                                join student_details on student_details.student_id=student_marks.student_details
-                                                                 where student_marks.class_id={$_GET['class_id']}
-                                                                  and student_marks.section_id={$_GET['section_id']}
-                                                                   and student_marks.subject_id={$_GET['subject_id']}
-                                                                and student_marks.deleted_at is null");
+                        if(isset($_GET['subject_id'])){
 
-     
+                            $result=$mysqli->common_select_query("class_subject.*,student_details.student_id
+                                                            from class_subject
+                                                            JOIN student_details on student_details.student_id=class_subject.id
+                                                            where 
+                                                            class_id={$_GET['class_id']} and
+                                                            group_id={$_GET['group_id']} and
+                                                            session_id={$_GET['session_id']} and
+                                                            deleted_at is null 
+                                                            ");
+
+                           
                         if($result){
                             if($result['data']){
                                 foreach($result['data'] as $sid=>$data){
@@ -132,10 +136,10 @@
                             <input type="checkbox" name="student_id[]" value="<?= $data->student_id ?>" >
                         </td>
                         <td> 
-                            <?= $data->name ?>
+                            <?= $data->student_id ?>
                         </td>
                         <td>
-                            <input type="text" class="form-control" value="<?=$data->total_marks ?>" name="total_marks[<?= $data->student_id ?>]">
+                            <input type="text" class="form-control" value="marks" name="marks[subject_id]">
                         </td>
                        
                          
@@ -147,24 +151,25 @@
 
 
             <?php 
-        if($_POST){
+         if($_POST){
             
             foreach($_POST['student_id'] as $i=>$student_id){
-                $att['student_id']=$student_id;
-                $att['total_marks']=$_POST['total_marks'][$student_id];
-                $att['created_at']=date('Y-m-d H:i:s');                
-                $att['created_by']=$_SESSION['id'];                
-                $rs=$mysqli->common_create('student_marks',$att);
-            }
-            if($rs){
-                if($rs['data']){
-                    echo "<script>window.location='{$baseurl}exam_term_list.php'</script>";
-                }else{
-                    echo $rs['error'];
+                    $att['student_id']=$student_id;
+                    $att['marks']=$_POST['total_marks'][$subject_id];
+                    $att['created_at']=date('Y-m-d H:i:s');                
+                    $att['created_by']=$_SESSION['id'];                
+                    $rs=$mysqli->common_create('class_subject',$att);
+                }
+                if($rs){
+                    if($rs['data']){
+                        echo "<script>window.location='{$baseurl}class_subject_list.php'</script>";
+                    }else{
+                        echo $rs['error'];
+                    }
                 }
             }
-        }
     ?>
+     
             </div>
         </div>
         <!--**********************************
