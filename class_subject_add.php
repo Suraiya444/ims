@@ -114,14 +114,14 @@
                     </thead>
                     <tbody>
                     <?php 
-                        if(isset($_GET['subject_id'])){
+                         if(isset($_GET['class_id']) && isset($_GET['section_id'])){
 
-                            $result=$mysqli->common_select_query("class_subject.*,student_details.student_id
-                                                            from class_subject
-                                                            JOIN student_details on student_details.student_id=class_subject.id
+                            $result=$mysqli->common_select_query("student.name,student_details.*
+                                                            from student_details
+                                                            JOIN student on student.id=student_details.student_id
                                                             where 
                                                             class_id={$_GET['class_id']} and
-                                                            group_id={$_GET['group_id']} and
+                                                            section_id={$_GET['section_id']} and
                                                             session_id={$_GET['session_id']} and
                                                             deleted_at is null 
                                                             ");
@@ -136,10 +136,10 @@
                             <input type="checkbox" name="student_id[]" value="<?= $data->student_id ?>" >
                         </td>
                         <td> 
-                            <?= $data->student_id ?>
+                            <?= $data->name ?>
                         </td>
                         <td>
-                            <input type="text" class="form-control" value="marks" name="marks[subject_id]">
+                            <input type="text" class="form-control" value="marks" name="marks[student_id]">
                         </td>
                        
                          
@@ -151,25 +151,25 @@
 
 
             <?php 
-         if($_POST){
+          if($_POST){
             
             foreach($_POST['student_id'] as $i=>$student_id){
-                    $att['student_id']=$student_id;
-                    $att['marks']=$_POST['total_marks'][$subject_id];
-                    $att['created_at']=date('Y-m-d H:i:s');                
-                    $att['created_by']=$_SESSION['id'];                
-                    $rs=$mysqli->common_create('class_subject',$att);
-                }
-                if($rs){
-                    if($rs['data']){
-                        echo "<script>window.location='{$baseurl}class_subject_list.php'</script>";
-                    }else{
-                        echo $rs['error'];
-                    }
+                $att['student_id']=$student_id;
+                $att['marks']=$_POST['total_marks'][$student_id];
+                $att['created_at']=date('Y-m-d H:i:s');
+                $att['created_by']=$_SESSION['id'];
+                
+                $rs=$mysqli->common_create('class_subject',$att);
+            }
+            if($rs){
+                if($rs['data']){
+                    echo "<script>window.location='{$baseurl}class_subject_list.php'</script>";
+                }else{
+                    echo $rs['error'];
                 }
             }
-    ?>
-     
+        }
+        ?>
             </div>
         </div>
         <!--**********************************
@@ -178,3 +178,7 @@
 
  
 <?php include('include/footer.php') ?> 
+
+
+ 
+            
