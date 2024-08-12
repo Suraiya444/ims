@@ -22,7 +22,7 @@
                 </div>
                 <!-- row -->
            
-            <form method="post" action="">
+            <form method="get" action="">
                  <div class="row">
                     <div class="col-lg-3">
                         <label for="class_id">Class</label>
@@ -114,19 +114,19 @@
                     </thead>
                     <tbody>
                     <?php 
+          
                          if(isset($_GET['class_id']) && isset($_GET['section_id'])){
 
-                            $result=$mysqli->common_select_query("student.name,student_details.*
+                            $result=$mysqli->common_select_query("select student.name,student_details.*
                                                             from student_details
                                                             JOIN student on student.id=student_details.student_id
                                                             where 
-                                                            class_id={$_GET['class_id']} and
-                                                            section_id={$_GET['section_id']} and
-                                                            session_id={$_GET['session_id']} and
-                                                            deleted_at is null 
+                                                            student_details.class_id={$_GET['class_id']} and
+                                                            student_details.section_id={$_GET['section_id']} and
+                                                            student_details.session_id={$_GET['session_id']} and
+                                                            student_details.deleted_at is null 
                                                             ");
 
-                           
                         if($result){
                             if($result['data']){
                                 foreach($result['data'] as $sid=>$data){
