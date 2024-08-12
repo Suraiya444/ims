@@ -84,10 +84,10 @@
                 $att['note']=$_POST['note'][$teacher_id];
                 $att['att_date']=date('Y-m-d');
                 $att['created_at']=date('Y-m-d H:i:s');
-                
                 $att['created_by']=$_SESSION['id'];
                 
                 $rs=$mysqli->common_create('teacher_attendance',$att);
+                echo "$att";
             }
             if($rs){
                 if($rs['data']){

@@ -109,7 +109,10 @@
                     <tr>
                         <th>ID</th>
                         <th>Student</th>
-                        <th>Marks</th>
+                        <th>Subjective</th>
+                        <th>Objective</th>
+                        <th>Practical</th>
+                        <th>Pass Marks</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -139,7 +142,16 @@
                             <?= $data->name ?>
                         </td>
                         <td>
-                            <input type="text" class="form-control" value="marks" name="marks[student_id]">
+                            <input type="text" class="form-control" value=" " name="sub[student_id]">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" value=" " name="obj[student_id]">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" value=" " name="prac[student_id]">
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" value=" " name="pass_marks[student_id]">
                         </td>
                        
                          
@@ -147,19 +159,28 @@
                     <?php } } } } ?>
                     </tbody>
                 </table>
+                <div class="col-lg-10 justify-content-end mt-2 pt-3 mt-sm-0 d-flex">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
             </form>
 
 
             <?php 
           if($_POST){
-            
+            if($_POST['student_id']){
             foreach($_POST['student_id'] as $i=>$student_id){
                 $att['student_id']=$student_id;
-                $att['marks']=$_POST['total_marks'][$student_id];
+                $att['sub']=$_POST['sub'][$student_id];
+                $att['obj']=$_POST['obj'][$student_id];
+                $att['prac']=$_POST['prac'][$student_id];
+                $att['pass_marks']=$_POST['pass_marks'][$student_id];
                 $att['created_at']=date('Y-m-d H:i:s');
                 $att['created_by']=$_SESSION['id'];
-                
                 $rs=$mysqli->common_create('class_subject',$att);
+                
+
+
+                
             }
             if($rs){
                 if($rs['data']){
@@ -169,6 +190,7 @@
                 }
             }
         }
+    }  
         ?>
             </div>
         </div>
