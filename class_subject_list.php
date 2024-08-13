@@ -46,11 +46,12 @@
                                         </thead>
                                     <tbody>
                                     <?php 
-                                        $result=$mysqli->common_select_query("select class_subject.id, subject.subject_name, class.class, `group`.`group`, session.session, class_subject.sub, class_subject.obj, class_subject.prac, class_subject.pass_marks from class_subject
+                                        $result=$mysqli->common_select_query("select class_subject.*,subject.subject_name, class.class, `group`.`group`, session.session from class_subject
                                         join subject on class_subject.subject_id= subject.id
                                         join class on class_subject.class_id=class.id
                                         join `group` on class_subject.group_id = `group`.id
-                                        inner join session on class_subject.session_id = session.id where class_subject.deleted_at is null ");
+                                        join `section` on class_subject.section_id = section.id
+                                        join session on class_subject.session_id = session.id where class_subject.deleted_at is null");
                                         if($result){
                                             if($result['data']){
                                                 $i=1;

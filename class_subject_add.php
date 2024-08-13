@@ -155,8 +155,9 @@
                         </td>
                        
                          
-                    </tr>
+                                </tr>
                     <?php } } } } ?>
+                    
                     </tbody>
                 </table>
                 <div class="col-lg-10 justify-content-end mt-2 pt-3 mt-sm-0 d-flex">
@@ -167,12 +168,7 @@
 
             <?php 
           if($_POST){
-            $conD['class_id']=$_POST['class_id'];
-            $conD['group_id']=$_POST['group_id'];
-            $conD['session_id']=$_POST['session_id'];
-            $mysqli->common_create('class_fees_setting',$conD);
-
-            foreach($_POST['student_id'] as $i=>$student_id){
+             foreach($_POST['student_id'] as $i=>$student_id){
                 $att['student_id']=$student_id;
                 $att['sub']=$_POST['sub'][$student_id];
                 $att['obj']=$_POST['obj'][$student_id];
@@ -180,11 +176,7 @@
                 $att['pass_marks']=$_POST['pass_marks'][$student_id];
                 $att['created_at']=date('Y-m-d H:i:s');
                 $att['created_by']=$_SESSION['id'];
-                $rs=$mysqli->common_create('class_subject',$att);
-                
-
-
-                
+                $rs=$mysqli->common_create('class_subject',$att);       
             }
             if($rs){
                 if($rs['data']){
