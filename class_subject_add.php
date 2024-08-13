@@ -142,16 +142,16 @@
                             <?= $data->name ?>
                         </td>
                         <td>
-                            <input type="text" class="form-control" value=" " name="sub[student_id]">
+                            <input type="text" class="form-control" value=" " name="sub[<?= $data->student_id ?>]">
                         </td>
                         <td>
-                            <input type="text" class="form-control" value=" " name="obj[student_id]">
+                            <input type="text" class="form-control" value=" " name="obj[<?= $data->student_id ?>]">
                         </td>
                         <td>
-                            <input type="text" class="form-control" value=" " name="prac[student_id]">
+                            <input type="text" class="form-control" value=" " name="prac[<?= $data->student_id ?>]">
                         </td>
                         <td>
-                            <input type="text" class="form-control" value=" " name="pass_marks[student_id]">
+                            <input type="text" class="form-control" value=" " name="pass_marks[<?= $data->student_id ?>]">
                         </td>
                        
                          
@@ -167,7 +167,11 @@
 
             <?php 
           if($_POST){
-            if($_POST['student_id']){
+            $conD['class_id']=$_POST['class_id'];
+            $conD['group_id']=$_POST['group_id'];
+            $conD['session_id']=$_POST['session_id'];
+            $mysqli->common_create('class_fees_setting',$conD);
+
             foreach($_POST['student_id'] as $i=>$student_id){
                 $att['student_id']=$student_id;
                 $att['sub']=$_POST['sub'][$student_id];
@@ -190,7 +194,7 @@
                 }
             }
         }
-    }  
+      
         ?>
             </div>
         </div>
