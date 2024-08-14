@@ -155,8 +155,9 @@
                         </td>
                        
                          
-                    </tr>
+                                </tr>
                     <?php } } } } ?>
+                    
                     </tbody>
                 </table>
                 <div class="col-lg-10 justify-content-end mt-2 pt-3 mt-sm-0 d-flex">
@@ -176,11 +177,7 @@
                 $att['pass_marks']=$_POST['pass_marks'][$student_id];
                 $att['created_at']=date('Y-m-d H:i:s');
                 $att['created_by']=$_SESSION['id'];
-                $rs=$mysqli->common_create('class_subject',$att);
-                
-
-
-                
+                $rs=$mysqli->common_create('class_subject',$att);       
             }
             if($rs){
                 if($rs['data']){
