@@ -167,11 +167,7 @@
 
             <?php 
           if($_POST){
-            $conD['class_id']=$_POST['class_id'];
-            $conD['group_id']=$_POST['group_id'];
-            $conD['session_id']=$_POST['session_id'];
-            $mysqli->common_create('class_fees_setting',$conD);
-
+            
             foreach($_POST['student_id'] as $i=>$student_id){
                 $att['student_id']=$student_id;
                 $att['sub']=$_POST['sub'][$student_id];
