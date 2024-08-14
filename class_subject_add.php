@@ -169,7 +169,8 @@
 
             <?php 
           if($_POST){
-             foreach($_POST['student_id'] as $i=>$student_id){
+            
+            foreach($_POST['student_id'] as $i=>$student_id){
                 $att['student_id']=$student_id;
                 $att['sub']=$_POST['sub'][$student_id];
                 $att['obj']=$_POST['obj'][$student_id];
