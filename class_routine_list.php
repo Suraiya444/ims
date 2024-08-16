@@ -83,6 +83,8 @@
             foreach($result['data'] as $d){
                 $period[$d->sl]=$d;
             }
+
+            
         }
     }
     $result=$mysqli->common_select('day_name');

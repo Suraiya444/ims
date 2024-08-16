@@ -27,6 +27,76 @@
                         <div class="card-header">
                             <h4 class="card-title">Class's Subject</h4>
                         </div>
+                        <div class="row"> 
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <form method="get" action="">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label class="form-label" for="class_id">class</label>
+                                        <select class="form-control form-select" required name="class_id" id="class_id">
+                                            <option value="">Select Class</option>
+                                            <?php 
+                                                $result=$mysqli->common_select('class');
+                                                if($result){
+                                                    if($result['data']){
+                                                        foreach($result['data'] as $d){
+                                            ?>
+                                                <option <?= isset($_GET['class_id']) && $_GET['class_id']==$d->id?"selected":"" ?> value="<?= $d->id ?>" > <?= $d->class ?></option>
+                                            <?php } } } ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="form-label" for="section_id">Section</label>
+                                        <select class="form-control form-select" required name="section_id" id="section_id">
+                                            <option value="">Select Section</option>
+                                            <?php 
+                                                $result=$mysqli->common_select('section');
+                                                if($result){
+                                                    if($result['data']){
+                                                        foreach($result['data'] as $d){
+                                            ?>
+                                                <option value="<?= $d->id ?>" <?= isset($_GET['section_id']) && $_GET['section_id']==$d->id?"selected":"" ?>> <?= $d->section ?></option>
+                                            <?php } } } ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="form-label" for="session_id">Session</label>
+                                        <select class="form-control form-select" required name="session_id" id="session_id">
+                                            <option value="">Select Section</option>
+                                            <?php 
+                                                $result=$mysqli->common_select('session');
+                                                if($result){
+                                                    if($result['data']){
+                                                        foreach($result['data'] as $d){
+                                            ?>
+                                                <option value="<?= $d->id ?>" <?= isset($_GET['session_id']) && $_GET['session_id']==$d->id?"selected":"" ?>> <?= $d->session ?></option>
+                                            <?php } } } ?>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="col-md-3">
+                                     <label for="subject_id">Subject</label>
+                                 <select class="form-control" id="subject" name="subject_id">
+                               <option value="">Select Class</option>
+                            <?php 
+                                $result=$mysqli->common_select('subject');
+                                if($result){
+                                    if($result['data']){
+                                        foreach($result['data'] as $d){
+                            ?>
+                                 <option value="<?= $d->id ?>" <?= isset($_GET['subject_id']) && $_GET['subject_id']==$d->id?"selected":"" ?>><?= $d->subject_name ?> </option>
+                            <?php } } } ?>
+                           </select>
+                           </div>
+                          </div>
+                            <div class="col-md-4">
+                            <button type="submit" class="btn btn-primary mt-4">Get Marks</button>
+                            </div>
+                        </div>
+                        </form>
+                        <form action="" method="get">
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered verticle-middle table-responsive-sm">
@@ -46,11 +116,12 @@
                                         </thead>
                                     <tbody>
                                     <?php 
-                                        $result=$mysqli->common_select_query("select class_subject.*,subject.subject_name, class.class, `group`.`group`, session.session from class_subject
+                                        if(isset($_GET['class_id']) && isset($_GET['section_id'])){
+                                        $result=$mysqli->common_select_query("select class_subject.*,subject.subject_name, class.class, `group`.`group`, session.session 
+                                        from class_subject
                                         join subject on class_subject.subject_id= subject.id
                                         join class on class_subject.class_id=class.id
                                         join `group` on class_subject.group_id = `group`.id
-                                        join `section` on class_subject.section_id = section.id
                                         join session on class_subject.session_id = session.id where class_subject.deleted_at is null");
                                         if($result){
                                             if($result['data']){
@@ -78,11 +149,12 @@
                                                 </span>
                                             </td>
                                         </tr>
-                                        <?php } } } ?>
+                                            <?php } } } }?>
                                     </tbody> 
                                 </table>
                             </div>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -156,7 +156,7 @@
                        
                          
                                 </tr>
-                                
+                                 
                     <?php } } } } ?>
                     
                     </tbody>
@@ -201,4 +201,43 @@
 
 
  
-            
+<div class="col-md-6">
+                        <label class="form-label" for="total_marks">Total Marks</label>
+                        <input type="text" name="total_marks" class="form-control" id="total_marks" >
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label" for="pass_marks">Pass Marks</label>
+                        <select class="form-control form-select" required name="pass_marks" id="pass_marks">
+                            <option value="">Select Pass Marks</option>
+                            <?php 
+                                $result=$mysqli->common_select('class_subject');
+                                if($result){
+                                    if($result['data']){
+                                        $i=1;
+                                        foreach($result['data'] as $d){
+                            ?>
+                                <option value="<?= $d->id ?>" > <?= $d->pass_marks ?></option>
+                            <?php } } } ?>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label" for="sub">Subjective</label>
+                        <input type="text" name="sub" class="form-control" id="sub" >
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label" for="obj">Objective</label>
+                        <input type="text" name="obj" class="form-control" id="obj" >
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label" for="prac">Practical</label>
+                        <input type="text" name="prac" class="form-control" id="prac" >
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label" for="gp">GP</label>
+                        <input type="text" name="gp" class="form-control" id="gp" >
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label" for="gpl">GPL</label>
+                        <input type="text" name="gpl" class="form-control" id="gpl" >
+                    </div>
+                </div>
