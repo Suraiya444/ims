@@ -111,7 +111,7 @@
             <table class="table">
                     <thead>
                         <tr>
-                             
+                            <th>ID</th>
                             <th>Subject</th>
                             <th>Total Marks</th>
                             <th>Pass marks</th>
@@ -126,19 +126,23 @@
                         <?php 
                              if(isset($_GET['class_id']) && isset($_GET['section_id'])){
 
-                                $result=$mysqli->common_select_query("SELECT subject.*, class_subject.*
-                                FROM class_subject
-                                JOIN subject on subject.id = class_subject.subject_id
-                                WHERE 
-                                 class_subject.class_id = {$_GET['class_id']} and
-                                 class_subject.session_id = {$_GET['session_id']} and
-                                 class_subject.deleted_at IS NULL");
+                                $result=$mysqli->common_select_query("select subject.subject_name, class_subject.* 
+                                    from class_subject
+                                    join subject on subject.id=class_subject.subject_id
+                                    where 
+                                    class_subject.class_id={$_GET['class_id']}
+                                    and class_subject.session_id={$_GET['session_id']}
+                                    and class_subject.group_id={$_GET['group_id']}
+                                    and class_subject.deleted_at is null");
+                                                           
                                 if($result){
                                     if($result['data']){
                                         foreach($result['data'] as $sid=>$data){
                         ?>
                                             <tr>
-                                                
+                                                <td>
+                                                 <input type="checkbox" name="subject_id[]" value="<?= $data->subject_id ?>" >
+                                                </td>
                                                 <td> 
                                                      <?= $data->subject_name ?>
                                                 </td>
@@ -165,9 +169,7 @@
                                                  </td>
                                                
                                             </tr>
-                                        
-                                            
-                        
+                                    
                         <?php } } } }  ?>
                         
                     </tbody>

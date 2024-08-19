@@ -6,20 +6,9 @@
 ***********************************-->
     <div class="content-body">
         <div class="container-fluid">
-            <div class="row page-titles mx-0">
-                <div class="col-sm-6 p-md-0">
-                    <div class="welcome-text">
-                        <h4>Hi, welcome back!</h4>
-                        <p class="mb-0">Your school dashboard</p>
-                    </div>
-                </div>
-                <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="class_subject_add.php">Class's Subject</a></li>
-                        <li class="breadcrumb-item active"><a href="class_subject_list.php">Class Subject List</a></li>
-                    </ol>
-                </div>
-            </div>
+         
+
+
             <!-- row -->
             <div class="row"> 
                 <div class="col-lg-12">
@@ -116,9 +105,7 @@
                                         </thead>
                                     <tbody>
                                     <?php 
-                                        if(isset($_GET['class_id']) && isset($_GET['section_id'])){
-                                        $result=$mysqli->common_select_query("select class_subject.*,subject.subject_name, class.class, `group`.`group`, session.session 
-                                        from class_subject
+                                        $result=$mysqli->common_select_query("select class_subject.*,subject.subject_name, class.class, `group`.`group`, session.session from class_subject
                                         join subject on class_subject.subject_id= subject.id
                                         join class on class_subject.class_id=class.id
                                         join `group` on class_subject.group_id = `group`.id
@@ -127,7 +114,7 @@
                                             if($result['data']){
                                                 $i=1;
                                                 foreach($result['data'] as $data){
-                                    ?>
+                             ?>
                                         <tr>
                                             <td><?= $i++ ?></td>
                                             <td><?= $data-> subject_name ?></td>
@@ -149,7 +136,12 @@
                                                 </span>
                                             </td>
                                         </tr>
-                                            <?php } } } }?>
+ 
+                                          
+                                       
+ 
+                                            <?php } } } ?>
+ 
                                     </tbody> 
                                 </table>
                             </div>
