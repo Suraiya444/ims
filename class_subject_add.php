@@ -172,8 +172,7 @@
           if($_POST){
             
             foreach($_POST['student_id'] as $i=>$student_id){
-                $att['student_id']=$student_id;
-                $att['section_id']=$_GET['section_id'];
+                $att['student_id']=$student_id;         
                 $att['session_id']=$_GET['session_id'];
                 $att['subject_id']=$_GET['subject_id'];
                 $att['class_id']=$_GET['class_id'];
@@ -182,7 +181,7 @@
                 $att['prac']=$_POST['prac'][$student_id];
                 $att['pass_marks']=$_POST['pass_marks'][$student_id];
                 $att['created_at']=date('Y-m-d H:i:s');
-                $att['created_by']=$_SESSION['id'];
+                $att['created_by']=1;
                 $rs=$mysqli->common_create('class_subject',$att);       
             }
             if($rs){
@@ -205,44 +204,4 @@
 <?php include('include/footer.php') ?> 
 
 
- 
-<div class="col-md-6">
-                        <label class="form-label" for="total_marks">Total Marks</label>
-                        <input type="text" name="total_marks" class="form-control" id="total_marks" >
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label" for="pass_marks">Pass Marks</label>
-                        <select class="form-control form-select" required name="pass_marks" id="pass_marks">
-                            <option value="">Select Pass Marks</option>
-                            <?php 
-                                $result=$mysqli->common_select('class_subject');
-                                if($result){
-                                    if($result['data']){
-                                        $i=1;
-                                        foreach($result['data'] as $d){
-                            ?>
-                                <option value="<?= $d->id ?>" > <?= $d->pass_marks ?></option>
-                            <?php } } } ?>
-                        </select>
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label" for="sub">Subjective</label>
-                        <input type="text" name="sub" class="form-control" id="sub" >
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label" for="obj">Objective</label>
-                        <input type="text" name="obj" class="form-control" id="obj" >
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label" for="prac">Practical</label>
-                        <input type="text" name="prac" class="form-control" id="prac" >
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label" for="gp">GP</label>
-                        <input type="text" name="gp" class="form-control" id="gp" >
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label" for="gpl">GPL</label>
-                        <input type="text" name="gpl" class="form-control" id="gpl" >
-                    </div>
-                </div>
+  

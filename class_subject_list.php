@@ -85,7 +85,7 @@
                             </div>
                         </div>
                         </form>
-                        <form action="" method="get">
+                        
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered verticle-middle table-responsive-sm">
@@ -105,7 +105,7 @@
                                         </thead>
                                     <tbody>
                                     <?php 
-                                        $result=$mysqli->common_select_query("select class_subject.*,subject.subject_name, class.class, `group`.`group`, session.session from class_subject
+                                        $result=$mysqli->common_select_query("select  class_subject.*,subject.subject_name, class.class, `group`.`group`, session.session from class_subject
                                         join subject on class_subject.subject_id= subject.id
                                         join class on class_subject.class_id=class.id
                                         join `group` on class_subject.group_id = `group`.id
@@ -146,7 +146,7 @@
                                 </table>
                             </div>
                         </div>
-                        </form>
+                        
                     </div>
                 </div>
             </div>
