@@ -161,7 +161,13 @@
                         echo "<script>window.location='{$baseurl}class_fees_setting_list.php'</script>";
                     }else{
                         echo $rs['error'];
-                    } 
+                    }
+
+
+
+
+                    
+                     
                 }
             }    
         
