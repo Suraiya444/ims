@@ -126,15 +126,13 @@
                         <?php 
                              if(isset($_GET['class_id']) && isset($_GET['section_id'])){
 
-                                $result=$mysqli->common_select_query("select subject.*,student_details.*
-                                                            from student_details
-                                                            JOIN student on student.id=student_details.student_id
-                                                            where 
-                                                            student_details.class_id={$_GET['class_id']} and
-                                                            student_details.section_id={$_GET['section_id']} and
-                                                            student_details.session_id={$_GET['session_id']} and
-                                                            student_details.deleted_at is null 
-                                                            ");
+                                $result=$mysqli->common_select_query("SELECT subject.*, class_subject.*
+                                FROM class_subject
+                                JOIN subject on subject.id = class_subject.subject_id
+                                WHERE 
+                                 class_subject.class_id = {$_GET['class_id']} and
+                                 class_subject.session_id = {$_GET['session_id']} and
+                                 class_subject.deleted_at IS NULL");
                                 if($result){
                                     if($result['data']){
                                         foreach($result['data'] as $sid=>$data){
