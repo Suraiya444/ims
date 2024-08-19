@@ -104,6 +104,7 @@
                 </div>
             </form>
             <form action="" method="post">
+                
                 <table class="table">
                     <thead>
                     <tr>
@@ -172,6 +173,10 @@
             
             foreach($_POST['student_id'] as $i=>$student_id){
                 $att['student_id']=$student_id;
+                $att['section_id']=$_GET['section_id'];
+                $att['session_id']=$_GET['session_id'];
+                $att['subject_id']=$_GET['subject_id'];
+                $att['class_id']=$_GET['class_id'];
                 $att['sub']=$_POST['sub'][$student_id];
                 $att['obj']=$_POST['obj'][$student_id];
                 $att['prac']=$_POST['prac'][$student_id];
