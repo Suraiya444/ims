@@ -20,6 +20,58 @@
                     </ol>
                 </div>
             </div>
+            <form action="" method="get">
+                <div class="row">
+                    <div class="col-lg-3">
+                       <label for="class_id">Class</label>
+                        <select class="form-control" id="class_id" name="class_id">
+                            <option value="">Select Class</option>
+                            <?php 
+                                $result=$mysqli->common_select('class');
+                                if($result){
+                                    if($result['data']){
+                                        foreach($result['data'] as $d){
+                            ?>
+                            <option value="<?= $d->id ?>" <?= isset($_GET['class_id']) && $_GET['class_id']==$d->id?"selected":"" ?>><?= $d->class ?> </option>
+                            <?php } } } ?>
+                        </select>
+                    </div>
+                    <div class="col-lg-3">
+                        <label for="subject_id">Subject</label>
+                        <select class="form-control" id="subject" name="subject_id">
+                            <option value="">Select Class</option>
+                            <?php 
+                                $result=$mysqli->common_select('subject');
+                                if($result){
+                                    if($result['data']){
+                                        foreach($result['data'] as $d){
+                            ?>
+                                 <option value="<?= $d->id ?>" <?= isset($_GET['subject_id']) && $_GET['subject_id']==$d->id?"selected":"" ?>><?= $d->subject_name ?> </option>
+                            <?php } } } ?>
+                        </select>
+
+                    </div>
+                    <div class="col-lg-3">
+                        <label for="subject_id">Subject</label>
+                        <select class="form-control" id="subject" name="subject_id">
+                            <option value="">Select Class</option>
+                            <?php 
+                                $result=$mysqli->common_select('subject');
+                                if($result){
+                                    if($result['data']){
+                                        foreach($result['data'] as $d){
+                            ?>
+                                 <option value="<?= $d->id ?>" <?= isset($_GET['subject_id']) && $_GET['subject_id']==$d->id?"selected":"" ?>><?= $d->subject_name ?> </option>
+                            <?php } } } ?>
+                        </select>
+                    </div>
+
+
+                </div>
+            </form>
+
+
+
             <!-- row -->
             <div class="row"> 
                 <div class="col-lg-12">
@@ -50,13 +102,12 @@
                                         join subject on class_subject.subject_id= subject.id
                                         join class on class_subject.class_id=class.id
                                         join `group` on class_subject.group_id = `group`.id
-                                        join `section` on class_subject.section_id = section.id
                                         join session on class_subject.session_id = session.id where class_subject.deleted_at is null");
                                         if($result){
                                             if($result['data']){
                                                 $i=1;
                                                 foreach($result['data'] as $data){
-                                    ?>
+                             ?>
                                         <tr>
                                             <td><?= $i++ ?></td>
                                             <td><?= $data-> subject_name ?></td>
@@ -78,6 +129,7 @@
                                                 </span>
                                             </td>
                                         </tr>
+                                          
                                         <?php } } } ?>
                                     </tbody> 
                                 </table>
