@@ -6,70 +6,7 @@
 ***********************************-->
     <div class="content-body">
         <div class="container-fluid">
-            <div class="row page-titles mx-0">
-                <div class="col-sm-6 p-md-0">
-                    <div class="welcome-text">
-                        <h4>Hi, welcome back!</h4>
-                        <p class="mb-0">Your school dashboard</p>
-                    </div>
-                </div>
-                <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="class_subject_add.php">Class's Subject</a></li>
-                        <li class="breadcrumb-item active"><a href="class_subject_list.php">Class Subject List</a></li>
-                    </ol>
-                </div>
-            </div>
-            <form action="" method="get">
-                <div class="row">
-                    <div class="col-lg-3">
-                       <label for="class_id">Class</label>
-                        <select class="form-control" id="class_id" name="class_id">
-                            <option value="">Select Class</option>
-                            <?php 
-                                $result=$mysqli->common_select('class');
-                                if($result){
-                                    if($result['data']){
-                                        foreach($result['data'] as $d){
-                            ?>
-                            <option value="<?= $d->id ?>" <?= isset($_GET['class_id']) && $_GET['class_id']==$d->id?"selected":"" ?>><?= $d->class ?> </option>
-                            <?php } } } ?>
-                        </select>
-                    </div>
-                    <div class="col-lg-3">
-                        <label for="subject_id">Subject</label>
-                        <select class="form-control" id="subject" name="subject_id">
-                            <option value="">Select Class</option>
-                            <?php 
-                                $result=$mysqli->common_select('subject');
-                                if($result){
-                                    if($result['data']){
-                                        foreach($result['data'] as $d){
-                            ?>
-                                 <option value="<?= $d->id ?>" <?= isset($_GET['subject_id']) && $_GET['subject_id']==$d->id?"selected":"" ?>><?= $d->subject_name ?> </option>
-                            <?php } } } ?>
-                        </select>
-
-                    </div>
-                    <div class="col-lg-3">
-                        <label for="subject_id">Subject</label>
-                        <select class="form-control" id="subject" name="subject_id">
-                            <option value="">Select Class</option>
-                            <?php 
-                                $result=$mysqli->common_select('subject');
-                                if($result){
-                                    if($result['data']){
-                                        foreach($result['data'] as $d){
-                            ?>
-                                 <option value="<?= $d->id ?>" <?= isset($_GET['subject_id']) && $_GET['subject_id']==$d->id?"selected":"" ?>><?= $d->subject_name ?> </option>
-                            <?php } } } ?>
-                        </select>
-                    </div>
-
-
-                </div>
-            </form>
-
+         
 
 
             <!-- row -->
@@ -199,12 +136,12 @@
                                                 </span>
                                             </td>
                                         </tr>
-<<<<<<< HEAD
+ 
                                           
-                                        <?php } } } ?>
-=======
-                                            <?php } } } }?>
->>>>>>> 721c97122abceef66a9064ff32d77c7f6f2fd1ab
+                                       
+ 
+                                            <?php } } } ?>
+ 
                                     </tbody> 
                                 </table>
                             </div>
