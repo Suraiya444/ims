@@ -119,7 +119,7 @@
                                     <div class="col-md-6">
                                         <label class="form-label" for="session_id">Session</label>
                                         <select class="form-control form-select" required name="session_id" id="session_id">
-                                        <option value="">Select Group</option>
+                                        <option value="">Select Session</option>
                                         <?php 
                                             $result=$mysqli->common_select('session');
                                             if($result){

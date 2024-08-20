@@ -72,7 +72,7 @@
                     <div class="col-lg-3">
                         <label for="term">Exam Term</label>
                         <select class="form-control" id="term" name="term">
-                            <option value="">Select Class</option>
+                            <option value="">Select Term</option>
                             <?php 
                                 $result=$mysqli->common_select('exam_term');
                                 if($result){
@@ -86,7 +86,7 @@
                     <div class="col-lg-3">
                         <label for="subject_id">Subject</label>
                         <select class="form-control" id="subject" name="subject_id">
-                            <option value="">Select Class</option>
+                            <option value="">Select Subject</option>
                             <?php 
                                 $result=$mysqli->common_select('subject');
                                 if($result){

@@ -21,7 +21,7 @@
                     </li>
                     <li class="nav-label">Marks</li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                                        class="icon-notebook"></i><span class="nav-text">Subject Marks</span></a>
+                         class="icon-notebook"></i><span class="nav-text">Subject Marks</span></a>
                         <ul aria-expanded="false">
                             <li><a href="<?= $baseurl ?>class_subject_add.php">Add</a></li>
                             <li><a href="<?= $baseurl ?>class_subject_list.php">List</a></li>
@@ -30,8 +30,7 @@
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
                                         class="icon-notebook"></i><span class="nav-text">Student Marks</span></a>
                         <ul aria-expanded="false">
-                            <li><a href="<?= $baseurl ?>student_marks_add.php">Add</a></li>
-                            <li><a href="<?= $baseurl ?>student_marks_list.php">List</a></li>
+                            <li><a href="<?= $baseurl ?>student_marks_list.php">Marks</a></li>
                         </ul>
                     </li>
                     <li class="nav-label first">Class Managment</li>

@@ -22,52 +22,13 @@
                 </div>
                 <!-- row -->
            
-            <form method="get" action="">
+                <form class="form" method="post" action="">
             <div class="row">
-                    <div class="col-lg-3">
-                        <label for="class_id">Class</label>
-                        <select class="form-control" id="class_id" name="class_id">
-                            <option value="">Select Class</option>
-                            <?php 
-                                $result=$mysqli->common_select('class');
-                                if($result){
-                                    if($result['data']){
-                                        foreach($result['data'] as $d){
-                            ?>
-                            <option value="<?= $d->id ?>" <?= isset($_GET['class_id']) && $_GET['class_id']==$d->id?"selected":"" ?>><?= $d->class ?> </option>
-                            <?php } } } ?>
-                        </select>
-                    </div>
-                    <div class="col-lg-3">
-                        <label for="group_id">Group</label>
-                        <select class="form-control" id="group_id" name="group_id">
-                            <option value="">Select Group</option>
-                            <?php 
-                                $result=$mysqli->common_select('`group`');
-                                if($result){
-                                    if($result['data']){
-                                        foreach($result['data'] as $d){
-                            ?>
-                            <option value="<?= $d->id ?>" <?= isset($_GET['group_id']) && $_GET['group_id']==$d->id?"selected":"" ?>><?= $d->group ?> </option>
-                            <?php } } } ?>
-                        </select>
-                    </div>
-                    
-                    <div class="col-lg-3">
-                        <label for="group_id">Session</label>
-                        <select class="form-control" id="session_id" name="session_id">
-                            <option value="">Select Session </option>
-                            <?php 
-                                $result=$mysqli->common_select('session');
-                                if($result){
-                                    if($result['data']){
-                                        foreach($result['data'] as $d){
-                            ?>
-                            <option value="<?= $d->id ?>" <?= isset($_GET['session_id']) && $_GET['session_id']==$d->id?"selected":"" ?>><?= $d->session ?></option>
-                            <?php } } } ?>
-                        </select>
-                    </div>
-                    <div class="col-lg-3">
+            <div class="col-lg-2">
+                    <label class="col-lg-4 col-form-label" for="fees_date">Date</label>
+                    <input type="date" id="fees_date" class="form-control" value="<?= date("Y-m-d") ?>" name="fees_date">
+                </div>
+                <div class="col-lg-2">
                         <label for="student_id">Student </label>
                         <select class="form-control" id="student_id" name="student_id">
                             <option value="">Select Student Id </option>
@@ -77,87 +38,91 @@
                                     if($result['data']){
                                         foreach($result['data'] as $d){
                             ?>
-                             <option value="<?= $d->id ?>" <?= isset($_GET['student_id']) && $_GET['student_id']==$d->id?"selected":"" ?>> <?= $d->student_id ?></option>
+                             <option value="<?= $d->id ?>" > <?= $d->student_id ?> </option>
                              <?php } } } ?>
                         </select>
                     </div>
-                    <div class="col-lg-4 pt-3 px-0">
-                    <label class="col-lg-4 col-form-label" for="fees_date">Fees Date</label>
-                    <input type="date" id="fees_date" class="form-control" value="<?= date("Y-m-d") ?>" name="fees_date">
-                </div>
-                </div>
-                <div class="col-md-4">
-                    <button type="submit" class="btn btn-primary mt-4">Get Fees Catagories</button>
-                </div>
-            </form>   
-
-            <form action="" method="post">   
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>#SL</th>
-                        <th>Fees</th>
-                        <th>Amount</th>
-                        
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php 
-                        if(isset($_GET['class_id']) && isset($_GET['session_id']) && isset($_GET['group_id']) && $_GET['student_id']){
-
-                            $result=$mysqli->common_select_query("select cfs.*, fees_category.name
-                            from class_fees_setting as cfs 
-                            JOIN fees_category on fees_category.id=cfs.fees_category_id
-                            where 
-                            cfs.class_id={$_GET['class_id']} and
-                            cfs.group_id={$_GET['group_id']} and
-                            cfs.session_id={$_GET['session_id']} and
-                            cfs.deleted_at is null 
-                            ");
-                            if($result){
-                            if($result['data']){
-                                foreach($result['data'] as $sid=>$data){
+                    <div class="col-lg-2">
+                        <label for="group_id">Group</label>
+                        <select class="form-control" id="group_id" name="group_id">
+                            <option value="">Select Group</option>
+                            <?php 
+                                $result=$mysqli->common_select('`group`');
+                                if($result){
+                                    if($result['data']){
+                                        foreach($result['data'] as $d){
                             ?>
-                                <tr>
-                                    <td>
-                                    <input type="checkbox" name="fees_category_id[]" value="<?= $data->fees_category_id ?> <?= json_encode($data) ?>" >
-                                    </td>
-                                    <td> 
-                                        <?= $data->name ?>
-                                    
-                                    </td>
-                                    <td>
-                                    <?= $data-> amount?>
-                                    </td>
-                                </tr>
-                    <?php }}}} ?>
-                </tbody>
-            </table>
-            
+                            <option value="<?= $d->id ?>" > <?= $d->group ?></option>
+                            <?php } } } ?>
+                        </select>
+                    </div>
+                    
+                    <div class="col-lg-2">
+                        <label for="group_id">Session</label>
+                        <select class="form-control" id="session_id" name="session_id">
+                            <option value="">Select Session </option>
+                            <?php 
+                                $result=$mysqli->common_select('session');
+                                if($result){
+                                    if($result['data']){
+                                        foreach($result['data'] as $d){
+                            ?>
+                             <option value="<?= $d->id ?>" > <?= $d->session ?></option>
+                            <?php } } } ?>
+                        </select>
+                    </div>
+                    <div class="col-lg-2">
+                        <label for="class_id">Class</label>
+                        <select class="form-control" id="class_id"onchange="return_row_with_data(this)">
+                            <option value="">Select Class</option>
+                            <?php 
+                                $result=$mysqli->common_select('class');
+                                $class=array();
+                                if($result){
+                                    if($result['data']){
+                                        $i=1;
+                                        foreach($result['data'] as $d){
+                                            $class[$d->id]=$d;
+                            ?>
+                                <option value='<?= json_encode($d) ?>' > <?= $d->class ?></option>
+                            <?php } } } ?>
+                        </select>
+                    </div>
+                   
+                </div>
+            <table class="table mb-5">
+                    <thead>
+                        <tr class="">
+                            <th class="p-2">SL</th>
+                            <th class="p-2">Fees</th>
+                            <th class="p-2">Amount</th>
+                            <th class="p-2">Action</th>
+                             
+                        </tr>
+                    </thead>
+                    <tbody id="details_data">
+
+                    </tbody>
+                </table>
+               
                 <div class="row mb-5">
                     <div class="col-12 col-sm-6">
                         <div class="row">
                             <div class="col-4 offset-2 mt-2 text-end pe-3">
-                                <label for="" class="form-group"><h6>Fees Amount</h6></label> 
+                                <label for="" class="form-group"><h6>Total Fees</h6></label> 
                             </div>
                             <div class="col-4 mt-2">
-                                <label for="" class="form-group"><h6 id="fees_amount">0</h6></label>
-                                <input type="hidden" name="fees_amount" id="fees_amount_t">
+                                <label for="" class="form-group"><h6 id="total_qty">0</h6></label>
+                                <input type="hidden" name="total_qty" id="total_qty_p">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-4 offset-2 mt-2 text-end pe-3">
-                                <label for="" class="form-group"><h6>Fee Waiver</h6></label> 
+                                <label for="" class="form-group"><h6>Fees Waiver</h6></label> 
                             </div>
                             <div class="col-6 mt-2">
                                 <input type="text" class="form-control form-group" id="discount" name="discount" onkeyup="check_change()">
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-4 offset-2 mt-2 text-end pe-3">
-                                <label for="" class="form-group"></label> 
-                            </div>
-                           
                         </div>
                         <div class="row">
                             <div class="col-4 offset-2 mt-2 text-end pe-3">
@@ -172,72 +137,64 @@
                     <div class="col-12 col-sm-6">
                         <div class="row">
                             <div class="col-4 offset-4 mt-2 pe-2 text-end">
-                                <label for="" class="form-group"><h6>Total Amount</h6></label> 
+                                <label for="" class="form-group"><h6>Sub Amount</h6></label> 
                             </div>
                             <div class="col-4 mt-2 pe-5 text-end">
-                                <label for="" class="form-group"><h6 id="totalamount">0.00</h6></label>
-                                <input type="hidden" name="totalamount" id="totalamount_f">
+                                <label for="" class="form-group"><h6 id="amount">0.00</h6></label>
+                                <input type="hidden" name="amount" id="amount_p">
                             </div>
                         </div>   
                         
                         <div class="row">
                             <div class="col-4 offset-4 mt-2 pe-2 text-end">
-                                <label for="" class="form-group"><h6>Fee Waiver</h6></label> 
+                                <label for="" class="form-group"><h6>Fees Waiver</h6></label> 
                             </div>
                             <div class="col-4 mt-2 pe-5 text-end">
-                                <label for="" class="form-group"><h6 id="fdiscount">0.00</h6></label>
-                                <input type="hidden" name="fdiscount" id="fdiscount_a">
+                                <label for="" class="form-group"><h6 id="tdiscount">0.00</h6></label>
+                                <input type="hidden" name="tdiscount" id="tdiscount_p">
                             </div>
                         </div>  
-                        <div class="row">
-                            <div class="col-4 offset-4 mt-2 pe-2 text-end">
-                                <label for="" class="form-group"><h6>Grand Amount</h6></label> 
-                            </div>
-                            <div class="col-4 mt-2 pe-5 text-end">
-                                <label for="" class="form-group"><h6 id="tgrandtotal">0.00</h6></label>
-                                <input type="hidden" name="tgrandtotal" id="tgrandtotal_f">
-                            </div>
-                        </div>
                         <div class="row">
                             <div class="col-4 offset-4 mt-2 pe-2 text-end">
                                 <label for="" class="form-group"><h6>Due</h6></label> 
                             </div>
                             <div class="col-4 mt-2 pe-5 text-end">
                                 <label for="" class="form-group"><h6 id="due_d">0.00</h6></label>
-                                <input type="hidden" name="due" id="due_f">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-4 offset-4 mt-2 pe-2 text-end">
-                                <label for="" class="form-group"><h6>Total</h6></label> 
-                            </div>
-                            <div class="col-4 mt-2 pe-5 text-end">
-                                <label for="" class="form-group"><h6 id="total">0.00</h6></label>
-                                <input type="hidden" name="total" id="total_a">
+                                <input type="hidden" name="vat" id="due_d">
                             </div>
                         </div>
                         
-                         
+                        <div class="row">
+                            <div class="col-4 offset-4 mt-2 pe-2 text-end">
+                                <label for="" class="form-group"><h6>Grand Amount</h6></label> 
+                            </div>
+                            <div class="col-4 mt-2 pe-5 text-end">
+                                <label for="" class="form-group"><h6 id="total_amount">0.00</h6></label>
+                                <input type="hidden" name="total_amount" id="total_amount_p">
+                            </div>
+                        </div> 
                     </div>
-                </div>   
-                <div class="col-lg-10 justify-content-end mt-2 pt-3 mt-sm-0 d-flex">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+                                
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-end">
+                        <button type="submit" class="btn btn-primary me-1 mb-1">Save</button>
+                        
+                    </div>
                 </div>
             </form>
             <?php 
         if($_POST){
-            
-           if(isset($fees_category_id)){
-                $fee['fees_category_id']=$fees_category_id;
-                $fee['name']=$_POST['name'][$fees_category_id];
-                $fee['amount']=$_POST['amount'][$fees_category_id];
-                $fee['discount']=$_POST['discount'][$fees_category_id];
-                $fee['due']=$_POST['due'][$fees_category_id];
-                $fee['fees_date']=date('Y-m-d');
-                $fee['created_at']=date('Y-m-d H:i:s');
-                $fee['created_by']=$_SESSION['id'];
-                
-                $rs=$mysqli->common_create('student_fees',$fee);
+            $pur['class_id']=$_POST['class_id'];
+            $pur['fees_date']=$_POST['fees_date'];
+            $pur['discount']=$_POST['discount'];
+            $pur['due']=$_POST['due'];
+            $pur['discount']=$_POST['tdiscount'];
+            $pur['amount']=$_POST['amount'];
+            $pur['total_amount']=$_POST['total_amount'];
+            $pur['created_at']=date("Y-m-d H:i:s");
+            $pur['created_by']=$_SESSION['id'];
+            $rs=$mysqli->common_create('student_date',$pur);
             }
             if(isset($rs)){
                 if($rs['data']){
@@ -246,7 +203,7 @@
                     echo $rs['error'];
                 }
             }
-        }
+        
     ?>
             </div>
         </div>
@@ -254,46 +211,102 @@
             Content body end
         ***********************************-->
 
- 
-<?php include('include/footer.php') ?> 
-
-
-<script>
-    var fees_amount=<?= json_encode($sid) ?>;
+        <script>
+    var fees_data=<?= json_encode($class) ?>;
     var selected_fees=[];
-    function return_row_with_data(item){
-        let data=JSON.parse(item.value);
+    function return_row_with_data(fees_catagory){
+        let data=JSON.parse(fees_catagory.value);
         if(!selected_fees.some(k => k == data.id)){
             let row=`<tr>
                         <td class="p-2">
-                            ${data.brand_name}
-                            <input type="hidden" name="fees_category_id[]" value="${data.id}">
+                            ${data.name}
+                            <input type="hidden" name="fees_id[]" value="${data.id}">
                         </td>
-                       
                         <td class="p-2">
                             ${data.amount}
                             <input type="hidden" class="amount" name="amount[]" value="${data.amount}">
                         </td>
                         <td class="p-2">
-                            <span id="amount${data.id}" class="subprice"> </span>
+                            <span id="amount${data.id}" class="subamount"> </span>
                         </td>
-                        <td class="p-2">Action</td>
+                        <td class="p-2">
+                            <button class="btn btn-link text-danger" type="button" onclick="removerow(this)">&times;</button>
+                        </td>
                     </tr>`
             document.getElementById('details_data').insertRow().innerHTML=row;
-            selected_medicine.push(data.id)
+            selected_fees.push(data.id)
         }
         
     }
-//CALCUALATED SALES PRICE
-    function get_cal(fees_amount,cfsid){
-        var price = (isNaN(parseFloat(fees_category_id[cfsid].price))) ? 0 :parseFloat(fees_category_id[cfsid].price); 
-        var fees_amount = (isNaN(parseFloat(fees_amount.value))) ? 0 :parseFloat(fees_amount.value); 
+    //INCREMENT ITEM
+    function removerow(e){
+        $(e).parents('tr').remove();
+    }
+
+    //CALCUALATED SALES PRICE
+    function get_cal(fees,mid){
+        var total = (isNaN(parseFloat(fees_data[mid].amount))) ? 0 :parseFloat(fees_data[mid].amount); 
+         
     
-        var subtotal = price * fees_amount;
-            document.getElementById('price'+cfsid).innerHTML=subtotal
+        var subtotal = price * qty;
+            document.getElementById('price'+mid).innerHTML=subtotal
 
         total_calculate();
     }
     //END
+    //CALCULATE PROFIT MARGIN PERCENTAGE
+    function total_calculate(){
+        var totalqty = 0;
+        document.querySelectorAll('.qty').forEach(function(e){
+            totalqty += (isNaN(parseFloat(e.value))) ? 0 :parseFloat(e.value);
+        });
+        
+        var subtotal = 0;
+        document.querySelectorAll('.subprice').forEach(function(e){
+            subtotal += (isNaN(parseFloat(e.innerHTML))) ? 0 :parseFloat(e.innerHTML);
+        });
+
+        document.getElementById('total_qty').innerHTML=totalqty;
+        document.getElementById('total_qty_p').value=totalqty;
+        
+        document.getElementById('tsubtotal').innerHTML=subtotal;
+        document.getElementById('tsubtotal_p').value=subtotal;
+
+        
+        check_change();
+    }
+    //END
+
+    function check_change(){
+        var vat=(isNaN(parseFloat(document.getElementById('due').value))) ? 0 :parseFloat(document.getElementById('due').value);
+        var discount=(isNaN(parseFloat(document.getElementById('discount').value))) ? 0 :parseFloat(document.getElementById('discount').value);
+        var tsubtotal=document.getElementById('tsubtotal_p').value;
+        vat= tsubtotal * (vat/100)
+        document.getElementById('tdiscount').innerHTML=discount.toFixed(2)
+        document.getElementById('tdiscount_p').value=discount.toFixed(2)
+        document.getElementById('vat_v').innerHTML=vat.toFixed(2)
+        document.getElementById('vat_p').value=vat.toFixed(2)
+
+        cal_grandtotl()
+    }
+
+    function cal_grandtotl(){
+        var tsubtotal_p=(isNaN(parseFloat(document.getElementById('tsubtotal_p').value))) ? 0 :parseFloat(document.getElementById('tsubtotal_p').value);
+        var vat=(isNaN(parseFloat(document.getElementById('vat_p').value))) ? 0 :parseFloat(document.getElementById('vat_p').value);
+        var discount=(isNaN(parseFloat(document.getElementById('tdiscount_p').value))) ? 0 :parseFloat(document.getElementById('tdiscount_p').value);
+        var grandtotal=((tsubtotal_p-discount)+vat);
+        var roundof=Math.floor(grandtotal);
+            subtotal_diff=grandtotal-roundof;
+
+        document.getElementById('tgrandtotal').innerHTML=parseFloat(roundof).toFixed(2)
+        document.getElementById('tgrandtotal_p').value=parseFloat(roundof).toFixed(2)
+    }
 
 </script>
+        
+<?php include('include/footer.php') ?> 
+
+
+
+
+ 

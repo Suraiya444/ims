@@ -77,7 +77,7 @@
                                   </div>
                                   <div class="col-lg-3">
                                     <label for="term">Student</label>
-                                     <select class="form-control" id="term" name="term">
+                                    <select class="form-control form-select" required name="student_id" id="student_id">
                                         <option value="">Select student</option>
                                         <?php 
                                          $result=$mysqli->common_select('student_details');
@@ -85,12 +85,12 @@
                                             if($result['data']){
                                                     foreach($result['data'] as $d){
                                         ?>
-                                        <option value="<?= $d->id ?>" <?= isset($_GET['id']) && $_GET['id']==$d->id?"selected":"" ?>><?= $d->student_id ?> </option>
+                                        <option value="<?= $d->id ?>" <?= isset($_GET['student_id']) && $_GET['student_id']==$d->student_id?"selected":"" ?>><?= $d->student_id ?> </option>
                                         <?php } } } ?>
                                         </select>
                                         </div>
                                     <div class="col-md-4">
-                                        <button type="submit" class="btn btn-primary mt-4">Get Routine</button>
+                                        <button type="submit" class="btn btn-primary mt-4">Get Marks</button>
                                     </div>
                                 </div>
                             </form>

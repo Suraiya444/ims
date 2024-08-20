@@ -92,10 +92,7 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">ID</th>
-                                                <th scope="col">Subject</th>
-                                                <th scope="col">Class</th>
-                                                <th scope="col">Group</th>
-                                                <th scope="col">Session</th>
+                                                <th scope="col">Student</th>
                                                 <th scope="col">Subjective</th>
                                                 <th scope="col">Objective</th>
                                                 <th scope="col">Practical</th>
@@ -105,22 +102,22 @@
                                         </thead>
                                     <tbody>
                                     <?php 
-                                        $result=$mysqli->common_select_query("select  class_subject.*,subject.subject_name, class.class, `group`.`group`, session.session from class_subject
-                                        join subject on class_subject.subject_id= subject.id
-                                        join class on class_subject.class_id=class.id
-                                        join `group` on class_subject.group_id = `group`.id
-                                        join session on class_subject.session_id = session.id where class_subject.deleted_at is null");
+                                        if(isset($_GET['class_id']) && isset($_GET['subject_id'])){
+
+                                            $result=$mysqli->common_select_query("select  class_subject.*,student.name from class_subject
+                                                     join student on class_subject.student_id= student.id
+                                                             where 
+                                                            class_subject.class_id={$_GET['class_id']} and
+                                                            class_subject.session_id={$_GET['session_id']} and
+                                                            class_subject.deleted_at is null ");
                                         if($result){
                                             if($result['data']){
                                                 $i=1;
-                                                foreach($result['data'] as $data){
+                                                foreach($result['data'] as  $sid=>$data){
                              ?>
                                         <tr>
                                             <td><?= $i++ ?></td>
-                                            <td><?= $data-> subject_name ?></td>
-                                            <td><?= $data-> class ?></td>
-                                            <td><?= $data-> group ?></td>
-                                            <td><?= $data-> session ?></td>
+                                            <td><?= $data-> name ?></td>
                                             <td><?= $data-> sub ?></td>
                                             <td><?= $data-> obj ?></td>
                                             <td><?= $data-> prac ?></td>
@@ -140,7 +137,7 @@
                                           
                                        
  
-                                            <?php } } } ?>
+                                            <?php } } } } ?>
  
                                     </tbody> 
                                 </table>
