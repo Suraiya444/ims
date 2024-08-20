@@ -33,7 +33,7 @@
                         <div class="card-header">
                             <form method="get" action="">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <label class="form-label" for="class_id">class</label>
                                         <select class="form-control form-select" required name="class_id" id="class_id">
                                             <option value="">Select Class</option>
@@ -47,7 +47,7 @@
                                             <?php } } } ?>
                                         </select>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <label class="form-label" for="section_id">Section</label>
                                         <select class="form-control form-select" required name="section_id" id="section_id">
                                             <option value="">Select Section</option>
@@ -71,10 +71,24 @@
                                             if($result['data']){
                                                     foreach($result['data'] as $d){
                                         ?>
-                            <option value="<?= $d->id ?>" <?= isset($_GET['id']) && $_GET['id']==$d->id?"selected":"" ?>><?= $d->term ?> </option>
-                            <?php } } } ?>
-                        </select>
-                    </div>
+                                          <option value="<?= $d->id ?>" <?= isset($_GET['id']) && $_GET['id']==$d->id?"selected":"" ?>><?= $d->term ?> </option>
+                                        <?php } } } ?>
+                                    </select>
+                                  </div>
+                                  <div class="col-lg-3">
+                                    <label for="term">Student</label>
+                                     <select class="form-control" id="term" name="term">
+                                        <option value="">Select student</option>
+                                        <?php 
+                                         $result=$mysqli->common_select('student_details');
+                                         if($result){
+                                            if($result['data']){
+                                                    foreach($result['data'] as $d){
+                                        ?>
+                                        <option value="<?= $d->id ?>" <?= isset($_GET['id']) && $_GET['id']==$d->id?"selected":"" ?>><?= $d->student_id ?> </option>
+                                        <?php } } } ?>
+                                        </select>
+                                        </div>
                                     <div class="col-md-4">
                                         <button type="submit" class="btn btn-primary mt-4">Get Routine</button>
                                     </div>
@@ -83,13 +97,13 @@
                         </div>
 
                         
-                                        <?php 
+    <?php 
     $class_subject=$subject=$marks=[];
     $result=$mysqli->common_select('class_subject');
     if($result){
         if($result['data']){
-            foreach($result['data'] as $d){
-                $class_subject[$d->id]=$d;
+            foreach($result['data'] as $c){
+                $class_subject[$c->subject_id]=$c;
             }
 
             
@@ -98,12 +112,12 @@
     $result=$mysqli->common_select('subject');
     if($result){
         if($result['data']){
-            foreach($result['data'] as $d){
-                $subject[$d->id]=$d;
+            foreach($result['data'] as $s){
+                $subject[$s->id]=$s;
             }
         }
     }
-    if(isset($_GET['class_id']) && $_GET['section_id']){
+    if(isset($_GET['class_id']) && $_GET['student_id']){
         $result=$mysqli->common_select_query("select subject.*, class_subject.* 
                                     from class_subject
                                     join subject on subject.id=class_subject.subject_id
@@ -125,12 +139,12 @@
                                 <table class="table table-bordered verticle-middle table-responsive-sm">
                                     <thead>
                                         <tr> 
-                                        <th scope="col">Subject </th>
-                                                <th scope="col">Total Marks</th>
-                                                <th scope="col">Pass Marks</th>
+                                                <th scope="col">Subject </th>  
                                                 <th scope="col">Subjective</th>
                                                 <th scope="col">Objective</th>
                                                 <th scope="col">Practical</th>
+                                                <th scope="col">Pass Marks</th>
+                                                <th scope="col">Total Marks</th>
                                                 <th scope="col">GP</th>
                                                 <th scope="col">GPL</th>
                                                 <th scope="col">Actions</th>
@@ -138,23 +152,37 @@
                                     </thead>
                                     <tbody>
                                         <?php if($subject){
-                                                foreach($subject as $d){
+                                                foreach($subject as $s){
                                         ?>
                                             <tr>
-                                                <th><?= $d->subject_name?></th>
+                                                <th><?= $s->subject_name?></th>
                                                 
                                                 <?php if($class_subject){
-                                                        foreach($class_subject as $p){
+                                                        foreach($class_subject as $c){
                                                 ?>
                                                     <td>
                                                         <?php 
-                                                            if(isset($class_subject[$d->subject_name][$p->sub])){
-                                                                echo $class_subject[$d->subject_name][$p->subject_name]->obj;
-                                                                echo "<br/>".$class_subject[$d->subject_name][$p->subject_name]->prac;
-                                                                echo "<br/>".$class_subject[$d->subject_name][$p->subject_name]->pass_marks;
-                                                            }
-                                                        ?>
-                                                    </th>
+                                                            if(isset($marks[$c->subject_id][$s->id])){
+                                                                echo $marks[$s->id][$c->subjec_id]->sub;} ?></td>
+                                                                <td>
+                                                                <?php 
+                                                               if(isset($marks[$c->subject_id][$s->id])){
+                                                                echo $marks[$s->id][$c->subjec_id]->obj;} ?>
+
+                                                                </td>
+                                                                <?php 
+                                                               if(isset($marks[$c->subject_id][$s->id])){
+                                                                echo $marks[$s->id][$c->subjec_id]->prac;} ?>
+
+                                                                </td>
+                                                                <?php 
+                                                               if(isset($marks[$c->subject_id][$s->id])){
+                                                                echo $marks[$s->id][$c->subjec_id]->pass_marks;} ?>
+
+                                                                </td>
+                                                            
+                                                        
+                                                    
                                                 <?php } } ?>
                                             </tr>
                                         <?php } } ?>
