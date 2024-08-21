@@ -61,34 +61,40 @@
                                             <?php } } } ?>
                                         </select>
                                     </div>
-                                    <div class="col-lg-3">
-                                    <label for="term">Exam Term</label>
-                                     <select class="form-control" id="term" name="term">
-                                        <option value="">Select Term</option>
-                                        <?php 
-                                         $result=$mysqli->common_select('exam_term');
-                                         if($result){
-                                            if($result['data']){
-                                                    foreach($result['data'] as $d){
-                                        ?>
-                                          <option value="<?= $d->id ?>" <?= isset($_GET['id']) && $_GET['id']==$d->id?"selected":"" ?>><?= $d->term ?> </option>
-                                        <?php } } } ?>
-                                    </select>
-                                  </div>
-                                  <div class="col-lg-3">
-                                    <label for="term">Student</label>
-                                    <select class="form-control form-select" required name="student_id" id="student_id">
-                                        <option value="">Select student</option>
-                                        <?php 
-                                         $result=$mysqli->common_select('student_details');
-                                         if($result){
-                                            if($result['data']){
-                                                    foreach($result['data'] as $d){
-                                        ?>
-                                        <option value="<?= $d->id ?>" <?= isset($_GET['student_id']) && $_GET['student_id']==$d->student_id?"selected":"" ?>><?= $d->student_id ?> </option>
-                                        <?php } } } ?>
+                                    <div class="col-lg-3 pt-2">
+                                        <label for="session_id">Session</label>
+                                        <select class="form-control" id="session_id" name="session_id" onchange="getStudent()">
+                                            <option value="">Select Session </option>
+                                            <?php 
+                                                $result=$mysqli->common_select('session');
+                                                if($result){
+                                                    if($result['data']){
+                                                        foreach($result['data'] as $d){
+                                            ?>
+                                            <option value="<?= $d->id ?>" <?= isset($_GET['session_id']) && $_GET['session_id']==$d->id?"selected":"" ?>><?= $d->session ?> </option>
+                                            <?php } } } ?>
                                         </select>
-                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <label for="term">Exam Term</label>
+                                        <select class="form-control" id="term_id" name="term_id">
+                                            <option value="">Select Term</option>
+                                            <?php 
+                                            $result=$mysqli->common_select('exam_term');
+                                            if($result){
+                                                if($result['data']){
+                                                        foreach($result['data'] as $d){
+                                            ?>
+                                            <option value="<?= $d->id ?>" <?= isset($_GET['term_id']) && $_GET['term_id']==$d->id?"selected":"" ?>><?= $d->term ?> </option>
+                                            <?php } } } ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <label for="term">Student</label>
+                                        <select class="form-control form-select" required name="student_id" id="student_id">
+                                    
+                                        </select>
+                                    </div>
                                     <div class="col-md-4">
                                         <button type="submit" class="btn btn-primary mt-4">Get Marks</button>
                                     </div>
@@ -99,16 +105,7 @@
                         
     <?php 
     $class_subject=$subject=$marks=[];
-    $result=$mysqli->common_select('class_subject');
-    if($result){
-        if($result['data']){
-            foreach($result['data'] as $c){
-                $class_subject[$c->subject_id]=$c;
-            }
-
-            
-        }
-    }
+    
     $result=$mysqli->common_select('subject');
     if($result){
         if($result['data']){
@@ -118,16 +115,15 @@
         }
     }
     if(isset($_GET['class_id']) && $_GET['student_id']){
-        $result=$mysqli->common_select_query("select subject.*, class_subject.* 
-                                    from class_subject
-                                    join subject on subject.id=class_subject.subject_id
-                                    where 
-                                    class_subject.class_id={$_GET['class_id']}
-                                    and class_subject.deleted_at is null");
-        if($result){
-            if($result['data']){
-                foreach($result['data'] as $d){
-                    $marks[$d->subject_name][$d->sub][$d->obj][$d->prac][$d->pass_marks]=$d;
+        $rsc['student_id']=$_GET['student_id'];
+        $rsc['session_id']=$_GET['session_id'];
+        $rsc['class_id']=$_GET['class_id'];
+        $rsc['term_id']=$_GET['term_id'];
+        $rs=$mysqli->common_select('class_subject','*',$rsc); 
+        if($rs){
+            if($rs['data']){
+                foreach($rs['data'] as $d){
+                   $marks[$d->subject_id]=$d;
                 }
             }
         }
@@ -147,43 +143,25 @@
                                                 <th scope="col">Total Marks</th>
                                                 <th scope="col">GP</th>
                                                 <th scope="col">GPL</th>
-                                                <th scope="col">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php if($subject){
+                                        <?php
+                                            $totalmarks=$totalgpa=$subcount=0;
+                                             if($subject){
                                                 foreach($subject as $s){
+                                                    $sub_total=($marks[$s->id]->sub ?? 0) + ($marks[$s->id]->obj ?? 0) + ($marks[$s->id]->prac ?? 0);
+                                                    $totalmarks+=$sub_total;
                                         ?>
                                             <tr>
                                                 <th><?= $s->subject_name?></th>
-                                                
-                                                <?php if($class_subject){
-                                                        foreach($class_subject as $c){
-                                                ?>
-                                                    <td>
-                                                        <?php 
-                                                            if(isset($marks[$c->subject_id][$s->id])){
-                                                                echo $marks[$s->id][$c->subjec_id]->sub;} ?></td>
-                                                                <td>
-                                                                <?php 
-                                                               if(isset($marks[$c->subject_id][$s->id])){
-                                                                echo $marks[$s->id][$c->subjec_id]->obj;} ?>
-
-                                                                </td>
-                                                                <?php 
-                                                               if(isset($marks[$c->subject_id][$s->id])){
-                                                                echo $marks[$s->id][$c->subjec_id]->prac;} ?>
-
-                                                                </td>
-                                                                <?php 
-                                                               if(isset($marks[$c->subject_id][$s->id])){
-                                                                echo $marks[$s->id][$c->subjec_id]->pass_marks;} ?>
-
-                                                                </td>
-                                                            
-                                                        
-                                                    
-                                                <?php } } ?>
+                                                <td><?= $marks[$s->id]->sub ?? '' ?></td>
+                                                <td><?= $marks[$s->id]->obj ?? '' ?></td>
+                                                <td><?= $marks[$s->id]->prac ?? '' ?></td>
+                                                <td><?= $marks[$s->id]->pass_marks ?? '' ?></td>
+                                                <td><?= $sub_total  ?></td>
+                                                <td><?= $sub_total  ?></td>
+                                                <td><?= $sub_total  ?></td>
                                             </tr>
                                         <?php } } ?>
                                     </tbody> 
@@ -210,4 +188,32 @@
     <script src="<?= $baseurl ?>assets/js/custom.min.js"></script>
     
 </body>
-<?php include('include/footer.php') ?> 
+<?php include('include/footer.php') ?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+    getStudent()
+    function getStudent(){
+        let class_id=$('#class_id').val();
+        let section_id=$('#section_id').val();
+        let session_id=$('#session_id').val();
+        let student_id= <?= $_GET['student_id'] ?? "" ?>
+
+        $.getJSON( "<?= $baseurl ?>json_student.php", { class_id:class_id,section_id:section_id,session_id:session_id } )
+        .done(function( data ) {
+            let opt="<option value=''>No Data Found</option>";
+            if(data){
+                opt="<option value=''>Select student</option>";
+                for(i=0; i < data.length; i++){
+                    if(student_id==data[i].student_id)
+                        opt += "<option selected value='" + data[i].student_id +"'>" + data[i].name + "</option>";
+                    else
+                        opt += "<option value='" + data[i].student_id +"'>" + data[i].name + "</option>";
+                }
+            }
+            $('#student_id').html(opt);
+        })
+        .fail(function( jqxhr, textStatus, error ) {
+            console.log( error );
+        });
+    }
+</script>

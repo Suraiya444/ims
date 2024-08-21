@@ -71,7 +71,7 @@
                     <div class="row">
                     <div class="col-lg-3">
                         <label for="term">Exam Term</label>
-                        <select class="form-control" id="term" name="term">
+                        <select class="form-control" id="term_id" name="term_id">
                             <option value="">Select Term</option>
                             <?php 
                                 $result=$mysqli->common_select('exam_term');
@@ -79,7 +79,7 @@
                                     if($result['data']){
                                         foreach($result['data'] as $d){
                             ?>
-                            <option value="<?= $d->id ?>" <?= isset($_GET['id']) && $_GET['id']==$d->id?"selected":"" ?>><?= $d->term ?> </option>
+                            <option value="<?= $d->id ?>" <?= isset($_GET['term_id']) && $_GET['term_id']==$d->id?"selected":"" ?>><?= $d->term ?> </option>
                             <?php } } } ?>
                         </select>
                     </div>
@@ -133,8 +133,18 @@
 
                         if($result){
                             if($result['data']){
+                                $oldmarks=array();
                                 foreach($result['data'] as $sid=>$data){
-                    ?> 
+                                    $rsc['student_id']=$data->student_id;
+                                    $rsc['session_id']=$_GET['session_id'];
+                                    $rsc['subject_id']=$_GET['subject_id'];
+                                    $rsc['class_id']=$_GET['class_id'];
+                                    $rsc['term_id']=$_GET['term_id'];
+                                    $rs=$mysqli->common_select_single('class_subject','*',$rsc); 
+                                    if($rs)
+                                        if($rs['data'])
+                                            $oldmarks=$rs['data'];
+                    ?>                     
                     <tr>
                         <td>
                             <input type="checkbox" name="student_id[]" value="<?= $data->student_id ?>" >
@@ -143,20 +153,18 @@
                             <?= $data->name ?>
                         </td>
                         <td>
-                            <input type="text" class="form-control" value=" " name="sub[<?= $data->student_id ?>]">
+                            <input type="text" class="form-control" value="<?= !empty($oldmarks) ? $oldmarks->sub : "" ?>" name="sub[<?= $data->student_id ?>]">
                         </td>
                         <td>
-                            <input type="text" class="form-control" value=" " name="obj[<?= $data->student_id ?>]">
+                            <input type="text" class="form-control" value="<?= !empty($oldmarks) ? $oldmarks->obj : "" ?>" name="obj[<?= $data->student_id ?>]">
                         </td>
                         <td>
-                            <input type="text" class="form-control" value=" " name="prac[<?= $data->student_id ?>]">
+                            <input type="text" class="form-control" value="<?= !empty($oldmarks) ? $oldmarks->prac : "" ?>" name="prac[<?= $data->student_id ?>]">
                         </td>
                         <td>
-                            <input type="text" class="form-control" value=" " name="pass_marks[<?= $data->student_id ?>]">
+                            <input type="text" class="form-control" value="<?= !empty($oldmarks) ? $oldmarks->pass_marks : "" ?>" name="pass_marks[<?= $data->student_id ?>]">
                         </td>
-                       
-                         
-                         </tr>
+                    </tr>
                                  
                     <?php } } } } ?>
                     
@@ -170,19 +178,30 @@
 
             <?php 
           if($_POST){
-            
             foreach($_POST['student_id'] as $i=>$student_id){
                 $att['student_id']=$student_id;         
                 $att['session_id']=$_GET['session_id'];
                 $att['subject_id']=$_GET['subject_id'];
                 $att['class_id']=$_GET['class_id'];
+                $att['term_id']=$_GET['term_id'];
                 $att['sub']=$_POST['sub'][$student_id];
                 $att['obj']=$_POST['obj'][$student_id];
                 $att['prac']=$_POST['prac'][$student_id];
                 $att['pass_marks']=$_POST['pass_marks'][$student_id];
                 $att['created_at']=date('Y-m-d H:i:s');
                 $att['created_by']=1;
-                $rs=$mysqli->common_create('class_subject',$att);       
+
+                $con['student_id']=$att['student_id'];
+                $con['session_id']=$att['session_id'];
+                $con['subject_id']=$att['subject_id'];
+                $con['class_id']=$att['class_id'];
+                $con['term_id']=$att['term_id'];
+                $rs=$mysqli->common_update('class_subject',$att,$con); 
+                if($rs)
+                    if($rs['error'])
+                        $rs=$mysqli->common_create('class_subject',$att);   
+                      
+                    
             }
             if($rs){
                 if($rs['data']){

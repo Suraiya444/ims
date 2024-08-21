@@ -6,9 +6,6 @@
 ***********************************-->
     <div class="content-body">
         <div class="container-fluid">
-         
-
-
             <!-- row -->
             <div class="row"> 
                 <div class="col-lg-12">
@@ -66,23 +63,37 @@
                                     </div>
                                     
                                     <div class="col-md-3">
-                                     <label for="subject_id">Subject</label>
-                                 <select class="form-control" id="subject" name="subject_id">
-                               <option value="">Select Class</option>
-                            <?php 
-                                $result=$mysqli->common_select('subject');
-                                if($result){
-                                    if($result['data']){
-                                        foreach($result['data'] as $d){
-                            ?>
-                                 <option value="<?= $d->id ?>" <?= isset($_GET['subject_id']) && $_GET['subject_id']==$d->id?"selected":"" ?>><?= $d->subject_name ?> </option>
-                            <?php } } } ?>
-                           </select>
-                           </div>
-                          </div>
-                            <div class="col-md-4">
-                            <button type="submit" class="btn btn-primary mt-4">Get Marks</button>
-                            </div>
+                                        <label for="subject_id">Subject</label>
+                                        <select class="form-control" id="subject" name="subject_id">
+                                            <option value="">Select Class</option>
+                                            <?php 
+                                                $result=$mysqli->common_select('subject');
+                                                if($result){
+                                                    if($result['data']){
+                                                        foreach($result['data'] as $d){
+                                            ?>
+                                                <option value="<?= $d->id ?>" <?= isset($_GET['subject_id']) && $_GET['subject_id']==$d->id?"selected":"" ?>><?= $d->subject_name ?> </option>
+                                            <?php } } } ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <label for="term">Exam Term</label>
+                                        <select class="form-control" id="term_id" name="term_id">
+                                            <option value="">Select Term</option>
+                                            <?php 
+                                                $result=$mysqli->common_select('exam_term');
+                                                if($result){
+                                                    if($result['data']){
+                                                        foreach($result['data'] as $d){
+                                            ?>
+                                            <option value="<?= $d->id ?>" <?= isset($_GET['term_id']) && $_GET['term_id']==$d->id?"selected":"" ?>><?= $d->term ?> </option>
+                                            <?php } } } ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <button type="submit" class="btn btn-primary mt-4">Get Marks</button>
+                                </div>
                         </div>
                         </form>
                         
@@ -109,6 +120,8 @@
                                                              where 
                                                             class_subject.class_id={$_GET['class_id']} and
                                                             class_subject.session_id={$_GET['session_id']} and
+                                                            class_subject.subject_id={$_GET['subject_id']} and
+                                                            class_subject.term_id={$_GET['term_id']} and
                                                             class_subject.deleted_at is null ");
                                         if($result){
                                             if($result['data']){
