@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 21, 2024 at 07:03 AM
+-- Generation Time: Aug 21, 2024 at 09:27 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -653,7 +653,8 @@ CREATE TABLE `student_fees` (
   `amount` decimal(10,2) DEFAULT NULL,
   `total_amount` int(11) NOT NULL,
   `discount` decimal(10,2) DEFAULT NULL,
-  `fees_date` date DEFAULT NULL,
+  `fees_month` int(11) DEFAULT NULL,
+  `fees_year` year(4) DEFAULT NULL,
   `due` decimal(10,2) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
