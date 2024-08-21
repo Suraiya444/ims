@@ -22,24 +22,56 @@
                 </div>
                 <!-- row -->
            
-                <form class="form" method="post" action="">
-            <div class="row">
-            <div class="col-lg-2">
-                    <label class="col-lg-4 col-form-label" for="fees_date">Date</label>
-                    <input type="date" id="fees_date" class="form-control" value="<?= date("Y-m-d") ?>" name="fees_date">
-                </div>
-                <div class="col-lg-2">
-                        <label for="student_id">Student </label>
-                        <select class="form-control" id="student_id" name="student_id">
-                            <option value="">Select Student Id </option>
+                <form class="form" method="get" action="">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <label class="col-lg-4 col-form-label" for="fees_date">Month</label>
+                        <select name="fees_month" id="fees_month" class="form-control">
+                            <?php
+                                for($i=1;$i<13;$i++)
+                                    print("<option value='".date('m',strtotime('01.'.$i.'.2001'))."'>".date('F',strtotime('01.'.$i.'.2001'))."</option>");
+                            ?>
+                        </select>
+                        
+                    </div>
+                    <div class="col-lg-2">
+                        <label class="col-lg-4 col-form-label" for="fees_date">Month</label>
+                        <select name="fees_year" id="fees_year" class="form-control">
+                            <?php
+                                for($i=2024;$i<= date('Y'); $i++)
+                                    print("<option value='".$i."'>".$i."</option>");
+                            ?>
+                        </select>
+                        
+                    </div>
+                    <div class="col-lg-2">
+                        <label for="class_id">Class</label>
+                        <select class="form-control" id="class_id" name="class_id">
+                            <option value="">Select Class</option>
                             <?php 
-                                $result=$mysqli->common_select('student_details');
+                                $result=$mysqli->common_select('class');
+                                $class=array();
+                                if($result){
+                                    if($result['data']){
+                                        foreach($result['data'] as $d){
+                                            $class[$d->id]=$d;
+                            ?>
+                                <option value='<?= $d->id ?>' > <?= $d->class ?></option>
+                            <?php } } } ?>
+                        </select>
+                    </div>
+                    <div class="col-lg-2">
+                        <label class="form-label" for="section_id">Section</label>
+                        <select class="form-control form-select" required name="section_id" id="section_id">
+                            <option value="">Select Section</option>
+                            <?php 
+                                $result=$mysqli->common_select('section');
                                 if($result){
                                     if($result['data']){
                                         foreach($result['data'] as $d){
                             ?>
-                             <option value="<?= $d->id ?>" > <?= $d->student_id ?> </option>
-                             <?php } } } ?>
+                                <option value="<?= $d->id ?>" <?= isset($_GET['section_id']) && $_GET['section_id']==$d->id?"selected":"" ?>> <?= $d->section ?></option>
+                            <?php } } } ?>
                         </select>
                     </div>
                     <div class="col-lg-2">
@@ -59,7 +91,7 @@
                     
                     <div class="col-lg-2">
                         <label for="group_id">Session</label>
-                        <select class="form-control" id="session_id" name="session_id">
+                        <select class="form-control" id="session_id" name="session_id" onchange="getStudent()">
                             <option value="">Select Session </option>
                             <?php 
                                 $result=$mysqli->common_select('session');
@@ -72,37 +104,56 @@
                         </select>
                     </div>
                     <div class="col-lg-2">
-                        <label for="class_id">Class</label>
-                        <select class="form-control" id="class_id"onchange="return_row_with_data(this)">
-                            <option value="">Select Class</option>
-                            <?php 
-                                $result=$mysqli->common_select('class');
-                                $class=array();
-                                if($result){
-                                    if($result['data']){
-                                        $i=1;
-                                        foreach($result['data'] as $d){
-                                            $class[$d->id]=$d;
-                            ?>
-                                <option value='<?= json_encode($d) ?>' > <?= $d->class ?></option>
-                            <?php } } } ?>
+                        <label for="term">Student</label>
+                        <select class="form-control form-select" required name="student_id" id="student_id">
+                    
                         </select>
                     </div>
-                   
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-primary mt-4">Get Fees</button>
+                    </div>
                 </div>
-            <table class="table mb-5">
+            </form>
+            <?php if(isset($_GET['student_id'])){ ?>
+                
+                <table class="table mb-5">
                     <thead>
                         <tr class="">
                             <th class="p-2">SL</th>
+                            <th class="p-2"></th>
                             <th class="p-2">Fees</th>
                             <th class="p-2">Amount</th>
-                            <th class="p-2">Action</th>
                              
                         </tr>
                     </thead>
+                    <?php
+                        $result=$mysqli->common_select_query("SELECT cfs.*,fees_category.name FROM `class_fees_setting` as cfs join fees_category on fees_category.id=cfs.fees_category_id
+                            where cfs.class_id={$_GET['class_id']} and
+                            cfs.session_id={$_GET['session_id']} and
+                            cfs.deleted_at is null ");
+                        if($result){
+                            if($result['data']){
+                                foreach($result['data'] as  $i=>$data){
+                    
+                    ?>
                     <tbody id="details_data">
-
+                        <tr class="">
+                            <th class="p-2"><?= ++$i ?></th>
+                            <th class="p-2">
+                                <input type="checkbox" onchange="checkFees(this,<?= $data->fees_category_id ?>,<?= $data->amount ?>)" name="fees_id[]" value="<?= $data->fees_category_id ?>" >
+                            </th>
+                            <td> 
+                                <?= $data->name ?>
+                                
+                            </td>
+                            <td id="<?= $data->fees_category_id ?>">
+                                <input type="text" class="form-control" value=""  name="amount[<?= $data->fees_category_id ?>]">
+                            </td>
+                            <th class="p-2">Action</th>
+                             
+                        </tr>
                     </tbody>
+                    <?php } } } ?>
                 </table>
                
                 <div class="row mb-5">
@@ -184,70 +235,74 @@
                 </div>
             </form>
             <?php 
-        if($_POST){
-            $pur['class_id']=$_POST['class_id'];
-            $pur['fees_date']=$_POST['fees_date'];
-            $pur['discount']=$_POST['discount'];
-            $pur['due']=$_POST['due'];
-            $pur['discount']=$_POST['tdiscount'];
-            $pur['amount']=$_POST['amount'];
-            $pur['total_amount']=$_POST['total_amount'];
-            $pur['created_at']=date("Y-m-d H:i:s");
-            $pur['created_by']=$_SESSION['id'];
-            $rs=$mysqli->common_create('student_date',$pur);
-            }
-            if(isset($rs)){
-                if($rs['data']){
-                    echo "<script>window.location='{$baseurl}student_fees_list.php'</script>";
-                }else{
-                    echo $rs['error'];
+                if($_POST){
+                    $pur['class_id']=$_POST['class_id'];
+                    $pur['fees_date']=$_POST['fees_date'];
+                    $pur['discount']=$_POST['discount'];
+                    $pur['due']=$_POST['due'];
+                    $pur['discount']=$_POST['tdiscount'];
+                    $pur['amount']=$_POST['amount'];
+                    $pur['total_amount']=$_POST['total_amount'];
+                    $pur['created_at']=date("Y-m-d H:i:s");
+                    $pur['created_by']=$_SESSION['id'];
+                    $rs=$mysqli->common_create('student_date',$pur);
+                    
+                    if(isset($rs)){
+                        if($rs['data']){
+                            echo "<script>window.location='{$baseurl}student_fees_list.php'</script>";
+                        }else{
+                            echo $rs['error'];
+                        }
+                    }
                 }
-            }
-        
-    ?>
+                
+            ?>
+            <?php } ?>
             </div>
         </div>
         <!--**********************************
             Content body end
         ***********************************-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+    function checkFees(e,id,amt){
+        if($(e).is(':checked'))
+            $('#'+id).find('input').val(amt);
+         else
+             $('#'+id).find('input').val('');
+    }
+    getStudent()
+    function getStudent(){
+        let class_id=$('#class_id').val();
+        let section_id=$('#section_id').val();
+        let session_id=$('#session_id').val();
+        let student_id= <?= $_GET['student_id'] ?? "" ?>
 
-        <script>
+        $.getJSON( "<?= $baseurl ?>json_student.php", { class_id:class_id,section_id:section_id,session_id:session_id } )
+        .done(function( data ) {
+            let opt="<option value=''>No Data Found</option>";
+            if(data){
+                opt="<option value=''>Select student</option>";
+                for(i=0; i < data.length; i++){
+                    if(student_id==data[i].student_id)
+                        opt += "<option selected value='" + data[i].student_id +"'>" + data[i].name + "</option>";
+                    else
+                        opt += "<option value='" + data[i].student_id +"'>" + data[i].name + "</option>";
+                }
+            }
+            $('#student_id').html(opt);
+        })
+        .fail(function( jqxhr, textStatus, error ) {
+            console.log( error );
+        });
+    }
+
     var fees_data=<?= json_encode($class) ?>;
     var selected_fees=[];
-    function return_row_with_data(fees_catagory){
-        let data=JSON.parse(fees_catagory.value);
-        if(!selected_fees.some(k => k == data.id)){
-            let row=`<tr>
-                        <td class="p-2">
-                            ${data.name}
-                            <input type="hidden" name="fees_id[]" value="${data.id}">
-                        </td>
-                        <td class="p-2">
-                            ${data.amount}
-                            <input type="hidden" class="amount" name="amount[]" value="${data.amount}">
-                        </td>
-                        <td class="p-2">
-                            <span id="amount${data.id}" class="subamount"> </span>
-                        </td>
-                        <td class="p-2">
-                            <button class="btn btn-link text-danger" type="button" onclick="removerow(this)">&times;</button>
-                        </td>
-                    </tr>`
-            document.getElementById('details_data').insertRow().innerHTML=row;
-            selected_fees.push(data.id)
-        }
-        
-    }
-    //INCREMENT ITEM
-    function removerow(e){
-        $(e).parents('tr').remove();
-    }
 
     //CALCUALATED SALES PRICE
     function get_cal(fees,mid){
         var total = (isNaN(parseFloat(fees_data[mid].amount))) ? 0 :parseFloat(fees_data[mid].amount); 
-         
-    
         var subtotal = price * qty;
             document.getElementById('price'+mid).innerHTML=subtotal
 

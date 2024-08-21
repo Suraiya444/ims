@@ -128,6 +128,49 @@
             }
         }
     }
+    $gplarray=array('5'=>'A+','4'=>'A','3.5'=>'A-','3'=>'B','2'=>'C','1'=>'D','0'=>'F');
+    function gpaCount($m,$gplarray){
+        $gp='';
+        if($m>79){
+            $gp=5;
+        }else if($m>69){
+            $gp=4;
+        }else if($m>59){
+            $gp=3.5;
+        }else if($m>49){
+            $gp=3;
+        }else if($m>39){
+            $gp=2;
+        }else if($m>32){
+            $gp=1;
+        }else{
+            $gp=0;
+        }
+
+        return array($gp,$gplarray["$gp"]);
+    }
+    function gplCount($m,$gplarray){
+        if($m>5){
+            $gp=5;
+        }else if($m>4){
+            $gp=4;
+        }else if($m>3.5){
+            $gp=3.5;
+        }else if($m>3){
+            $gp=3;
+        }else if($m>2){
+            $gp=2;
+        }else if($m>1){
+            $gp=1;
+        }else{
+            $gp=0;
+        }
+
+        return $gplarray[$gp];
+    }
+
+
+    $totalmarks=$totalgpa=$checkfail=0;
 ?>
 
                         <div class="card-body">
@@ -147,11 +190,15 @@
                                     </thead>
                                     <tbody>
                                         <?php
-                                            $totalmarks=$totalgpa=$subcount=0;
+                                            
                                              if($subject){
                                                 foreach($subject as $s){
                                                     $sub_total=($marks[$s->id]->sub ?? 0) + ($marks[$s->id]->obj ?? 0) + ($marks[$s->id]->prac ?? 0);
                                                     $totalmarks+=$sub_total;
+                                                    $totalgpa+=gpaCount($sub_total,$gplarray)[0];
+                                                    if(gpaCount($sub_total,$gplarray)[0] <= 0){
+                                                        $checkfail=1;
+                                                    }
                                         ?>
                                             <tr>
                                                 <th><?= $s->subject_name?></th>
@@ -160,14 +207,34 @@
                                                 <td><?= $marks[$s->id]->prac ?? '' ?></td>
                                                 <td><?= $marks[$s->id]->pass_marks ?? '' ?></td>
                                                 <td><?= $sub_total  ?></td>
-                                                <td><?= $sub_total  ?></td>
-                                                <td><?= $sub_total  ?></td>
+                                                <td><?= gpaCount($sub_total,$gplarray)[0]  ?></td>
+                                                <td><?= gpaCount($sub_total,$gplarray)[1]  ?></td>
                                             </tr>
                                         <?php } } ?>
                                     </tbody> 
-                            
-                                    
                                 </table>
+<hr>
+                                <div class="mt-3 w-25">
+                                    <table class="table table-bordered verticle-middle table-responsive-sm">
+                                        <tr>
+                                            <th>Total Marks</th>
+                                            <td><?= $totalmarks ?></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Total GP</th>
+                                            <td><?= $totalgpa ?></td>
+                                        </tr>
+                                        <tr>
+                                            <th>GPA </th>
+                                            <td><?= $checkfail ? 0 : round($totalgpa / count($subject),2)  ?></td>
+                                        </tr>
+                                        <tr>
+                                            <th>GLA</th>
+                                            <td><?= $checkfail ? "F" : gplCount(round($totalgpa / count($subject),2),$gplarray) ?></td>
+                                        </tr>
+                                        
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
