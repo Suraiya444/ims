@@ -198,10 +198,8 @@
                 $con['term_id']=$att['term_id'];
                 $rs=$mysqli->common_update('class_subject',$att,$con); 
                 if($rs)
-                    if($rs['error'])
-                        $rs=$mysqli->common_create('class_subject',$att);   
-                      
-                    
+                    if(!$rs['data'])
+                        $rs=$mysqli->common_create('class_subject',$att);
             }
             if($rs){
                 if($rs['data']){
