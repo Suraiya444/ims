@@ -6,7 +6,7 @@
                 <ul class="metismenu" id="menu">
                     <li class="nav-label first">Student Menu</li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-                                        class="icon icon-single-04"></i><span class="nav-text">Student</span></a>
+                                        class=""></i><span class="nav-text">Student</span></a>
                         <ul aria-expanded="false">
                             <li><a href="<?= $baseurl ?>student_add.php">Add</a></li>
                             <li><a href="<?= $baseurl ?>student_list.php">List</a></li>
