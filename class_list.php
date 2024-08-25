@@ -1,108 +1,78 @@
 <?php include('include/header.php') ?>
-<?php include('include/sidebar.php') ?>
+<?php include('include/sidebar.php')?>
 
-<body>
-        <!--**********************************
-            Content body start
-        ***********************************-->
-        <div class="content-body">
-            <div class="container-fluid">
-                <div class="row page-titles mx-0">
-                    <div class="col-sm-6 p-md-0">
-                        <div class="welcome-text">
-                            <h4>Hi, welcome back!</h4>
-                            <p class="mb-0">Your business dashboard template</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="javascript:void(0)">Table</a></li>
-                            <li class="breadcrumb-item active"><a href="javascript:void(0)">Bootstrap</a></li>
-                        </ol>
+<!--**********************************
+    Content body start
+***********************************-->
+    <div class="content-body">
+        <div class="container-fluid">
+            <div class="row page-titles mx-0">
+                <div class="col-sm-6 p-md-0">
+                    <div class="welcome-text">
+                        <h4>Hi, welcome back!</h4>
+                        <p class="mb-0">Your school dashboard</p>
                     </div>
                 </div>
-                <!-- row -->
-
-                <form action="" method="post" class="was-validated">
-                    <div class="mb-3">
-                        <select class="form-select" required aria-label="select example">
-                        <option value="">Open this select menu</option>
-                        <option value="1">Five</option>
-                        <option value="2">Six</option>
-                        <option value="3">Seven</option>
-                        <option value="3">Eight</option>
-                        <option value="3">Nine</option>
-                        <option value="3">Ten</option>
-                        </select>
-                        
-                    </div>
-                    <div class="mb-3">
-                        <button class="btn btn-primary" type="submit">Submit</button>
-                    </div>
-                </form>
-
-
-                <?php 
-                 if($_POST){
-                    $_POST['created_at']=date('Y-m-d H:i:s');
-                    $_POST['created_by']=1;
-                    $rs=$mysqli->common_create('class',$_POST);
-                    if($rs){
-                        if($rs['data']){
-                            echo "<script>window.location='{$baseurl}htdocs/ims/table-bootstrap-basic.php'</script>";
-                        }else{
-                            echo $rs['error'];
-                        }
-                    }
-                }
-                
-                
-                ?>
-               
-                <!-- <div class="row"> 
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title">Class</h4>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered verticle-middle table-responsive-sm">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">ID</th>
-                                                <th scope="col">Class</th>
-                                                <th scope="col">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Air Conditioner</td>
-                                                
-                                                <td>Apr 20,2018</td>
-                                                <td>
-                                                    <span>
-                                                        <a href="javascript:void()" class="mr-4" data-toggle="tooltip"
-                                                            data-placement="top" title="Edit"><i
-                                                                class="fa fa-pencil color-muted"></i> </a>
-                                                        <a href="javascript:void()" data-toggle="tooltip"
-                                                            data-placement="top" title="Close"><i
-                                                                class="fa fa-close color-danger"></i></a>
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="class_add.php">Class</a></li>
+                        <li class="breadcrumb-item active"><a href="class_list.php">Class Table</a></li>
+                    </ol>
+                </div>
+            </div>
+            <!-- row -->
+            <div class="row"> 
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Class</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered verticle-middle table-responsive-sm">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Class</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                        <?php 
+                                            $result=$mysqli->common_select('class');
+                                            if($result){
+                                                if($result['data']){
+                                                    $i=1;
+                                                    foreach($result['data'] as $data){
+                                        ?>
+                                        <tr>
+                                            <td><?= $i++ ?></td>
+                                            <td><?= $data-> class ?></td>
+                                            <td>
+                                                <span>
+                                                    <a href="<?= $baseurl ?>class_edit.php?id=<?= $data ->id ?>" class="mr-4" data-toggle="tooltip"
+                                                        data-placement="top" title="Edit"><i
+                                                            class="fa fa-pencil color-muted"></i> </a>
+                                                    <a href="<?= $baseurl ?>class_delete.php?id=<?= $data ->id ?>" data-toggle="tooltip"
+                                                        data-placement="top" title="Close"><i
+                                                            class="fa fa-close color-danger"></i></a>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <?php } } } ?>
+                                    </tbody> 
+                                </table>
                             </div>
                         </div>
                     </div>
-                </div> -->
+                </div>
             </div>
         </div>
-        <!--**********************************
-            Content body end
-        ***********************************-->
+    </div>
+<!--**********************************
+    Content body end
+***********************************-->
 
     <!--**********************************
         Scripts
