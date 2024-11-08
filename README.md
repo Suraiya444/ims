@@ -1,4 +1,4 @@
-# School Management System
+# School Management System (PHP)
 
 Welcome to the **School Management System**, a robust platform designed to streamline administrative tasks in educational institutions. This project integrates multiple modern features to enhance the management of student data, class routines, attendance, and more, making it an essential tool for schools.
 
